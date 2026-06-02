@@ -2,7 +2,7 @@
  * Button Component
  * A reusable button component with multiple variants following the design guide
  */
-import React from 'react';
+import React from "react";
 export default function Button(_ref) {
   var children = _ref.children,
     _ref$className = _ref.className,

@@ -2,7 +2,7 @@
  * Card Component
  * A flexible card component for containing content with design guide styling
  */
-import React from 'react';
+import React from "react";
 export default function Card(_ref) {
   var children = _ref.children,
     _ref$className = _ref.className,

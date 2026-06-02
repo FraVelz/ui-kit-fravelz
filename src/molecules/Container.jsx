@@ -2,7 +2,7 @@
  * Container Component
  * A flexible container component for layout and spacing
  */
-import React from 'react';
+import React from "react";
 export default function Container(_ref) {
   var children = _ref.children,
     _ref$className = _ref.className,
@@ -16,13 +16,22 @@ export default function Container(_ref) {
     md: "max-w-4xl",
     lg: "max-w-6xl",
     xl: "max-w-7xl",
-    full: "w-full"
+    full: "w-full",
   };
   var variants = {
-    "default": "px-4 py-8",
+    default: "px-4 py-8",
     compact: "px-2 py-4",
     relaxed: "px-6 py-12",
-    section: "px-4 py-16"
+    section: "px-4 py-16",
   };
-  return /*#__PURE__*/<div className={"\n                mx-auto\n                ".concat(sizes[size], "\n                ").concat(variants[variant], "\n                ").concat(className, "\n            ")}>{children}</div>;
+  return (
+    /*#__PURE__*/ <div
+      className={"\n                mx-auto\n                "
+        .concat(sizes[size], "\n                ")
+        .concat(variants[variant], "\n                ")
+        .concat(className, "\n            ")}
+    >
+      {children}
+    </div>
+  );
 }

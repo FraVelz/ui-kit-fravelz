@@ -2,7 +2,7 @@
  * ProgressBar Component
  * A progress bar component for showing progress with design guide styling
  */
-import React from 'react';
+import React from "react";
 export default function ProgressBar(_ref) {
   var _ref$value = _ref.value,
     value = _ref$value === void 0 ? 0 : _ref$value,

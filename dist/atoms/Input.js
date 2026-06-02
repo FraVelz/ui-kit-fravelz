@@ -32,7 +32,7 @@ function _objectWithoutPropertiesLoose(r, e) {
  * Input Component
  * A flexible input field component with design guide styling
  */
-import React from 'react';
+import React from "react";
 export default function Input(_ref) {
   var _ref$placeholder = _ref.placeholder,
     placeholder = _ref$placeholder === void 0 ? "Enter text..." : _ref$placeholder,

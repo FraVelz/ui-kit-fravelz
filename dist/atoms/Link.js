@@ -2,7 +2,7 @@
  * Link Component
  * A custom link component with smooth scrolling for in-page anchors and design guide styling
  */
-import React from 'react';
+import React from "react";
 export default function Link(_ref) {
   var href = _ref.href,
     children = _ref.children,

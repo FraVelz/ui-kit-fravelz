@@ -2,7 +2,7 @@
  * Badge Component
  * A flexible badge/chip component following the design guide
  */
-import React from 'react';
+import React from "react";
 export default function Badge(_ref) {
   var children = _ref.children,
     _ref$className = _ref.className,

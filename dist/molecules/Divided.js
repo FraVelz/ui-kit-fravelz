@@ -2,7 +2,7 @@
  * Divided Component
  * A two-column layout component with flexible content arrangement
  */
-import React from 'react';
+import React from "react";
 function Divided(_ref) {
   var secondaryContent = _ref.secondaryContent,
     children = _ref.children,

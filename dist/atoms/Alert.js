@@ -2,7 +2,7 @@
  * Alert Component
  * An alert component for displaying messages with design guide styling
  */
-import React from 'react';
+import React from "react";
 export default function Alert(_ref) {
   var children = _ref.children,
     _ref$className = _ref.className,

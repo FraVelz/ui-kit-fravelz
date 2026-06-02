@@ -2,7 +2,7 @@
  * Divider Component
  * A flexible divider component with multiple variants
  */
-import React from 'react';
+import React from "react";
 export default function Divider(_ref) {
   var _ref$className = _ref.className,
     className = _ref$className === void 0 ? "" : _ref$className,

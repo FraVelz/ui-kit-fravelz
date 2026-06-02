@@ -2,7 +2,7 @@
  * Title Component
  * A flexible heading component supporting h1, h2, h3 tags with gradient styles following the design guide
  */
-import React from 'react';
+import React from "react";
 function Title(_ref) {
   var headingLevel = _ref.headingLevel,
     children = _ref.children,

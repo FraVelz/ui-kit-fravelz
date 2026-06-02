@@ -126,8 +126,9 @@ function DynamicLink(_ref) {
       var isActive = _ref2.isActive;
       return "\n                cursor-pointer\n                select-none\n                transition-all duration-300\n                pb-[2px] border-b-2\n                ".concat(isActive ? "border-blue-500" // active state
       : visitedLinks[to] ? "border-gray-500" // visited state
-      : "border-transparent hover:border-gray-400" // default state
-      , "\n                ").concat(_className, "\n            ");
+      : "border-transparent hover:border-gray-400",
+      // default state
+      "\n                ").concat(_className, "\n            ");
     }
   }, children);
 }

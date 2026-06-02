@@ -2,7 +2,7 @@
  * Grid Component
  * A flexible grid layout component
  */
-import React from 'react';
+import React from "react";
 export default function Grid(_ref) {
   var children = _ref.children,
     _ref$className = _ref.className,

@@ -2,7 +2,7 @@
  * Message Component
  * A modal message component using React portals with design guide styling
  */
-import React from 'react';
+import React from "react";
 import { createPortal } from "react-dom";
 function Message(_ref) {
   var children = _ref.children,

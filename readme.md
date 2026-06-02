@@ -4,11 +4,11 @@ Biblioteca de componentes **React** personalizados (patrón atoms / molecules / 
 
 Publicada en npm como [`@fravelz/ui-kit-fravelz`](https://www.npmjs.com/package/@fravelz/ui-kit-fravelz).
 
-| | |
-|---|---|
-| **Versión** | 1.1.2 |
-| **Autor** | Fravelz |
-| **Licencia** | ISC |
+|              |         |
+| ------------ | ------- |
+| **Versión**  | 1.1.2   |
+| **Autor**    | Fravelz |
+| **Licencia** | ISC     |
 
 > Al publicar una nueva versión, actualiza `version` aquí y en `package.json`, luego `npm publish`.
 
@@ -74,7 +74,7 @@ npm link @fravelz/ui-kit-fravelz
 
 ## Estructura del repositorio
 
-```
+```text
 src/
   atoms/          # Button, Link, Input, Alert, …
   molecules/      # Card, Grid, Table, Title, …

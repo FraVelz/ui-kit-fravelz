@@ -2,7 +2,7 @@
  * Line Component
  * A horizontal line divider element with design guide styling
  */
-import React from 'react';
+import React from "react";
 function Line(_ref) {
   var _ref$variant = _ref.variant,
     variant = _ref$variant === void 0 ? "default" : _ref$variant,

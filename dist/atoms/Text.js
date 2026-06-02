@@ -2,7 +2,7 @@
  * Text Component
  * A reusable paragraph component with customizable text selection behavior and variants
  */
-import React from 'react';
+import React from "react";
 function Text(_ref) {
   var children = _ref.children,
     _ref$className = _ref.className,

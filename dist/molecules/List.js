@@ -2,7 +2,7 @@
  * List Component
  * A flexible list component supporting both ordered and unordered lists
  */
-import React from 'react';
+import React from "react";
 export default function List(_ref) {
   var children = _ref.children,
     _ref$listType = _ref.listType,

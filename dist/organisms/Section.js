@@ -2,7 +2,7 @@
  * Section Component
  * A semantic section component for organizing content
  */
-import React from 'react';
+import React from "react";
 export default function Section(_ref) {
   var children = _ref.children,
     _ref$className = _ref.className,

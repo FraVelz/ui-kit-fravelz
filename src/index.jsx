@@ -3,6 +3,8 @@
  * Main export file for all components
  */
 
+export { cn } from "./lib/cn";
+
 // Atoms
 export { default as AnimationDevelopment } from "./atoms/Animations/AnimationDeveloment";
 export { default as Alert } from "./atoms/Alert";

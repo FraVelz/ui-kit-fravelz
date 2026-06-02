@@ -2,7 +2,7 @@
  * GradientText Component
  * A flexible text component with gradient effects following the design guide
  */
-import React from 'react';
+import React from "react";
 export default function GradientText(_ref) {
   var children = _ref.children,
     _ref$className = _ref.className,

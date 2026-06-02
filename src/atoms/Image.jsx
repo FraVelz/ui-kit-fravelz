@@ -2,7 +2,7 @@
  * Image Component
  * A reusable image component with automatic height calculation
  */
-import React from 'react';
+import React from "react";
 function Image(_ref) {
   var source = _ref.source,
     alternateText = _ref.alternateText,
@@ -13,6 +13,15 @@ function Image(_ref) {
     _ref$className = _ref.className,
     className = _ref$className === void 0 ? "" : _ref$className;
   var displayHeight = height === 0 ? width : height;
-  return /*#__PURE__*/<img src={source} alt={alternateText} width={width} height={displayHeight} draggable={"false"} className={className} />;
+  return (
+    /*#__PURE__*/ <img
+      src={source}
+      alt={alternateText}
+      width={width}
+      height={displayHeight}
+      draggable={"false"}
+      className={className}
+    />
+  );
 }
 export default Image;

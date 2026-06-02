@@ -2,7 +2,7 @@
  * Structure Component and Related Components
  * Layout components for organizing page structure and curriculum/syllabus display
  */
-import React from 'react';
+import React from "react";
 import Title from "../molecules/Title";
 
 /**

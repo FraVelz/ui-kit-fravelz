@@ -2,7 +2,7 @@
  * Note Component
  * A reusable component for displaying notes or secondary text
  */
-import React from 'react';
+import React from "react";
 function Note(_ref) {
   var children = _ref.children,
     _ref$className = _ref.className,

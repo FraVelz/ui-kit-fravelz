@@ -2,7 +2,7 @@
  * Table Component
  * A collection of components for building responsive tables with design guide styling
  */
-import React from 'react';
+import React from "react";
 export var Table = function Table(_ref) {
   var children = _ref.children,
     _ref$className = _ref.className,

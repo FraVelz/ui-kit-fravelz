@@ -2,7 +2,7 @@
  * Image Component
  * A reusable image component with automatic height calculation
  */
-import React from 'react';
+import React from "react";
 function Image(_ref) {
   var source = _ref.source,
     alternateText = _ref.alternateText,

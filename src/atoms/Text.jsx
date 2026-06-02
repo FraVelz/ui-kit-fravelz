@@ -2,7 +2,7 @@
  * Text Component
  * A reusable paragraph component with customizable text selection behavior and variants
  */
-import React from 'react';
+import React from "react";
 function Text(_ref) {
   var children = _ref.children,
     _ref$className = _ref.className,
@@ -17,15 +17,25 @@ function Text(_ref) {
     sm: "text-sm",
     base: "text-base",
     lg: "text-lg",
-    xl: "text-xl"
+    xl: "text-xl",
   };
   var variantClasses = {
-    "default": "text-gray-300",
+    default: "text-gray-300",
     secondary: "text-gray-400",
     muted: "text-gray-500",
     accent: "text-cyan-300",
-    highlight: "text-purple-300"
+    highlight: "text-purple-300",
   };
-  return /*#__PURE__*/<p className={"\n                select-".concat(selectability, "\n                ").concat(sizeClasses[size], "\n                ").concat(variantClasses[variant], "\n                ").concat(className, "\n                py-2\n            ")}>{children}</p>;
+  return (
+    /*#__PURE__*/ <p
+      className={"\n                select-"
+        .concat(selectability, "\n                ")
+        .concat(sizeClasses[size], "\n                ")
+        .concat(variantClasses[variant], "\n                ")
+        .concat(className, "\n                py-2\n            ")}
+    >
+      {children}
+    </p>
+  );
 }
 export default Text;

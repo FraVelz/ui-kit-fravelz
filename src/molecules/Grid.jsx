@@ -2,7 +2,7 @@
  * Grid Component
  * A flexible grid layout component
  */
-import React from 'react';
+import React from "react";
 export default function Grid(_ref) {
   var children = _ref.children,
     _ref$className = _ref.className,
@@ -17,15 +17,29 @@ export default function Grid(_ref) {
     sm: "gap-3",
     md: "gap-4",
     lg: "gap-6",
-    xl: "gap-8"
+    xl: "gap-8",
   };
   var colsClasses = {
     1: "grid-cols-1",
     2: "grid-cols-2",
     3: "grid-cols-3",
     4: "grid-cols-4",
-    6: "grid-cols-6"
+    6: "grid-cols-6",
   };
-  var responsiveClasses = responsive ? "sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4" : colsClasses[cols] || colsClasses[3];
-  return /*#__PURE__*/<div className={"\n                grid\n                ".concat(responsive ? "grid-cols-1 " + responsiveClasses : colsClasses[cols] || colsClasses[3], "\n                ").concat(gapSizes[gap], "\n                ").concat(className, "\n            ")}>{children}</div>;
+  var responsiveClasses = responsive
+    ? "sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    : colsClasses[cols] || colsClasses[3];
+  return (
+    /*#__PURE__*/ <div
+      className={"\n                grid\n                "
+        .concat(
+          responsive ? "grid-cols-1 " + responsiveClasses : colsClasses[cols] || colsClasses[3],
+          "\n                "
+        )
+        .concat(gapSizes[gap], "\n                ")
+        .concat(className, "\n            ")}
+    >
+      {children}
+    </div>
+  );
 }

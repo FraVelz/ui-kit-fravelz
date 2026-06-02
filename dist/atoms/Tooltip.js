@@ -50,7 +50,7 @@ function _arrayWithHoles(r) {
  * Tooltip Component
  * A tooltip component for displaying helpful information on hover
  */
-import React, { useState } from 'react';
+import React, { useState } from "react";
 export default function Tooltip(_ref) {
   var children = _ref.children,
     content = _ref.content,

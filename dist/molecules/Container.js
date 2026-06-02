@@ -2,7 +2,7 @@
  * Container Component
  * A flexible container component for layout and spacing
  */
-import React from 'react';
+import React from "react";
 export default function Container(_ref) {
   var children = _ref.children,
     _ref$className = _ref.className,
