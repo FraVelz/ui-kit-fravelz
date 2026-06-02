@@ -3,7 +3,7 @@
  * A reusable image component with automatic height calculation
  */
 import React from "react";
-function Image(_ref) {
+export default function Image(_ref) {
   var source = _ref.source,
     alternateText = _ref.alternateText,
     _ref$width = _ref.width,
@@ -13,13 +13,12 @@ function Image(_ref) {
     _ref$className = _ref.className,
     className = _ref$className === void 0 ? "" : _ref$className;
   var displayHeight = height === 0 ? width : height;
-  return /*#__PURE__*/ /*#__PURE__*/React.createElement("img", {
+  return /*#__PURE__*/React.createElement("img", {
     src: source,
     alt: alternateText,
     width: width,
     height: displayHeight,
-    draggable: "false",
+    draggable: false,
     className: className
   });
 }
-export default Image;

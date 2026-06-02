@@ -4,55 +4,44 @@
  */
 import React from "react";
 import { createPortal } from "react-dom";
-function Message(_ref) {
-  var children = _ref.children,
-    onClose = _ref.onClose,
-    title = _ref.title,
-    _ref$variant = _ref.variant,
-    variant = _ref$variant === void 0 ? "default" : _ref$variant;
-  var variantStyles = {
-    default: "bg-gray-900 border-cyan-500/30",
-    success: "bg-gray-900 border-cyan-500/30",
-    warning: "bg-gray-900 border-purple-500/30",
-    error: "bg-gray-900 border-purple-500/30",
-  };
-  return /*#__PURE__*/ createPortal(
-    /*#__PURE__*/ <div
-      className={
-        " bg-black/60 backdrop-blur-sm cursor-default z-50 fixed inset-0 flex items-center justify-center p-4 "
-      }
-    >
-      {
-        /*#__PURE__*/ <div
-          className={"\n                    rounded-xl \n                    border-2\n                    hover:border-cyan-400/60\n                    lg:w-2/4\n                    md:w-3/4\n                    p-6 \n                    shadow-2xl \n                    shadow-cyan-500/10\n                    text-center\n                    transition-all\n                    ".concat(
-            variantStyles[variant],
-            "\n                "
+import { cn } from "../lib/cn";
+
+export default function Message({ children, onClose, title, variant = "default" }) {
+  return createPortal(
+    <div className="bg-black/60 backdrop-blur-sm cursor-default z-50 fixed inset-0 flex items-center justify-center p-4">
+      <div
+        className={cn(
+          "rounded-xl border-2 hover:border-cyan-400/60 lg:w-2/4 md:w-3/4 p-6",
+          "shadow-2xl shadow-cyan-500/10 text-center transition-all bg-gray-900",
+          (variant === "default" || variant === "success") && "border-cyan-500/30",
+          (variant === "warning" || variant === "error") && "border-purple-500/30"
+        )}
+      >
+        {title && (
+          <h2
+            className={cn(
+              "text-2xl font-bold mb-4",
+              "bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
+            )}
+          >
+            {title}
+          </h2>
+        )}
+        <div className="max-w-screen p-4 text-gray-300">{children}</div>
+        <button
+          type="button"
+          onClick={onClose}
+          className={cn(
+            "mt-6 cursor-pointer px-6 py-2 rounded-full transition-all font-semibold text-white",
+            "bg-gradient-to-r from-cyan-600 to-purple-600",
+            "hover:from-cyan-500 hover:to-purple-500",
+            "shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50"
           )}
         >
-          {title && (
-            /*#__PURE__*/ <h2
-              className={
-                " text-2xl font-bold mb-4 bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent "
-              }
-            >
-              {title}
-            </h2>
-          )}
-          {/*#__PURE__*/ <div className={"max-w-screen p-4 text-gray-300"}>{children}</div>}
-          {
-            /*#__PURE__*/ <button
-              onClick={onClose}
-              className={
-                " mt-6 bg-gradient-to-r from-cyan-600 to-purple-600 text-white hover:from-cyan-500 hover:to-purple-500 cursor-pointer px-6 py-2 rounded-full transition-all font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 "
-              }
-            >
-              Close
-            </button>
-          }
-        </div>
-      }
+          Close
+        </button>
+      </div>
     </div>,
     document.body
   );
 }
-export default Message;
