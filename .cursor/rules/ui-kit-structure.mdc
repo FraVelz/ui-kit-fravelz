@@ -1,0 +1,34 @@
+---
+description: Estructura del paquete npm @fravelz/ui-kit-fravelz (React UI, no app Next)
+alwaysApply: true
+---
+
+# UI Kit Fravelz — alcance y carpetas
+
+Este repositorio es una **biblioteca npm** de componentes React, no una app web.
+
+## Árbol de decisión
+
+1. **¿Componente UI atómico (botón, input, texto)?** → `src/atoms/`
+2. **¿Composición de varios atoms (card, grid, tabla)?** → `src/molecules/`
+3. **¿Sección o patrón de página (roadmap, message, structure)?** → `src/organisms/`
+4. **¿Export público nuevo?** → añadir en `src/index.jsx` y compilar con `npm run build`
+5. **¿Script de mantenimiento (p. ej. recuperar desde dist)?** → `scripts/`
+
+## Reglas
+
+- **No** crear `src/app/`, `src/features/` ni rutas de App Router — eso pertenece a otros repos.
+- **No** promover componentes a carpetas globales fuera de atoms/molecules/organisms.
+- El código fuente editable está en **`src/*.jsx`**; **`dist/`** es salida de Babel y es lo que publica npm (`files: ["dist"]`).
+- Tras cambiar `src/`, ejecutar `npm run build` antes de publicar o linkear.
+- Estilos con **clases Tailwind**; el consumidor debe tener Tailwind configurado.
+- **React** y **react-dom** son solo `peerDependencies`; no añadirlos a `dependencies`.
+
+## Imports internos
+
+- Desde organisms hacia molecules/atoms: rutas relativas (`../molecules/Title`).
+- Desde el consumidor: solo el paquete (`import { Button } from "@fravelz/ui-kit-fravelz"`).
+
+## Antes de crear un archivo
+
+Preguntarse: **¿es atom, molecule u organism?** Si no encaja en ninguno, reconsiderar si debe ser molecule (composición) u organism (patrón de UI mayor).

@@ -1,0 +1,52 @@
+{
+  "name": "@fravelz/ui-kit-fravelz",
+  "version": "1.1.2",
+  "description": "Biblioteca de componentes React personalizados (atoms, molecules, organisms) para sitios de notas y proyectos del portfolio de Fravelz.",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "readme.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "babel src --out-dir dist --extensions \".js,.jsx\"",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.29.7",
+    "@babel/core": "^7.29.7",
+    "@babel/generator": "^7.29.7",
+    "@babel/parser": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "@babel/preset-react": "^7.29.7",
+    "@babel/traverse": "^7.29.7",
+    "@babel/types": "^7.29.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FraVelz/ui-kit-fravelz.git"
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "design-system",
+    "tailwind",
+    "fravelz"
+  ],
+  "author": "Fravelz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FraVelz/ui-kit-fravelz/issues"
+  },
+  "homepage": "https://github.com/FraVelz/ui-kit-fravelz#readme"
+}
