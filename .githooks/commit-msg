@@ -1,0 +1,17 @@
+#!/bin/sh
+# Quita trailers de coautoría que inyecta Cursor u otros agentes en el IDE.
+# Git permite editar el archivo del mensaje en este hook antes de crear el commit.
+
+msg_file="$1"
+[ -f "$msg_file" ] || exit 0
+
+tmp="${msg_file}.strip-coauthor.$$"
+trap 'rm -f "$tmp"' EXIT
+
+grep -viE '^[[:space:]]*co-authored-by:[[:space:]]*cursor([[:space:]]|<|$)' "$msg_file" |
+  grep -viE '^[[:space:]]*co-authored-by:.*cursoragent@cursor\.com' |
+  grep -viE '^[[:space:]]*signed-off-by:[[:space:]]*cursor([[:space:]]|<|$)' >"$tmp" || true
+
+mv "$tmp" "$msg_file"
+trap - EXIT
+exit 0

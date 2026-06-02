@@ -13,7 +13,6 @@ Este repositorio es una **biblioteca npm** de componentes React, no una app web.
 2. **¿Composición de varios atoms (card, grid, tabla)?** → `src/molecules/`
 3. **¿Sección o patrón de página (roadmap, message, structure)?** → `src/organisms/`
 4. **¿Export público nuevo?** → añadir en `src/index.jsx` y compilar con `npm run build`
-5. **¿Script de mantenimiento (p. ej. recuperar desde dist)?** → `scripts/`
 
 ## Reglas
 

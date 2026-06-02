@@ -12,12 +12,13 @@ Usar cuando el usuario pida **hacer commit** del trabajo actual en este paquete 
 1. `git status` — archivos modificados.
 2. `git diff` — cambios staged y unstaged.
 3. `git log -10 --oneline` — estilo reciente.
+4. Hooks activos: `git config core.hooksPath` debe ser `.githooks`. Si no, una vez por clon: `git config core.hooksPath .githooks`.
 
 **No** incluir: `node_modules/`, `*.tgz`, secretos.
 
 **Sí** incluir tras `npm run build` si cambió `src/`: actualizar `dist/` en el mismo commit (el paquete publica `dist`).
 
-**Nunca** `Co-authored-by: Cursor` ni coautoría del agente.
+**Nunca** `Co-authored-by: Cursor`, `cursoragent@cursor.com`, ni coautoría del agente en el mensaje final.
 
 ## Tipos y scopes
 
@@ -58,3 +59,9 @@ EOF
 ```
 
 Si un hook rechaza el commit: corregir y **nuevo** commit; no `--no-verify` salvo petición explícita.
+
+## Después del commit
+
+1. `git log -1 --format=%B` — el cuerpo **no** debe contener `Co-authored-by:` ni `cursoragent@cursor.com`.
+2. Si el IDE añadió el trailer igualmente (commit ya hecho, **sin push**): guardar solo el mensaje deseado en un archivo y `git commit --amend -F /ruta/msg.txt`; volver a comprobar con `git log -1 --format=%B`.
+3. Los hooks en `.githooks/` eliminan esas líneas automáticamente en commits normales (`prepare-commit-msg` y `commit-msg`).
