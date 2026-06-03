@@ -62,6 +62,16 @@ npm install
 npm run build
 ```
 
+### Playground (vista previa de componentes)
+
+Carpeta `playground/` con Vite + Tailwind. Importa directamente desde `src/` (sin `build` en cada cambio):
+
+```bash
+npm run dev
+```
+
+Abre la URL que muestra Vite (por defecto `http://localhost:5173`). Añade ejemplos en `playground/App.jsx` cuando exportes componentes nuevos.
+
 Probar en otro proyecto sin publicar:
 
 ```bash
@@ -80,6 +90,7 @@ src/
   molecules/      # Card, Grid, Table, Title, …
   organisms/      # Section, Message, Roadmap, Structure
   index.jsx       # reexportaciones públicas
+playground/       # app Vite solo para desarrollo (no se publica en npm)
 dist/             # salida de Babel (lo que publica npm)
 ```
 
