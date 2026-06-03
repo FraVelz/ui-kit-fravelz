@@ -4,6 +4,7 @@
  */
 import React from "react";
 import { cn } from "../lib/cn";
+import { focusForAlertType } from "../lib/focus";
 import { alertIcons, IconClose } from "../lib/icons";
 
 export default function Alert({
@@ -41,7 +42,10 @@ export default function Alert({
             type="button"
             onClick={onDismiss}
             aria-label="Dismiss alert"
-            className="hover:opacity-75 transition-opacity cursor-pointer p-0.5"
+            className={cn(
+              "hover:opacity-75 transition-opacity cursor-pointer p-0.5 rounded-md",
+              focusForAlertType(type)
+            )}
           >
             <IconClose />
           </button>

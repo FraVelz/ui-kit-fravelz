@@ -4,12 +4,15 @@
  */
 import React from "react";
 import { cn } from "../lib/cn";
+import { focusForVariant } from "../lib/focus";
 
 export default function Button({ children, className = "", variant = "primary", size = "md" }) {
   return (
     <button
+      type="button"
       className={cn(
         "rounded-full cursor-pointer transition-all duration-300",
+        focusForVariant(variant),
         size === "sm" && "px-3 py-1 text-sm",
         size === "md" && "px-4 py-2",
         size === "lg" && "px-6 py-3 text-lg",

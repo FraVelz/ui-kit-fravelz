@@ -8,6 +8,7 @@ import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-bash";
 import "prismjs/themes/prism-twilight.css";
 import { cn } from "../lib/cn";
+import { focusCyan } from "../lib/focus";
 import { IconCheck, IconCopy } from "../lib/icons";
 
 export default function Code({ codeContent, language = "javascript" }) {
@@ -32,9 +33,11 @@ export default function Code({ codeContent, language = "javascript" }) {
       <button
         type="button"
         onClick={handleCopy}
+        aria-label={isCopied ? "Copied to clipboard" : "Copy code to clipboard"}
         className={cn(
           "absolute top-2 right-2 inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md transition-all duration-200",
           "cursor-pointer border border-cyan-500/30",
+          focusCyan,
           isCopied
             ? "bg-cyan-600/20 text-cyan-300 border-cyan-400/60"
             : cn(

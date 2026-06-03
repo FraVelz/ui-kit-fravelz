@@ -30,26 +30,30 @@ export default function Input({
           disabled={disabled}
           className={cn(
             "w-full rounded-lg outline-none transition-all",
+            "focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950",
+            "disabled:focus-visible:ring-0",
             size === "sm" && "px-3 py-1.5 text-sm",
             size === "md" && "px-4 py-2 text-base",
             size === "lg" && "px-5 py-3 text-lg",
             variant === "default" &&
               cn(
                 "bg-gray-800 border border-cyan-500/30 text-white placeholder-gray-500",
-                "focus:border-cyan-400/60 focus:shadow-lg focus:shadow-cyan-500/10"
+                "focus-visible:border-cyan-400/60 focus-visible:shadow-lg focus-visible:shadow-cyan-500/10",
+                "focus-visible:ring-cyan-400/50"
               ),
             variant === "purple" &&
               cn(
                 "bg-gray-800 border border-purple-500/30 text-white placeholder-gray-500",
-                "focus:border-purple-400/60 focus:shadow-lg focus:shadow-purple-500/10"
+                "focus-visible:border-purple-400/60 focus-visible:shadow-lg focus-visible:shadow-purple-500/10",
+                "focus-visible:ring-purple-400/50"
               ),
             variant === "minimal" &&
               cn(
                 "bg-transparent border-b-2 border-gray-600 text-white placeholder-gray-500",
-                "focus:border-cyan-400"
+                "rounded-none focus-visible:border-cyan-400 focus-visible:ring-cyan-400/40 focus-visible:ring-offset-0"
               ),
             icon && "pl-10",
-            error && "border-purple-500/60",
+            error && "border-purple-500/60 focus-visible:ring-purple-400/50",
             disabled && "opacity-50 cursor-not-allowed",
             className
           )}

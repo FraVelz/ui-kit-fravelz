@@ -4,6 +4,7 @@
  */
 import React from "react";
 import { cn } from "../lib/cn";
+import { focusForTagVariant } from "../lib/focus";
 import { IconClose } from "../lib/icons";
 
 export default function Tag({
@@ -14,11 +15,15 @@ export default function Tag({
   onRemove = null,
   interactive = false,
 }) {
+  const focusRing = focusForTagVariant(variant);
+
   return (
     <span
+      role={interactive ? "button" : undefined}
+      tabIndex={interactive ? 0 : undefined}
       className={cn(
         "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all",
-        interactive && "cursor-pointer",
+        interactive && cn("cursor-pointer", focusRing),
         variant === "cyan" &&
           cn("bg-cyan-500/10 text-cyan-300 border border-cyan-500/30", "hover:border-cyan-400/60"),
         variant === "purple" &&
@@ -42,7 +47,10 @@ export default function Tag({
           type="button"
           onClick={onRemove}
           aria-label="Remove tag"
-          className="ml-1 hover:opacity-75 transition-opacity cursor-pointer p-0.5"
+          className={cn(
+            "ml-1 hover:opacity-75 transition-opacity cursor-pointer p-0.5 rounded-full",
+            focusRing
+          )}
         >
           <IconClose />
         </button>

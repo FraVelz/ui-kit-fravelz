@@ -4,6 +4,7 @@
  */
 import React from "react";
 import { cn } from "../lib/cn";
+import { focusForVariant } from "../lib/focus";
 
 export default function CallToAction({
   children,
@@ -20,6 +21,7 @@ export default function CallToAction({
       draggable={false}
       className={cn(
         "inline-flex items-center gap-3 px-6 py-3 rounded-full font-semibold transition-all text-lg",
+        focusForVariant(variant),
         variant === "primary" &&
           cn(
             "bg-gradient-to-r from-cyan-600 to-purple-600 text-white",

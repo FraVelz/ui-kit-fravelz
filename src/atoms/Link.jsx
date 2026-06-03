@@ -4,6 +4,7 @@
  */
 import React from "react";
 import { cn } from "../lib/cn";
+import { focusLinkCyan, focusLinkPurple } from "../lib/focus";
 
 export default function Link({ href, children, target = "_self", className, variant = "default" }) {
   const handleClick = (event) => {
@@ -35,9 +36,9 @@ export default function Link({ href, children, target = "_self", className, vari
       onClick={handleClick}
       className={cn(
         "select-none underline transition-colors",
-        variant === "default" && "text-cyan-300 hover:text-cyan-200",
-        variant === "purple" && "text-purple-300 hover:text-purple-200",
-        variant === "accent" && "text-cyan-400 font-semibold hover:text-cyan-300",
+        variant === "default" && cn("text-cyan-300 hover:text-cyan-200", focusLinkCyan),
+        variant === "purple" && cn("text-purple-300 hover:text-purple-200", focusLinkPurple),
+        variant === "accent" && cn("text-cyan-400 font-semibold hover:text-cyan-300", focusLinkCyan),
         className
       )}
     >

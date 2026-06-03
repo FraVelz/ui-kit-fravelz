@@ -17,6 +17,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { cn } from "../lib/cn";
+import { focusLinkCyan } from "../lib/focus";
 export default function DynamicLink(_ref) {
   var children = _ref.children,
     to = _ref.to,
@@ -37,7 +38,7 @@ export default function DynamicLink(_ref) {
     onClick: handleClick,
     className: function className(_ref2) {
       var isActive = _ref2.isActive;
-      return cn("cursor-pointer select-none transition-all duration-300 pb-[2px] border-b-2", isActive && "border-blue-500", !isActive && visitedLinks[to] && "border-gray-500", !isActive && !visitedLinks[to] && "border-transparent hover:border-gray-400", _className);
+      return cn("cursor-pointer select-none transition-all duration-300 pb-[2px] border-b-2 rounded-sm", focusLinkCyan, isActive && "border-blue-500 focus-visible:ring-blue-400/80", !isActive && visitedLinks[to] && "border-gray-500", !isActive && !visitedLinks[to] && "border-transparent hover:border-gray-400", _className);
     }
   }, children);
 }

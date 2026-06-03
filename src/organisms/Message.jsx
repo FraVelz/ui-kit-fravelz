@@ -5,6 +5,7 @@
 import React from "react";
 import { createPortal } from "react-dom";
 import { cn } from "../lib/cn";
+import { focusGradient } from "../lib/focus";
 
 export default function Message({ children, onClose, title, variant = "default" }) {
   return createPortal(
@@ -35,7 +36,8 @@ export default function Message({ children, onClose, title, variant = "default" 
             "mt-6 cursor-pointer px-6 py-2 rounded-full transition-all font-semibold text-white",
             "bg-gradient-to-r from-cyan-600 to-purple-600",
             "hover:from-cyan-500 hover:to-purple-500",
-            "shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50"
+            "shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50",
+            focusGradient
           )}
         >
           Close
