@@ -42,7 +42,11 @@ export default function CallToAction({
         className
       )}
     >
-      {icon && <span className="inline-flex shrink-0" aria-hidden>{icon}</span>}
+      {icon && (
+        <span className="inline-flex shrink-0" aria-hidden>
+          {icon}
+        </span>
+      )}
       {children}
     </a>
   );

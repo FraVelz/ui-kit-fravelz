@@ -38,7 +38,8 @@ export default function Link({ href, children, target = "_self", className, vari
         "select-none underline transition-colors",
         variant === "default" && cn("text-cyan-300 hover:text-cyan-200", focusLinkCyan),
         variant === "purple" && cn("text-purple-300 hover:text-purple-200", focusLinkPurple),
-        variant === "accent" && cn("text-cyan-400 font-semibold hover:text-cyan-300", focusLinkCyan),
+        variant === "accent" &&
+          cn("text-cyan-400 font-semibold hover:text-cyan-300", focusLinkCyan),
         className
       )}
     >

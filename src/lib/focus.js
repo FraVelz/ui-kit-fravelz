@@ -1,6 +1,7 @@
 import { cn } from "./cn";
 
-const ringBase = "outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950";
+const ringBase =
+  "outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950";
 
 /** Primary / gradient controls */
 export const focusGradient = cn(ringBase, "focus-visible:ring-cyan-400/80");

@@ -32,5 +32,8 @@ jobs:
       - name: Markdownlint
         run: npm run lint:md
 
-      - name: Build
+      - name: Build library
         run: npm run build
+
+      - name: Build playground docs
+        run: npm run build:playground
