@@ -4,13 +4,7 @@
  */
 import React from "react";
 import { cn } from "../lib/cn";
-
-const ALERT_ICONS = {
-  info: "ℹ️",
-  success: "✓",
-  warning: "⚠️",
-  error: "✕",
-};
+import { alertIcons, IconClose } from "../lib/icons";
 
 export default function Alert({
   children,
@@ -20,6 +14,8 @@ export default function Alert({
   dismissible = false,
   onDismiss = null,
 }) {
+  const TypeIcon = alertIcons[type] ?? alertIcons.info;
+
   return (
     <div
       className={cn(
@@ -35,7 +31,7 @@ export default function Alert({
       )}
     >
       <div className="flex items-start gap-3">
-        <span className="text-xl mt-0.5">{ALERT_ICONS[type]}</span>
+        <TypeIcon className="mt-0.5" />
         <div className="flex-1">
           {title && <h4 className="font-semibold mb-1">{title}</h4>}
           <p className="text-sm">{children}</p>
@@ -44,9 +40,10 @@ export default function Alert({
           <button
             type="button"
             onClick={onDismiss}
-            className="text-lg hover:opacity-75 transition-opacity cursor-pointer"
+            aria-label="Dismiss alert"
+            className="hover:opacity-75 transition-opacity cursor-pointer p-0.5"
           >
-            ✕
+            <IconClose />
           </button>
         )}
       </div>

@@ -8,6 +8,7 @@ import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-bash";
 import "prismjs/themes/prism-twilight.css";
 import { cn } from "../lib/cn";
+import { IconCheck, IconCopy } from "../lib/icons";
 
 export default function Code({ codeContent, language = "javascript" }) {
   const [isCopied, setIsCopied] = useState(false);
@@ -32,7 +33,7 @@ export default function Code({ codeContent, language = "javascript" }) {
         type="button"
         onClick={handleCopy}
         className={cn(
-          "absolute top-2 right-2 text-xs px-3 py-1.5 rounded-md transition-all duration-200",
+          "absolute top-2 right-2 inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md transition-all duration-200",
           "cursor-pointer border border-cyan-500/30",
           isCopied
             ? "bg-cyan-600/20 text-cyan-300 border-cyan-400/60"
@@ -42,7 +43,17 @@ export default function Code({ codeContent, language = "javascript" }) {
               )
         )}
       >
-        {isCopied ? "✓ Copied!" : "Copy"}
+        {isCopied ? (
+          <>
+            <IconCheck />
+            <span>Copied</span>
+          </>
+        ) : (
+          <>
+            <IconCopy />
+            <span>Copy</span>
+          </>
+        )}
       </button>
       <pre
         className={cn(

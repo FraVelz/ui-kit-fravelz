@@ -98,6 +98,10 @@ dist/             # salida de Babel (lo que publica npm)
 
 ## Componentes exportados
 
+### Icons (SVG)
+
+`IconInfo`, `IconSuccess`, `IconWarning`, `IconError`, `IconClose`, `IconCheck`, `IconCopy`, `IconArrowRight`, `alertIcons` — para `Badge`, `Input`, `CallToAction`, etc.
+
 ### Atoms
 
 `AnimationDevelopment`, `Alert`, `Badge`, `Button`, `Divider`, `GradientText`, `Input`, `Link`, `DynamicLink`, `Image`, `Line`, `Note`, `Tag`, `Text`, `Tooltip`

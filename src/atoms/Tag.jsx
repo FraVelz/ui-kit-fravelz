@@ -4,6 +4,7 @@
  */
 import React from "react";
 import { cn } from "../lib/cn";
+import { IconClose } from "../lib/icons";
 
 export default function Tag({
   children,
@@ -40,9 +41,10 @@ export default function Tag({
         <button
           type="button"
           onClick={onRemove}
-          className="ml-1 hover:opacity-75 transition-opacity cursor-pointer text-xs font-bold"
+          aria-label="Remove tag"
+          className="ml-1 hover:opacity-75 transition-opacity cursor-pointer p-0.5"
         >
-          ✕
+          <IconClose />
         </button>
       )}
     </span>

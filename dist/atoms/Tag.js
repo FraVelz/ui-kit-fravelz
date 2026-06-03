@@ -4,6 +4,7 @@
  */
 import React from "react";
 import { cn } from "../lib/cn";
+import { IconClose } from "../lib/icons";
 export default function Tag(_ref) {
   var children = _ref.children,
     _ref$className = _ref.className,
@@ -21,6 +22,7 @@ export default function Tag(_ref) {
   }, children, removable && /*#__PURE__*/React.createElement("button", {
     type: "button",
     onClick: onRemove,
-    className: "ml-1 hover:opacity-75 transition-opacity cursor-pointer text-xs font-bold"
-  }, "\u2715"));
+    "aria-label": "Remove tag",
+    className: "ml-1 hover:opacity-75 transition-opacity cursor-pointer p-0.5"
+  }, /*#__PURE__*/React.createElement(IconClose, null)));
 }

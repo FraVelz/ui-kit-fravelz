@@ -18,6 +18,7 @@ import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-bash";
 import "prismjs/themes/prism-twilight.css";
 import { cn } from "../lib/cn";
+import { IconCheck, IconCopy } from "../lib/icons";
 export default function Code(_ref) {
   var codeContent = _ref.codeContent,
     _ref$language = _ref.language,
@@ -63,8 +64,8 @@ export default function Code(_ref) {
   }, /*#__PURE__*/React.createElement("button", {
     type: "button",
     onClick: handleCopy,
-    className: cn("absolute top-2 right-2 text-xs px-3 py-1.5 rounded-md transition-all duration-200", "cursor-pointer border border-cyan-500/30", isCopied ? "bg-cyan-600/20 text-cyan-300 border-cyan-400/60" : cn("bg-gray-800 text-gray-300", "hover:bg-gray-700 hover:text-gray-200 hover:border-cyan-400/40"))
-  }, isCopied ? "✓ Copied!" : "Copy"), /*#__PURE__*/React.createElement("pre", {
+    className: cn("absolute top-2 right-2 inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md transition-all duration-200", "cursor-pointer border border-cyan-500/30", isCopied ? "bg-cyan-600/20 text-cyan-300 border-cyan-400/60" : cn("bg-gray-800 text-gray-300", "hover:bg-gray-700 hover:text-gray-200 hover:border-cyan-400/40"))
+  }, isCopied ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(IconCheck, null), /*#__PURE__*/React.createElement("span", null, "Copied")) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(IconCopy, null), /*#__PURE__*/React.createElement("span", null, "Copy"))), /*#__PURE__*/React.createElement("pre", {
     className: cn("rounded-lg bg-gray-900 text-sm overflow-x-auto p-4", "border border-cyan-500/20 hover:border-cyan-500/40 transition-colors")
   }, /*#__PURE__*/React.createElement("code", {
     className: "language-".concat(language)

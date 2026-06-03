@@ -34,6 +34,7 @@ import {
   Text,
   Title,
   Tooltip,
+  IconArrowRight,
 } from "./kit.js";
 
 function PlaygroundBlock({ title, children }) {
@@ -209,7 +210,7 @@ export default function App() {
           </PlaygroundBlock>
 
           <PlaygroundBlock title="CallToAction · Divided">
-            <CallToAction href="#" icon="→">
+            <CallToAction href="#" icon={<IconArrowRight className="size-5" />}>
               Llamada a la acción
             </CallToAction>
             <Divided

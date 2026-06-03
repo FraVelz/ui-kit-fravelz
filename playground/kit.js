@@ -2,6 +2,7 @@
  * Reexportaciones para el playground (sin AnimationDevelopment: requiere Lottie en runtime).
  */
 export { cn } from "../src/lib/cn.js";
+export { IconArrowRight } from "../src/lib/icons.jsx";
 
 export { default as Alert } from "../src/atoms/Alert.jsx";
 export { default as Badge } from "../src/atoms/Badge.jsx";

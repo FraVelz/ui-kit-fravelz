@@ -4,6 +4,7 @@
  */
 
 export { cn } from "./lib/cn";
+export { IconInfo, IconSuccess, IconWarning, IconError, IconClose, IconCheck, IconCopy, IconArrowRight, alertIcons } from "./lib/icons";
 
 // Atoms
 export { default as AnimationDevelopment } from "./atoms/Animations/AnimationDeveloment";
