@@ -70,7 +70,7 @@ Carpeta `playground/` con Vite + Tailwind. Importa directamente desde `src/` (si
 npm run dev
 ```
 
-Abre la URL que muestra Vite (por defecto `http://localhost:5173`). Añade ejemplos en `playground/App.jsx` cuando exportes componentes nuevos.
+Abre la URL que muestra Vite (por defecto `http://localhost:5173`). La documentación interactiva (props, ejemplos y vistas previas) está en `playground/docs/`; al exportar componentes nuevos, actualiza `registry.js` y `Previews.jsx`.
 
 Probar en otro proyecto sin publicar:
 
