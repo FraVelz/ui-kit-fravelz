@@ -222,7 +222,10 @@ export const COMPONENT_DOCS = [
       { name: "children", type: "ReactNode", default: "—", description: "Texto del enlace." },
       { name: "className", type: "string", default: '""', description: "Clases extra en el NavLink." },
     ],
-    notes: ["Requiere BrowserRouter (o equivalente) en el árbol de la app consumidora."],
+    notes: [
+      "Requiere BrowserRouter (o equivalente) en el árbol de la app consumidora.",
+      "En el playground, enlaza a rutas como /docs/button para ver estado activo.",
+    ],
   },
   {
     id: "image",

@@ -70,7 +70,17 @@ Carpeta `playground/` con Vite + Tailwind. Importa directamente desde `src/` (si
 npm run dev
 ```
 
-Abre la URL que muestra Vite (por defecto `http://localhost:5173`). La documentación interactiva (props, ejemplos y vistas previas) está en `playground/docs/`; al exportar componentes nuevos, actualiza `registry.js` y `Previews.jsx`.
+Abre la URL que muestra Vite (por defecto `http://localhost:5173`). La documentación usa **React Router** (`/` índice, `/docs/:id` por componente). Código en `playground/docs/`; al exportar componentes nuevos, actualiza `registry.js` y `Previews.jsx`.
+
+### Desplegar documentación en Vercel
+
+- **Root Directory:** raíz del repo (`.`), no `playground/`.
+- **Build Command:** `npm run build:playground` — no uses `npm run build` (eso genera el paquete npm en `/dist`, no la web).
+- **Output Directory:** `playground/dist` — no `/dist`.
+- Tras cambiar ajustes en el dashboard, haz **Redeploy**.
+- `vercel.json` y el script `vercel-build` fijan esto automáticamente si el proyecto lee el repo.
+
+Si ves código fuente de `export { Button, Card... }` en el navegador, Vercel está sirviendo el `dist/` de la biblioteca; corrige Output Directory y Build Command.
 
 Probar en otro proyecto sin publicar:
 

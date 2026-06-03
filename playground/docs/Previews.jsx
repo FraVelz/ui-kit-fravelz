@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { docsPath } from "./paths.js";
 import {
   Alert,
   Badge,
@@ -41,6 +42,23 @@ import {
 
 function CurriculumList({ className, children }) {
   return <ol className={className}>{children}</ol>;
+}
+
+function DynamicLinkPreview() {
+  const location = useLocation();
+
+  return (
+    <div className="w-full space-y-2">
+      <nav className="flex flex-wrap gap-4">
+        <DynamicLink to="/">Inicio</DynamicLink>
+        <DynamicLink to={docsPath("button")}>Button</DynamicLink>
+        <DynamicLink to={docsPath("alert")}>Alert</DynamicLink>
+      </nav>
+      <Text variant="muted" className="text-sm">
+        Ruta actual: <code className="text-cyan-400">{location.pathname}</code>
+      </Text>
+    </div>
+  );
 }
 
 const ROADMAP_STEPS = [
@@ -134,18 +152,7 @@ export function ComponentPreview({ id }) {
       );
 
     case "dynamic-link":
-      return (
-        <div className="w-full">
-          <nav className="mb-2 flex gap-4">
-            <DynamicLink to="/">Inicio</DynamicLink>
-            <DynamicLink to="/docs-preview">Docs</DynamicLink>
-          </nav>
-          <Routes>
-            <Route path="/" element={<Text className="text-sm">Ruta: /</Text>} />
-            <Route path="/docs-preview" element={<Text className="text-sm">Ruta: /docs-preview</Text>} />
-          </Routes>
-        </div>
-      );
+      return <DynamicLinkPreview />;
 
     case "image":
       return (

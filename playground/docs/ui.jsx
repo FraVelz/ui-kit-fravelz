@@ -1,5 +1,14 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { Code, Text, Title } from "../kit.js";
+import { docsPath, DOCS_HOME } from "./paths.js";
+
+const navLinkClass = ({ isActive }) =>
+  `block rounded-md px-2 py-1 text-sm transition-colors outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80 ${
+    isActive
+      ? "bg-cyan-500/15 text-cyan-300"
+      : "text-gray-400 hover:bg-gray-800/80 hover:text-gray-200"
+  }`;
 
 export function DocSidebar({ sections }) {
   return (
@@ -7,6 +16,13 @@ export function DocSidebar({ sections }) {
       className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-4"
       aria-label="Índice de componentes"
     >
+      <ul className="mb-6 space-y-1">
+        <li>
+          <NavLink to={DOCS_HOME} end className={navLinkClass}>
+            Inicio
+          </NavLink>
+        </li>
+      </ul>
       {sections.map((group) => (
         <div key={group.id} className="mb-6">
           <p className="mb-2 font-mono text-xs uppercase tracking-wider text-purple-400">
@@ -15,12 +31,9 @@ export function DocSidebar({ sections }) {
           <ul className="space-y-1">
             {group.items.map((item) => (
               <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  className="block rounded-md px-2 py-1 text-sm text-gray-400 transition-colors hover:bg-gray-800/80 hover:text-cyan-300"
-                >
+                <NavLink to={docsPath(item.id)} className={navLinkClass}>
                   {item.name}
-                </a>
+                </NavLink>
               </li>
             ))}
           </ul>
@@ -65,7 +78,7 @@ export function PropsTable({ props = [] }) {
 
 export function DocSection({ entry, children }) {
   return (
-    <section id={entry.id} className="scroll-mt-28 border-b border-gray-800/80 pb-16 mb-4">
+    <article className="pb-8">
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <span className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-2 py-0.5 font-mono text-xs text-cyan-300">
           {entry.layer}
@@ -129,6 +142,6 @@ export function DocSection({ entry, children }) {
         Vista previa
       </p>
       <div className="rounded-lg border border-gray-800 bg-gray-900/50 p-6">{children}</div>
-    </section>
+    </article>
   );
 }

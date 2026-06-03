@@ -19,4 +19,8 @@ export default defineConfig({
       allow: [rootDir],
     },
   },
+  build: {
+    outDir: "dist",
+    emptyOutDir: true,
+  },
 });
