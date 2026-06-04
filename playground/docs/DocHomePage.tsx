@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import { Code, Text, Title } from "../kit";
 import { COMPONENT_DOCS, DOC_SECTIONS, PACKAGE } from "./registry";
@@ -12,8 +11,8 @@ export default function DocHomePage() {
           Documentación del UI Kit
         </Title>
         <Text className="text-sm !py-0 mb-4">
-          Cada componente tiene su propia ruta (<code className="text-cyan-400">/docs/:id</code>
-          ). El índice lateral usa React Router; en móvil, elige un componente abajo.
+          Índice de componentes en <code className="text-cyan-400">/docs</code> y una página por pieza en{" "}
+          <code className="text-cyan-400">/docs/:id</code>. En móvil, elige un componente abajo.
         </Text>
         <Code
           codeContent={`npm install ${PACKAGE}\nnpm run dev`}

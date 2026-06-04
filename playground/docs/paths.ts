@@ -1,7 +1,9 @@
-/** Rutas del playground de documentación. */
+/** Rutas del playground. */
+
+export const SITE_HOME = "/";
+
+export const DOCS_HOME = "/docs";
 
 export function docsPath(componentId: string) {
-  return `/docs/${componentId}`;
+  return `${DOCS_HOME}/${componentId}`;
 }
-
-export const DOCS_HOME = "/";
