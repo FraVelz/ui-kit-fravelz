@@ -102,7 +102,7 @@ export function DocSection({ entry, children }: { entry: ComponentDocEntry; chil
       <Title headingLevel="h2" className="!mb-2">
         {doc.name}
       </Title>
-      <Text className="!py-0 mb-4 max-w-5xl">{doc.description}</Text>
+      <Text className="!py-0 mb-4 max-w-6xl">{doc.description}</Text>
 
       {doc.importLine && (
         <div className="mb-4">

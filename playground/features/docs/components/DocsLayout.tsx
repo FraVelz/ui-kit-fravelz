@@ -9,7 +9,7 @@ export default function DocsLayout() {
   const sections = getDocSections(locale);
 
   return (
-    <Container size="xl" className="py-10">
+    <Container size="md" className="py-10">
       <div className="grid gap-10 lg:grid-cols-[220px_1fr]">
         <aside className="hidden lg:block">
           <DocSidebar sections={sections} />

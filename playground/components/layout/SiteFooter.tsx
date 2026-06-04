@@ -23,7 +23,7 @@ export default function SiteFooter() {
 
   return (
     <footer className="mt-auto border-t border-cyan-500/20 bg-gradient-to-b from-gray-950 via-gray-950 to-gray-900/80">
-      <Container size="lg" className="py-10 md:py-12">
+      <Container size="md" className="py-10 md:py-12">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <Link

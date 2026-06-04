@@ -27,7 +27,7 @@ export default function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-cyan-500/20 bg-gray-950/95 backdrop-blur-md">
-      <Container size="lg" className="py-3 md:py-4">
+      <Container size="md" className="py-3 md:py-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="min-w-0">
             <NavLink

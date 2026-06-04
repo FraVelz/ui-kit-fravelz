@@ -29,8 +29,8 @@ export default function LandingPage() {
 
   return (
     <>
-      <Container size="xl" className="py-16 md:py-24">
-        <div className="mx-auto max-w-5xl text-center">
+      <Container size="md" className="py-16 md:py-24">
+        <div className="mx-auto max-w-6xl text-center">
           <Badge variant="purple" size="sm" className="mb-6">
             {t("landing.badge")}
           </Badge>
@@ -87,7 +87,7 @@ export default function LandingPage() {
         </Grid>
       </Section>
 
-      <Container size="xl" className="pb-20">
+      <Container size="md" className="pb-20">
         <Card variant="gradient" className="text-center">
           <Title headingLevel="h2" className="!mb-2 !text-xl">
             {t("landing.integrateTitle")}
