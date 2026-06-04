@@ -1,9 +1,9 @@
 node_modules/
-pnpm-lock.yaml
-pnpm-workspace.yaml
+package-lock.json
 playground/dist/
 .DS_Store
 *.log
 npm-debug.log*
+pnpm-debug.log*
 .npm/
 *.tgz

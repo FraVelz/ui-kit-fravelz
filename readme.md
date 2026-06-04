@@ -89,9 +89,9 @@ Clonar el repo, instalar y compilar `src/` → `dist/` (JS + `.d.ts`):
 ```bash
 git clone https://github.com/FraVelz/ui-kit-fravelz.git
 cd ui-kit-fravelz
-npm install
-npm run build
-npm run typecheck   # opcional: comprobar tipos en src y playground
+pnpm install
+pnpm run build
+pnpm run typecheck   # opcional: comprobar tipos en src y playground
 ```
 
 ### Playground (vista previa de componentes)
@@ -99,15 +99,15 @@ npm run typecheck   # opcional: comprobar tipos en src y playground
 Carpeta `playground/` con Vite + Tailwind. Importa directamente desde `src/` (sin `build` en cada cambio):
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
-Abre la URL que muestra Vite (por defecto `http://localhost:5173`). **React Router**: `/` presentación, `/docs` índice, `/docs/:id` ficha de cada componente. El playground es **bilingüe (ES/EN)** con selector en la cabecera; la preferencia se guarda en `localStorage`. Código en `playground/features/docs/` (páginas y componentes), `playground/components/layout/` y `playground/i18n/`; al exportar componentes nuevos, actualiza `registry.ts`, `i18n/doc-en.ts` y `Previews.tsx`.
+Abre la URL que muestra Vite (por defecto `http://localhost:5173`). **React Router**: `/es` y `/en` (inicio), `/es/docs` índice, `/es/docs/:id` ficha de cada componente. El playground es **bilingüe (ES/EN)** con selector en la cabecera; la preferencia se guarda en `localStorage`. Código en `playground/features/docs/` (páginas y componentes), `playground/components/layout/` y `playground/i18n/`; al exportar componentes nuevos, actualiza `registry.ts`, `i18n/doc-en.ts` y `Previews.tsx`.
 
 ### Desplegar documentación en Vercel
 
 - **Root Directory:** raíz del repo (`.`), no `playground/`.
-- **Build Command:** `npm run build:playground` — no uses `npm run build` (eso genera el paquete npm en `/dist`, no la web).
+- **Build Command:** `pnpm run build:playground` — no uses `pnpm run build` (eso genera el paquete npm en `/dist`, no la web).
 - **Output Directory:** `playground/dist` — no `/dist`.
 - Tras cambiar ajustes en el dashboard, haz **Redeploy**.
 - `vercel.json` y el script `vercel-build` fijan esto automáticamente si el proyecto lee el repo.
@@ -170,7 +170,7 @@ dist/             # salida de tsc: .js + .d.ts (lo que publica npm)
 ## Publicar en npm
 
 ```bash
-npm run build
+pnpm run build
 npm publish --access public
 ```
 

@@ -1,6 +1,10 @@
 {
   "name": "@fravelz/ui-kit-fravelz",
   "version": "1.2.0",
+  "packageManager": "pnpm@11.1.1",
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "msgpackr-extract"]
+  },
   "description": "Biblioteca de componentes React personalizados (atoms, molecules, organisms) para sitios de notas y proyectos del portfolio de Fravelz.",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -24,16 +28,17 @@
   "scripts": {
     "dev": "vite",
     "build:playground": "vite build",
-    "vercel-build": "npm run build:playground",
+    "vercel-build": "pnpm run build:playground",
     "build": "tsc -p tsconfig.build.json && cp src/molecules/code-block.css dist/molecules/",
     "typecheck": "tsc -p tsconfig.build.json --noEmit && tsc -p tsconfig.playground.json",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "pnpm run build",
     "lint": "eslint src playground",
     "lint:fix": "eslint src playground --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx}\" \"playground/**/*.{ts,tsx}\" \"*.{json,md}\" \".github/**/*.yml\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\" \"playground/**/*.{ts,tsx}\" \"*.{json,md}\" \".github/**/*.yml\"",
     "lint:md": "markdownlint-cli2",
-    "validate": "npm run lint && npm run format:check && npm run typecheck && npm run lint:md && npm run build",
+    "react-doctor": "react-doctor . --full --verbose",
+    "validate": "pnpm run lint && pnpm run format:check && pnpm run typecheck && pnpm run lint:md && pnpm run build",
     "test": "echo \"No tests specified\" && exit 0"
   },
   "dependencies": {
@@ -62,6 +67,7 @@
     "prettier": "^3.6.2",
     "prismjs": "^1.30.0",
     "react": "^19.1.0",
+    "react-doctor": "^0.3.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.3",
     "tailwindcss": "^4.1.11",

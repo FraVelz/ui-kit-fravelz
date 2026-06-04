@@ -16,7 +16,7 @@ Usar cuando el usuario pida **hacer commit** del trabajo actual en este paquete 
 
 **No** incluir: `node_modules/`, `*.tgz`, secretos.
 
-**Sí** incluir tras `npm run build` si cambió `src/`: actualizar `dist/` en el mismo commit (el paquete publica `dist`).
+**Sí** incluir tras `pnpm run build` si cambió `src/`: actualizar `dist/` en el mismo commit (el paquete publica `dist`).
 
 **Nunca** `Co-authored-by: Cursor`, `cursoragent@cursor.com`, ni coautoría del agente en el mensaje final.
 

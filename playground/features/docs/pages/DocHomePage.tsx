@@ -18,7 +18,7 @@ export default function DocHomePage() {
         </Title>
         <Text className="text-sm !py-0 mb-4">{t("docs.homeIntro")}</Text>
         <Code
-          codeContent={`npm install ${PACKAGE}\nnpm run dev`}
+          codeContent={`pnpm add ${PACKAGE}\npnpm run dev`}
           language="bash"
           className="!my-0"
         />

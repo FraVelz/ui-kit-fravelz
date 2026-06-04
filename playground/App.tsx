@@ -10,7 +10,7 @@ import LocaleGate from "./i18n/LocaleGate";
 import { DEFAULT_LOCALE } from "./i18n/types";
 
 function LocaleRootRedirect() {
-  return <Navigate to={`/${readStoredLocale()}`} replace />;
+  return <Navigate to={`/${DEFAULT_LOCALE}`} replace />;
 }
 
 function LegacyDocsRedirect() {
