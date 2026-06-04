@@ -1,34 +1,12 @@
-/**
- * Structure Component and Related Components
- * Layout components for organizing page structure and curriculum/syllabus display
- */
-import React from "react";
+import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 import { cn } from "../lib/cn";
 import Title from "../molecules/Title";
-export default function Structure(_ref) {
-  var children = _ref.children;
-  return /*#__PURE__*/React.createElement("div", {
-    className: "bg-gray-900 rounded-2xl h-fit min-w-2/4 hyphens-auto break-words p-4"
-  }, children);
+export default function Structure({ children, className = "" }) {
+    return (_jsx("div", { className: cn("bg-gray-900 rounded-2xl h-fit min-w-2/4 hyphens-auto break-words p-4", className), children: children }));
 }
-export function CurriculumAside(_ref2) {
-  var children = _ref2.children,
-    CurriculumContent = _ref2.curriculumContent;
-  return /*#__PURE__*/React.createElement("aside", {
-    className: "hidden 2xl:block sticky top-5 self-start w-4/5 min-w-72"
-  }, /*#__PURE__*/React.createElement(Title, {
-    headingLevel: "h2",
-    className: "select-none"
-  }, "Curriculum"), /*#__PURE__*/React.createElement(CurriculumContent, {
-    className: cn("bg-gray-900 rounded-md p-4 mb-4 list-decimal h-fit overflow-y-auto", "max-h-[80vh]")
-  }, children), children);
+export function CurriculumAside({ children, curriculumContent: CurriculumContent, }) {
+    return (_jsxs("aside", { className: "hidden 2xl:block sticky top-5 self-start w-4/5 min-w-72", children: [_jsx(Title, { headingLevel: "h2", className: "select-none", children: "Curriculum" }), _jsx(CurriculumContent, { className: cn("bg-gray-900 rounded-md p-4 mb-4 list-decimal h-fit overflow-y-auto", "max-h-[80vh]"), children: children }), children] }));
 }
-export function CurriculumFull(_ref3) {
-  var CurriculumContent = _ref3.curriculumContent;
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Title, {
-    headingLevel: "h2",
-    className: "2xl:hidden"
-  }, "Curriculum"), /*#__PURE__*/React.createElement(CurriculumContent, {
-    className: "bg-gray-900 rounded-md p-4 mb-4 list-decimal 2xl:hidden"
-  }));
+export function CurriculumFull({ curriculumContent: CurriculumContent }) {
+    return (_jsxs(_Fragment, { children: [_jsx(Title, { headingLevel: "h2", className: "2xl:hidden", children: "Curriculum" }), _jsx(CurriculumContent, { className: "bg-gray-900 rounded-md p-4 mb-4 list-decimal 2xl:hidden" })] }));
 }

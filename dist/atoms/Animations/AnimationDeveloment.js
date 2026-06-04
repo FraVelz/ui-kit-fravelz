@@ -1,14 +1,9 @@
+import { jsx as _jsx } from "react/jsx-runtime";
 /**
  * Animation Development Component
  * Displays a Lottie animation
  */
-import React from "react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 export default function AnimationDevelopment() {
-  return /*#__PURE__*/React.createElement(DotLottieReact, {
-    src: "./AnimationDeveloment.lottie",
-    loop: true,
-    autoplay: true,
-    className: "w-96 h-96"
-  });
+    return _jsx(DotLottieReact, { src: "./AnimationDeveloment.lottie", loop: true, autoplay: true, className: "w-96 h-96" });
 }

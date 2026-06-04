@@ -6,7 +6,7 @@ Publicada en npm como [`@fravelz/ui-kit-fravelz`](https://www.npmjs.com/package/
 
 |              |         |
 | ------------ | ------- |
-| **Versión**  | 1.1.2   |
+| **Versión**  | 1.2.0   |
 | **Autor**    | Fravelz |
 | **Licencia** | ISC     |
 
@@ -22,12 +22,15 @@ npm install @fravelz/ui-kit-fravelz
 
 Requiere **React 18+** y **React DOM 18+** como peer dependencies. Los estilos usan clases **Tailwind CSS** en el proyecto consumidor.
 
+El paquete incluye **tipos TypeScript** (`dist/index.d.ts`). Funciona en proyectos **con o sin TS**.
+
 ---
 
 ## Uso
 
-```jsx
+```tsx
 import { Button, Card, Title, Section } from "@fravelz/ui-kit-fravelz";
+import type { ButtonVariant } from "@fravelz/ui-kit-fravelz";
 
 export default function Page() {
   return (
@@ -45,7 +48,7 @@ export default function Page() {
 
 Importación por componente (tree-shaking depende del bundler):
 
-```jsx
+```tsx
 import { Alert, Badge, Grid, Roadmap } from "@fravelz/ui-kit-fravelz";
 ```
 
@@ -53,13 +56,14 @@ import { Alert, Badge, Grid, Roadmap } from "@fravelz/ui-kit-fravelz";
 
 ## Desarrollo local
 
-Clonar el repo, instalar y compilar `src/` → `dist/`:
+Clonar el repo, instalar y compilar `src/` → `dist/` (JS + `.d.ts`):
 
 ```bash
 git clone https://github.com/FraVelz/ui-kit-fravelz.git
 cd ui-kit-fravelz
 npm install
 npm run build
+npm run typecheck   # opcional: comprobar tipos en src y playground
 ```
 
 ### Playground (vista previa de componentes)
@@ -70,7 +74,7 @@ Carpeta `playground/` con Vite + Tailwind. Importa directamente desde `src/` (si
 npm run dev
 ```
 
-Abre la URL que muestra Vite (por defecto `http://localhost:5173`). La documentación usa **React Router** (`/` índice, `/docs/:id` por componente). Código en `playground/docs/`; al exportar componentes nuevos, actualiza `registry.js` y `Previews.jsx`.
+Abre la URL que muestra Vite (por defecto `http://localhost:5173`). La documentación usa **React Router** (`/` índice, `/docs/:id` por componente). Código en `playground/docs/`; al exportar componentes nuevos, actualiza `registry.ts` y `Previews.tsx`.
 
 ### Desplegar documentación en Vercel
 
@@ -96,12 +100,13 @@ npm link @fravelz/ui-kit-fravelz
 
 ```text
 src/
-  atoms/          # Button, Link, Input, Alert, …
+  atoms/          # Button, Link, Input, Alert, … (.tsx)
   molecules/      # Card, Grid, Table, Title, …
   organisms/      # Section, Message, Roadmap, Structure
-  index.jsx       # reexportaciones públicas
+  types/          # unions y tipos compartidos
+  index.tsx       # reexportaciones públicas
 playground/       # app Vite solo para desarrollo (no se publica en npm)
-dist/             # salida de Babel (lo que publica npm)
+dist/             # salida de tsc: .js + .d.ts (lo que publica npm)
 ```
 
 ---

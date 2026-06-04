@@ -1,44 +1,18 @@
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+import { jsx as _jsx } from "react/jsx-runtime";
 /**
  * DynamicLink Component
  * A navigation link component with visited state tracking and active state styling
  */
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { cn } from "../lib/cn";
 import { focusLinkCyan } from "../lib/focus";
-export default function DynamicLink(_ref) {
-  var children = _ref.children,
-    to = _ref.to,
-    _ref$className = _ref.className,
-    _className = _ref$className === void 0 ? "" : _ref$className;
-  var _useState = useState({}),
-    _useState2 = _slicedToArray(_useState, 2),
-    visitedLinks = _useState2[0],
-    setVisitedLinks = _useState2[1];
-  var handleClick = function handleClick() {
-    setVisitedLinks(function (previousState) {
-      return _objectSpread(_objectSpread({}, previousState), {}, _defineProperty({}, to, true));
-    });
-  };
-  return /*#__PURE__*/React.createElement(NavLink, {
-    to: to,
-    draggable: false,
-    onClick: handleClick,
-    className: function className(_ref2) {
-      var isActive = _ref2.isActive;
-      return cn("cursor-pointer select-none transition-all duration-300 pb-[2px] border-b-2 rounded-sm", focusLinkCyan, isActive && "border-blue-500 focus-visible:ring-blue-400/80", !isActive && visitedLinks[to] && "border-gray-500", !isActive && !visitedLinks[to] && "border-transparent hover:border-gray-400", _className);
-    }
-  }, children);
+export default function DynamicLink({ children, to, className = "" }) {
+    const [visitedLinks, setVisitedLinks] = useState({});
+    const handleClick = () => {
+        const path = typeof to === "string" ? to : (to.pathname ?? "");
+        setVisitedLinks((previousState) => ({ ...previousState, [path]: true }));
+    };
+    const pathKey = typeof to === "string" ? to : (to.pathname ?? "");
+    return (_jsx(NavLink, { to: to, draggable: false, onClick: handleClick, className: ({ isActive }) => cn("cursor-pointer select-none transition-all duration-300 pb-[2px] border-b-2 rounded-sm", focusLinkCyan, isActive && "border-blue-500 focus-visible:ring-blue-400/80", !isActive && visitedLinks[pathKey] && "border-gray-500", !isActive && !visitedLinks[pathKey] && "border-transparent hover:border-gray-400", className), children: children }));
 }

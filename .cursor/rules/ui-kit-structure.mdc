@@ -12,13 +12,13 @@ Este repositorio es una **biblioteca npm** de componentes React, no una app web.
 1. **¿Componente UI atómico (botón, input, texto)?** → `src/atoms/`
 2. **¿Composición de varios atoms (card, grid, tabla)?** → `src/molecules/`
 3. **¿Sección o patrón de página (roadmap, message, structure)?** → `src/organisms/`
-4. **¿Export público nuevo?** → añadir en `src/index.jsx` y compilar con `npm run build`
+4. **¿Export público nuevo?** → añadir en `src/index.tsx`, tipos en `src/types/` si aplica, y `npm run build`
 
 ## Reglas
 
 - **No** crear `src/app/`, `src/features/` ni rutas de App Router — eso pertenece a otros repos.
 - **No** promover componentes a carpetas globales fuera de atoms/molecules/organisms.
-- El código fuente editable está en **`src/*.jsx`**; **`dist/`** es salida de Babel y es lo que publica npm (`files: ["dist"]`).
+- El código fuente editable está en **`src/**/*.tsx`** y **`src/**/*.ts`**; **`dist/`** es salida de `tsc` (JS + `.d.ts`) y es lo que publica npm (`files: ["dist"]`).
 - Tras cambiar `src/`, ejecutar `npm run build` antes de publicar o linkear.
 - Estilos con **clases Tailwind**; el consumidor debe tener Tailwind configurado.
 - **React** y **react-dom** son solo `peerDependencies`; no añadirlos a `dependencies`.
