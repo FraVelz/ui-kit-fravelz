@@ -1,11 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import ComponentDocPage from "./docs/ComponentDocPage";
-import DocHomePage from "./docs/DocHomePage";
-import DocsLayout from "./docs/DocsLayout";
-import LandingPage from "./LandingPage";
-import SiteFooter from "./SiteFooter";
-import SiteHeader from "./SiteHeader";
-import { DOCS_HOME, SITE_HOME } from "./docs/paths";
+import SiteFooter from "./components/layout/SiteFooter";
+import SiteHeader from "./components/layout/SiteHeader";
+import DocsLayout from "./features/docs/components/DocsLayout";
+import ComponentDocPage from "./features/docs/pages/ComponentDocPage";
+import DocHomePage from "./features/docs/pages/DocHomePage";
+import { DOCS_HOME, SITE_HOME } from "./features/docs/paths";
+import LandingPage from "./features/home/LandingPage";
 
 export default function App() {
   return (

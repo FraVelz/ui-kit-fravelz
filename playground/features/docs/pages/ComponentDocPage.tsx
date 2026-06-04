@@ -1,10 +1,10 @@
 import { Link, Navigate, NavLink, useParams } from "react-router-dom";
-import { ComponentPreview } from "./Previews";
-import type { ComponentDocEntry } from "./registry";
-import { COMPONENT_DOCS, DOC_BY_ID } from "./registry";
-import { DocSection } from "./ui";
-import { docsPath, DOCS_HOME } from "./paths";
-import { useLocale } from "../i18n/LocaleContext";
+import { useLocale } from "../../../i18n/LocaleContext";
+import { ComponentPreview } from "../components/Previews";
+import { DocSection } from "../components/ui";
+import { docsPath, DOCS_HOME } from "../paths";
+import type { ComponentDocEntry } from "../registry";
+import { COMPONENT_DOCS, DOC_BY_ID } from "../registry";
 
 function neighborDocs(componentId: string): {
   prev: ComponentDocEntry | null;

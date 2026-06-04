@@ -1,9 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
-import packageJson from "../package.json";
-import { cn, Container, GradientText, Line, Text } from "./kit";
-import { COMPONENT_DOCS, PACKAGE } from "./docs/registry";
-import { DOCS_HOME, SITE_HOME } from "./docs/paths";
-import { useLocale } from "./i18n/LocaleContext";
+import packageJson from "../../../package.json";
+import { cn, Container, GradientText, Line, Text } from "../../kit";
+import { DOCS_HOME, SITE_HOME } from "../../features/docs/paths";
+import { COMPONENT_DOCS, PACKAGE } from "../../features/docs/registry";
+import { useLocale } from "../../i18n/LocaleContext";
 
 const footerLinkClass = ({ isActive }: { isActive: boolean }) =>
   cn(
@@ -23,7 +23,7 @@ export default function SiteFooter() {
 
   return (
     <footer className="mt-auto border-t border-cyan-500/20 bg-gradient-to-b from-gray-950 via-gray-950 to-gray-900/80">
-      <Container className="py-10 md:py-12">
+      <Container size="lg" className="py-10 md:py-12">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
             <Link

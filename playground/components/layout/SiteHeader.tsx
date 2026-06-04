@@ -1,9 +1,9 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { cn, Container, GradientText, IconArrowRight, Text, Title } from "./kit";
-import { PACKAGE } from "./docs/registry";
-import { DOCS_HOME, SITE_HOME } from "./docs/paths";
-import LanguageSwitcher from "./i18n/LanguageSwitcher";
-import { useLocale } from "./i18n/LocaleContext";
+import { cn, Container, GradientText, IconArrowRight, Text, Title } from "../../kit";
+import { DOCS_HOME, SITE_HOME } from "../../features/docs/paths";
+import { PACKAGE } from "../../features/docs/registry";
+import LanguageSwitcher from "../../i18n/LanguageSwitcher";
+import { useLocale } from "../../i18n/LocaleContext";
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   cn(
@@ -27,7 +27,7 @@ export default function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-cyan-500/20 bg-gray-950/95 backdrop-blur-md">
-      <Container className="py-3 md:py-4">
+      <Container size="lg" className="py-3 md:py-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="min-w-0">
             <NavLink

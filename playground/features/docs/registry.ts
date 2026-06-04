@@ -804,7 +804,7 @@ export const COMPONENT_DOCS: ComponentDocEntry[] = [
         name: "children",
         type: "ReactNode",
         default: "—",
-        description: "Contenido (max-w-4xl centrado).",
+        description: "Contenido (max-w-6xl centrado).",
       },
       { name: "title", type: "string", default: "null", description: "Título de sección." },
       { name: "subtitle", type: "string", default: "null", description: "Subtítulo." },

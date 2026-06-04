@@ -10,10 +10,10 @@ import {
   Section,
   Text,
   Title,
-} from "./kit";
-import { COMPONENT_DOCS } from "./docs/registry";
-import { DOCS_HOME } from "./docs/paths";
-import { useLocale } from "./i18n/LocaleContext";
+} from "../../kit";
+import { DOCS_HOME } from "../docs/paths";
+import { COMPONENT_DOCS } from "../docs/registry";
+import { useLocale } from "../../i18n/LocaleContext";
 
 const linkPrimary =
   "inline-flex items-center justify-center gap-2 rounded-full cursor-pointer transition-all duration-300 bg-gradient-to-r from-cyan-600 to-purple-600 text-white font-semibold hover:from-cyan-500 hover:to-purple-500 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950";
@@ -29,8 +29,8 @@ export default function LandingPage() {
 
   return (
     <>
-      <Container size="lg" className="py-16 md:py-24">
-        <div className="mx-auto max-w-3xl text-center">
+      <Container size="xl" className="py-16 md:py-24">
+        <div className="mx-auto max-w-5xl text-center">
           <Badge variant="purple" size="sm" className="mb-6">
             {t("landing.badge")}
           </Badge>
@@ -87,7 +87,7 @@ export default function LandingPage() {
         </Grid>
       </Section>
 
-      <Container className="pb-20">
+      <Container size="xl" className="pb-20">
         <Card variant="gradient" className="text-center">
           <Title headingLevel="h2" className="!mb-2 !text-xl">
             {t("landing.integrateTitle")}

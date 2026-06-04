@@ -23,10 +23,10 @@ export default function Container({
     <div
       className={cn(
         "mx-auto",
-        size === "sm" && "max-w-2xl",
-        size === "md" && "max-w-4xl",
-        size === "lg" && "max-w-6xl",
-        size === "xl" && "max-w-7xl",
+        size === "sm" && "max-w-3xl",
+        size === "md" && "max-w-6xl",
+        size === "lg" && "max-w-7xl",
+        size === "xl" && "max-w-screen-xl",
         size === "full" && "w-full",
         variant === "default" && "px-4 py-8",
         variant === "compact" && "px-2 py-4",

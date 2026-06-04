@@ -20,7 +20,7 @@ export default function Roadmap({ steps }: RoadmapProps) {
       >
         Learning Roadmap
       </h1>
-      <div className="relative w-full max-w-4xl mx-auto py-16">
+      <div className="relative w-full max-w-6xl mx-auto py-16">
         <div
           className={cn(
             "absolute left-1/2 top-0 h-full w-1 transform -translate-x-1/2",

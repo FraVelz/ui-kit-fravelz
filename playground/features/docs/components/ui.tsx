@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 import { NavLink, type NavLinkProps } from "react-router-dom";
-import { Code, Text, Title } from "../kit";
-import type { ComponentDocEntry, DocPropRow, DocSectionGroup } from "./registry";
-import { docsPath, DOCS_HOME } from "./paths";
-import { useLocale } from "../i18n/LocaleContext";
-import { localizeDocEntry } from "../i18n/localize-doc";
+import { Code, Text, Title } from "../../../kit";
+import { useLocale } from "../../../i18n/LocaleContext";
+import { localizeDocEntry } from "../../../i18n/localize-doc";
+import { docsPath, DOCS_HOME } from "../paths";
+import type { ComponentDocEntry, DocPropRow, DocSectionGroup } from "../registry";
 
 const navLinkClass: NavLinkProps["className"] = ({ isActive = false }) =>
   `block rounded-md px-2 py-1 text-sm transition-colors outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80 ${
@@ -102,7 +102,7 @@ export function DocSection({ entry, children }: { entry: ComponentDocEntry; chil
       <Title headingLevel="h2" className="!mb-2">
         {doc.name}
       </Title>
-      <Text className="!py-0 mb-4 max-w-3xl">{doc.description}</Text>
+      <Text className="!py-0 mb-4 max-w-5xl">{doc.description}</Text>
 
       {doc.importLine && (
         <div className="mb-4">

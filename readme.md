@@ -74,7 +74,7 @@ Carpeta `playground/` con Vite + Tailwind. Importa directamente desde `src/` (si
 npm run dev
 ```
 
-Abre la URL que muestra Vite (por defecto `http://localhost:5173`). **React Router**: `/` presentación, `/docs` índice, `/docs/:id` ficha de cada componente. El playground es **bilingüe (ES/EN)** con selector en la cabecera; la preferencia se guarda en `localStorage`. Código en `playground/docs/` y `playground/i18n/`; al exportar componentes nuevos, actualiza `registry.ts`, `i18n/doc-en.ts` y `Previews.tsx`.
+Abre la URL que muestra Vite (por defecto `http://localhost:5173`). **React Router**: `/` presentación, `/docs` índice, `/docs/:id` ficha de cada componente. El playground es **bilingüe (ES/EN)** con selector en la cabecera; la preferencia se guarda en `localStorage`. Código en `playground/features/docs/` (páginas y componentes), `playground/components/layout/` y `playground/i18n/`; al exportar componentes nuevos, actualiza `registry.ts`, `i18n/doc-en.ts` y `Previews.tsx`.
 
 ### Desplegar documentación en Vercel
 

@@ -89,7 +89,7 @@ export default function ExampleTable() {
   ];
 
   return (
-    <Table className="max-w-4xl mx-auto">
+    <Table className="max-w-6xl mx-auto">
       <TableHeader headers={tableHeaders} />
       <tbody>
         {tableData.map((user, index) => (

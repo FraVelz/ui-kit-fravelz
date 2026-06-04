@@ -1,5 +1,5 @@
-import type { ComponentDocEntry, DocPropRow, DocSectionGroup } from "../docs/registry";
-import { DOC_SECTIONS } from "../docs/registry";
+import type { ComponentDocEntry, DocPropRow, DocSectionGroup } from "../features/docs/registry";
+import { DOC_SECTIONS } from "../features/docs/registry";
 import type { Locale } from "./types";
 import { DOC_EN } from "./doc-en";
 import { PROP_LABELS_EN } from "./prop-labels-en";

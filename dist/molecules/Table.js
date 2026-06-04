@@ -18,7 +18,7 @@ export default function ExampleTable() {
         { name: "Carlos Pérez", email: "carlos@example.com", role: "Admin", status: "Active" },
         { name: "Laura Gómez", email: "laura@example.com", role: "Editor", status: "Inactive" },
     ];
-    return (_jsxs(Table, { className: "max-w-4xl mx-auto", children: [_jsx(TableHeader, { headers: tableHeaders }), _jsx("tbody", { children: tableData.map((user, index) => (_jsxs(TableRow, { children: [_jsx(TableCell, { children: user.name }), _jsx(TableCell, { children: user.email }), _jsx(TableCell, { children: user.role }), _jsx(TableCell, { children: _jsx("span", { className: cn("px-3 py-1 rounded-full text-xs font-semibold", user.status === "Active" &&
+    return (_jsxs(Table, { className: "max-w-6xl mx-auto", children: [_jsx(TableHeader, { headers: tableHeaders }), _jsx("tbody", { children: tableData.map((user, index) => (_jsxs(TableRow, { children: [_jsx(TableCell, { children: user.name }), _jsx(TableCell, { children: user.email }), _jsx(TableCell, { children: user.role }), _jsx(TableCell, { children: _jsx("span", { className: cn("px-3 py-1 rounded-full text-xs font-semibold", user.status === "Active" &&
                                     "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40", user.status !== "Active" &&
                                     "bg-gray-700/40 text-gray-400 border border-gray-600/40"), children: user.status }) })] }, index))) })] }));
 }

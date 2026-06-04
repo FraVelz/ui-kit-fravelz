@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { Code, Text, Title } from "../kit";
-import { COMPONENT_DOCS, PACKAGE } from "./registry";
-import { docsPath } from "./paths";
-import { useLocale } from "../i18n/LocaleContext";
-import { getDocSections, localizeDocEntry } from "../i18n/localize-doc";
+import { Code, Text, Title } from "../../../kit";
+import { useLocale } from "../../../i18n/LocaleContext";
+import { getDocSections, localizeDocEntry } from "../../../i18n/localize-doc";
+import { docsPath } from "../paths";
+import { COMPONENT_DOCS, PACKAGE } from "../registry";
 
 export default function DocHomePage() {
   const { locale, t } = useLocale();

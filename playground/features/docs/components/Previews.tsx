@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { useLocation } from "react-router-dom";
-import { useLocale } from "../i18n/LocaleContext";
-import { docsPath } from "./paths";
+import { useLocale } from "../../../i18n/LocaleContext";
+import { docsPath } from "../paths";
 import {
   Alert,
   Badge,
@@ -39,7 +39,7 @@ import {
   Title,
   Tooltip,
   cn,
-} from "../kit";
+} from "../../../kit";
 
 function CurriculumList({
   className = "",

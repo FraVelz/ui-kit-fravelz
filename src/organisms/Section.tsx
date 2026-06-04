@@ -56,7 +56,7 @@ export default function Section({
           {subtitle && <p className="text-gray-400 text-lg">{subtitle}</p>}
         </div>
       )}
-      <div className="max-w-4xl mx-auto">{children}</div>
+      <div className="max-w-6xl mx-auto">{children}</div>
     </section>
   );
 }
