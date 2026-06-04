@@ -1,38 +1,75 @@
 # @fravelz/ui-kit-fravelz
 
-Custom **React** component library (atoms / molecules / organisms) for notes sites and public portfolio projects by [Fravelz](https://github.com/FraVelz).
-
-Published on npm as [`@fravelz/ui-kit-fravelz`](https://www.npmjs.com/package/@fravelz/ui-kit-fravelz).
-
-|              |         |
-| ------------ | ------- |
-| **Version**  | 1.2.0   |
-| **Author**   | Fravelz |
-| **License**  | Apache-2.0 |
-
-> When publishing a new version, update `version` here and in `package.json`, then run `npm publish`.
+Custom **React** component library (atoms / molecules / organisms) for notes sites and public portfolio projects by [Fravelz](https://github.com/FraVelz). Published on npm as [`@fravelz/ui-kit-fravelz`](https://www.npmjs.com/package/@fravelz/ui-kit-fravelz). Styles use **Tailwind CSS** in the consumer app; requires **React 18+** and **React DOM 18+**.
 
 **Languages:** [Español](readme.md) · English
 
----
+![Fravelz UI Kit — brand preview](assets/brand/og-image.png)
 
-## Installation
+## Atoms
 
-```bash
-npm install @fravelz/ui-kit-fravelz
-```
+| Component              | Notes                                          |
+| ---------------------- | ---------------------------------------------- |
+| `Alert`                | Status messages with icon and optional dismiss |
+| `AnimationDevelopment` | Lottie animation (optional peer in consumer)   |
+| `Badge`                | Compact chip or label                          |
+| `Button`               | Button with variants and sizes                 |
+| `Divider`              | Horizontal or vertical separator               |
+| `DynamicLink`          | Link with visited state (React Router)         |
+| `GradientText`         | Cyan–purple gradient text                      |
+| `Image`                | Image with configurable dimensions             |
+| `Input`                | Text field with label and icon                 |
+| `Link`                 | Link with smooth scroll to anchors             |
+| `Line`                 | Decorative line                                |
+| `Note`                 | Highlighted note block                         |
+| `Tag`                  | Removable tag or pill                          |
+| `Text`                 | Paragraph with color and size variants         |
+| `Tooltip`              | Contextual hover information                   |
 
-Requires **React 18+** and **React DOM 18+** as peer dependencies. Styles use **Tailwind CSS** utility classes in the consuming app.
+## Molecules
 
-The package ships **TypeScript types** (`dist/index.d.ts`). Works in projects **with or without TS**.
+| Component          | Notes                                    |
+| ------------------ | ---------------------------------------- |
+| `CallToAction`     | Prominent CTA-style link                 |
+| `Card`             | Container with border and optional hover |
+| `Code`             | Syntax-highlighted block with copy       |
+| `Container`        | Max width and responsive padding         |
+| `Divided`          | Two-column layout                        |
+| `Grid`             | Responsive grid                          |
+| `List`             | Ordered or unordered list                |
+| `ProgressBar`      | Progress bar                             |
+| `SegmentedControl` | Segmented control (e.g. locale)          |
+| `Table`            | Data table                               |
+| `TableHeader`      | Table header                             |
+| `TableRow`         | Table row                                |
+| `TableCell`        | Table cell                               |
+| `Title`            | Heading with variants                    |
 
----
+## Organisms
 
-## Usage
+| Component          | Notes                            |
+| ------------------ | -------------------------------- |
+| `CurriculumAside`  | Sticky side index (layout)       |
+| `CurriculumFull`   | Index on small viewports         |
+| `Message`          | Modal with overlay               |
+| `Roadmap`          | Step timeline                    |
+| `Section`          | Page section with title          |
+| `SiteFooter`       | Footer shell                     |
+| `SiteFooterColumn` | Footer column                    |
+| `SiteHeader`       | Header shell                     |
+| `Structure`        | Layout with curriculum + content |
+
+### Utilities (SVG and `cn`)
+
+| Export                                                                                                                      | Use                                                   |
+| --------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `cn`                                                                                                                        | Merge Tailwind classes with `clsx` + `tailwind-merge` |
+| `IconInfo`, `IconSuccess`, `IconWarning`, `IconError`, `IconClose`, `IconCheck`, `IconCopy`, `IconArrowRight`, `alertIcons` | Inline icons for atoms and molecules                  |
+
+## Example
 
 ```tsx
-import { Button, Card, Title, Section } from "@fravelz/ui-kit-fravelz";
-import type { ButtonVariant } from "@fravelz/ui-kit-fravelz";
+import { Button, Card, Section, Title } from "@fravelz/ui-kit-fravelz";
 
 export default function Page() {
   return (
@@ -48,139 +85,60 @@ export default function Page() {
 }
 ```
 
-Per-component imports (tree-shaking depends on your bundler):
+---
 
-```tsx
-import { Alert, Badge, Grid, Roadmap } from "@fravelz/ui-kit-fravelz";
+## Installation
+
+```bash
+npm install @fravelz/ui-kit-fravelz
 ```
 
-### Site layout shells
-
-```tsx
-import {
-  SiteHeader,
-  SiteFooter,
-  SiteFooterColumn,
-} from "@fravelz/ui-kit-fravelz";
-
-<SiteHeader
-  brand={<a href="/">My app</a>}
-  meta={<span className="text-xs">v1.0</span>}
-  actions={<nav>{/* links */}</nav>}
-/>;
-
-<SiteFooter
-  brand={<p>Project description</p>}
-  toolbar={/* theme switcher, etc. */}
-  legal={<p>© 2026 My team</p>}
->
-  <SiteFooterColumn title="Links">
-    <nav>{/* … */}</nav>
-  </SiteFooterColumn>
-</SiteFooter>;
-```
+TypeScript types ship in `dist/index.d.ts`.
 
 ---
 
 ## Local development
-
-Clone the repo, install dependencies, and compile `src/` → `dist/` (JS + `.d.ts`):
 
 ```bash
 git clone https://github.com/FraVelz/ui-kit-fravelz.git
 cd ui-kit-fravelz
 pnpm install
 pnpm run build
-pnpm run typecheck   # optional: check types in src and playground
-```
-
-### Playground (component preview)
-
-The `playground/` folder uses Vite + Tailwind. It imports directly from `src/` (no rebuild on every change):
-
-```bash
 pnpm run dev
 ```
 
-Open the URL Vite prints (default `http://localhost:5173`). **React Router:** `/es` and `/en` (home), `/es/docs` index, `/es/docs/:id` per-component docs. The playground is **bilingual (ES/EN)** with selectors in the header; preference is stored in `localStorage`. Code lives under `playground/features/docs/` (pages and UI), `playground/components/layout/`, and `playground/i18n/`. When adding new exports, update `registry.ts`, `i18n/doc-en.ts`, and `Previews.tsx`.
-
-### Deploy docs on Vercel
-
-- **Root Directory:** repository root (`.`), not `playground/`.
-- **Build Command:** `pnpm run build:playground` — do not use `pnpm run build` (that builds the npm package in `/dist`, not the site).
-- **Output Directory:** `playground/dist` — not `/dist`.
-- After changing dashboard settings, run a **Redeploy**.
-- `vercel.json` and the `vercel-build` script enforce this when the project reads the repo.
-
-If the browser shows source like `export { Button, Card... }`, Vercel is serving the library `dist/`; fix Output Directory and Build Command.
-
-Try the package in another project without publishing:
-
-```bash
-npm link
-# in the consumer project:
-npm link @fravelz/ui-kit-fravelz
-```
+Interactive docs in the playground (`/es`, `/en`, `/es/docs/:id`). Vercel deploy: **Build** `pnpm run build:playground`, **Output** `playground/dist`. See `vercel.json`.
 
 ---
 
-## Repository structure
+## Palette
 
-```text
-src/
-  atoms/          # Button, Link, Input, Alert, … (.tsx)
-  molecules/      # Card, Grid, Table, Title, …
-  organisms/      # Section, Message, Roadmap, SiteHeader, SiteFooter, …
-  types/          # shared unions and types
-  index.tsx       # public re-exports
-playground/       # Vite app for development only (not published to npm)
-dist/             # tsc output: .js + .d.ts (what npm publishes)
-```
-
----
-
-## Exported components
-
-### Icons (SVG)
-
-`IconInfo`, `IconSuccess`, `IconWarning`, `IconError`, `IconClose`, `IconCheck`, `IconCopy`, `IconArrowRight`, `alertIcons` — for `Badge`, `Input`, `CallToAction`, etc.
-
-### Atoms
-
-`AnimationDevelopment`, `Alert`, `Badge`, `Button`, `Divider`, `GradientText`, `Input`, `Link`, `DynamicLink`, `Image`, `Line`, `Note`, `Tag`, `Text`, `Tooltip`
-
-### Molecules
-
-`CallToAction`, `Card`, `Code`, `Container`, `Divided`, `Grid`, `List`, `ProgressBar`, `Table` (+ `TableHeader`, `TableRow`, `TableCell`), `Title`
-
-### Organisms
-
-`Section`, `Structure` (+ `CurriculumAside`, `CurriculumFull`), `Message`, `Roadmap`, `SiteHeader`, `SiteFooter` (+ `SiteFooterColumn`)
-
----
-
-## Palette and design (v1.1.x+)
-
-- **Primary accents:** cyan (`#06B6D4`) and purple (`#A855F7`)
-- Variants on buttons, links, alerts, and timeline (`Roadmap`)
-- **Light and dark:** base styles for light surfaces and Tailwind `dark:` for the dark look. Consumers need `darkMode: 'class'` and `dark` on `<html>` (same as the playground)
+- **Accents:** cyan (`#06B6D4`) and purple (`#A855F7`)
+- **Themes:** light base styles and `dark:` prefix (consumer needs `darkMode: 'class'`)
 
 ---
 
 ## Publish to npm
+
+> [!NOTE]
+> para desarrollador.
 
 ```bash
 pnpm run build
 npm publish --access public
 ```
 
-Scope `@fravelz` — public package on [npmjs.com](https://www.npmjs.com/package/@fravelz/ui-kit-fravelz).
-
 ---
 
-## Changelog summary (1.1.0)
+## Project information
 
-- Improvements to `Button`, `Text`, `Link`, `Title`, `Line`, `Code`, `Table`, `Message`, `Roadmap`
-- New atoms: `Alert`, `Badge`, `Divider`, `GradientText`, `Input`, `Tag`, `Tooltip`
-- New molecules: `CallToAction`, `Card`, `Container`, `Grid`, `ProgressBar`
-- `Section` organism with headings
+|                |                                                                                  |
+| -------------- | -------------------------------------------------------------------------------- |
+| **Version**    | 1.2.0                                                                            |
+| **Author**     | [Fravelz](https://github.com/FraVelz)                                            |
+| **License**    | [Apache-2.0](LICENSE)                                                            |
+| **Repository** | [github.com/FraVelz/ui-kit-fravelz](https://github.com/FraVelz/ui-kit-fravelz)   |
+| **npm**        | [@fravelz/ui-kit-fravelz](https://www.npmjs.com/package/@fravelz/ui-kit-fravelz) |
+| **Playground** | [ui-kit-fravelz.vercel.app](https://ui-kit-fravelz.vercel.app/)                  |
+
+> When publishing a new version, update `version` here and in `package.json`, then run `npm publish`.

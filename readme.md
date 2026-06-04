@@ -1,38 +1,75 @@
 # @fravelz/ui-kit-fravelz
 
-Biblioteca de componentes **React** personalizados (patrón atoms / molecules / organisms) para sitios de notas y proyectos públicos del portfolio de [Fravelz](https://github.com/FraVelz).
-
-Publicada en npm como [`@fravelz/ui-kit-fravelz`](https://www.npmjs.com/package/@fravelz/ui-kit-fravelz).
-
-|              |         |
-| ------------ | ------- |
-| **Versión**  | 1.2.0   |
-| **Autor**    | Fravelz |
-| **Licencia** | Apache-2.0 |
-
-> Al publicar una nueva versión, actualiza `version` aquí y en `package.json`, luego `npm publish`.
+Biblioteca de componentes **React** personalizados (patrón atoms / molecules / organisms) para sitios de notas y proyectos públicos del portfolio de [Fravelz](https://github.com/FraVelz). Publicada en npm como [`@fravelz/ui-kit-fravelz`](https://www.npmjs.com/package/@fravelz/ui-kit-fravelz). Los estilos usan **Tailwind CSS** en el proyecto consumidor; requiere **React 18+** y **React DOM 18+**.
 
 **Idiomas:** Español · [English](readme.en.md)
 
----
+![Fravelz UI Kit — vista previa de marca](assets/brand/og-image.png)
 
-## Instalación
+## Atoms
 
-```bash
-npm install @fravelz/ui-kit-fravelz
-```
+| Componente             | Notas                                             |
+| ---------------------- | ------------------------------------------------- |
+| `Alert`                | Mensajes de estado con icono y cierre opcional    |
+| `AnimationDevelopment` | Animación Lottie (peer opcional en el consumidor) |
+| `Badge`                | Chip o etiqueta compacta                          |
+| `Button`               | Botón con variantes y tamaños                     |
+| `Divider`              | Separador horizontal o vertical                   |
+| `DynamicLink`          | Enlace con estado visitado (React Router)         |
+| `GradientText`         | Texto con degradado cyan–purple                   |
+| `Image`                | Imagen con dimensiones configurables              |
+| `Input`                | Campo de texto con label e icono                  |
+| `Link`                 | Enlace con scroll suave a anclas                  |
+| `Line`                 | Línea decorativa                                  |
+| `Note`                 | Bloque de nota destacada                          |
+| `Tag`                  | Etiqueta o pill removible                         |
+| `Text`                 | Párrafo con variantes de color y tamaño           |
+| `Tooltip`              | Información contextual al hover                   |
 
-Requiere **React 18+** y **React DOM 18+** como peer dependencies. Los estilos usan clases **Tailwind CSS** en el proyecto consumidor.
+## Molecules
 
-El paquete incluye **tipos TypeScript** (`dist/index.d.ts`). Funciona en proyectos **con o sin TS**.
+| Componente         | Notas                                   |
+| ------------------ | --------------------------------------- |
+| `CallToAction`     | Enlace destacado tipo CTA               |
+| `Card`             | Contenedor con borde y hover opcional   |
+| `Code`             | Bloque de código con resaltado y copiar |
+| `Container`        | Ancho máximo y padding responsive       |
+| `Divided`          | Layout en dos columnas                  |
+| `Grid`             | Rejilla responsive                      |
+| `List`             | Lista ordenada o desordenada            |
+| `ProgressBar`      | Barra de progreso                       |
+| `SegmentedControl` | Control segmentado (p. ej. idioma)      |
+| `Table`            | Tabla de datos                          |
+| `TableHeader`      | Cabecera de tabla                       |
+| `TableRow`         | Fila de tabla                           |
+| `TableCell`        | Celda de tabla                          |
+| `Title`            | Título con variantes                    |
 
----
+## Organisms
 
-## Uso
+| Componente         | Notas                             |
+| ------------------ | --------------------------------- |
+| `CurriculumAside`  | Índice lateral sticky (layout)    |
+| `CurriculumFull`   | Índice en viewport pequeño        |
+| `Message`          | Modal con overlay                 |
+| `Roadmap`          | Timeline de pasos                 |
+| `Section`          | Sección de página con título      |
+| `SiteFooter`       | Shell de pie de página            |
+| `SiteFooterColumn` | Columna del pie                   |
+| `SiteHeader`       | Shell de cabecera                 |
+| `Structure`        | Layout con curriculum + contenido |
+
+### Utilidades (SVG y `cn`)
+
+| Export                                                                                                                      | Uso                                                    |
+| --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `cn`                                                                                                                        | Combinar clases Tailwind con `clsx` + `tailwind-merge` |
+| `IconInfo`, `IconSuccess`, `IconWarning`, `IconError`, `IconClose`, `IconCheck`, `IconCopy`, `IconArrowRight`, `alertIcons` | Iconos inline para atoms y molecules                   |
+
+## Ejemplo
 
 ```tsx
-import { Button, Card, Title, Section } from "@fravelz/ui-kit-fravelz";
-import type { ButtonVariant } from "@fravelz/ui-kit-fravelz";
+import { Button, Card, Section, Title } from "@fravelz/ui-kit-fravelz";
 
 export default function Page() {
   return (
@@ -48,139 +85,58 @@ export default function Page() {
 }
 ```
 
-Importación por componente (tree-shaking depende del bundler):
+## Instalación
 
-```tsx
-import { Alert, Badge, Grid, Roadmap } from "@fravelz/ui-kit-fravelz";
+```bash
+npm install @fravelz/ui-kit-fravelz
 ```
 
-### Shells de cabecera y pie
-
-```tsx
-import {
-  SiteHeader,
-  SiteFooter,
-  SiteFooterColumn,
-} from "@fravelz/ui-kit-fravelz";
-
-<SiteHeader
-  brand={<a href="/">Mi app</a>}
-  meta={<span className="text-xs">v1.0</span>}
-  actions={<nav>{/* enlaces */}</nav>}
-/>;
-
-<SiteFooter
-  brand={<p>Descripción del proyecto</p>}
-  toolbar={/* selector de tema, etc. */}
-  legal={<p>© 2026 Mi equipo</p>}
->
-  <SiteFooterColumn title="Enlaces">
-    <nav>{/* … */}</nav>
-  </SiteFooterColumn>
-</SiteFooter>;
-```
+El paquete incluye tipos TypeScript (`dist/index.d.ts`).
 
 ---
 
 ## Desarrollo local
-
-Clonar el repo, instalar y compilar `src/` → `dist/` (JS + `.d.ts`):
 
 ```bash
 git clone https://github.com/FraVelz/ui-kit-fravelz.git
 cd ui-kit-fravelz
 pnpm install
 pnpm run build
-pnpm run typecheck   # opcional: comprobar tipos en src y playground
-```
-
-### Playground (vista previa de componentes)
-
-Carpeta `playground/` con Vite + Tailwind. Importa directamente desde `src/` (sin `build` en cada cambio):
-
-```bash
 pnpm run dev
 ```
 
-Abre la URL que muestra Vite (por defecto `http://localhost:5173`). **React Router**: `/es` y `/en` (inicio), `/es/docs` índice, `/es/docs/:id` ficha de cada componente. El playground es **bilingüe (ES/EN)** con selector en la cabecera; la preferencia se guarda en `localStorage`. Código en `playground/features/docs/` (páginas y componentes), `playground/components/layout/` y `playground/i18n/`; al exportar componentes nuevos, actualiza `registry.ts`, `i18n/doc-en.ts` y `Previews.tsx`.
-
-### Desplegar documentación en Vercel
-
-- **Root Directory:** raíz del repo (`.`), no `playground/`.
-- **Build Command:** `pnpm run build:playground` — no uses `pnpm run build` (eso genera el paquete npm en `/dist`, no la web).
-- **Output Directory:** `playground/dist` — no `/dist`.
-- Tras cambiar ajustes en el dashboard, haz **Redeploy**.
-- `vercel.json` y el script `vercel-build` fijan esto automáticamente si el proyecto lee el repo.
-
-Si ves código fuente de `export { Button, Card... }` en el navegador, Vercel está sirviendo el `dist/` de la biblioteca; corrige Output Directory y Build Command.
-
-Probar en otro proyecto sin publicar:
-
-```bash
-npm link
-# en el proyecto consumidor:
-npm link @fravelz/ui-kit-fravelz
-```
+Documentación interactiva en el playground (`/es`, `/en`, `/es/docs/:id`). Para desplegar en Vercel: **Build** `pnpm run build:playground`, **Output** `playground/dist`. Ver `vercel.json`.
 
 ---
 
-## Estructura del repositorio
+## Paleta
 
-```text
-src/
-  atoms/          # Button, Link, Input, Alert, … (.tsx)
-  molecules/      # Card, Grid, Table, Title, …
-  organisms/      # Section, Message, Roadmap, SiteHeader, SiteFooter, …
-  types/          # unions y tipos compartidos
-  index.tsx       # reexportaciones públicas
-playground/       # app Vite solo para desarrollo (no se publica en npm)
-dist/             # salida de tsc: .js + .d.ts (lo que publica npm)
-```
-
----
-
-## Componentes exportados
-
-### Icons (SVG)
-
-`IconInfo`, `IconSuccess`, `IconWarning`, `IconError`, `IconClose`, `IconCheck`, `IconCopy`, `IconArrowRight`, `alertIcons` — para `Badge`, `Input`, `CallToAction`, etc.
-
-### Atoms
-
-`AnimationDevelopment`, `Alert`, `Badge`, `Button`, `Divider`, `GradientText`, `Input`, `Link`, `DynamicLink`, `Image`, `Line`, `Note`, `Tag`, `Text`, `Tooltip`
-
-### Molecules
-
-`CallToAction`, `Card`, `Code`, `Container`, `Divided`, `Grid`, `List`, `ProgressBar`, `Table` (+ `TableHeader`, `TableRow`, `TableCell`), `Title`
-
-### Organisms
-
-`Section`, `Structure` (+ `CurriculumAside`, `CurriculumFull`), `Message`, `Roadmap`, `SiteHeader`, `SiteFooter` (+ `SiteFooterColumn`)
-
----
-
-## Paleta y diseño (v1.1.x)
-
-- **Primarios:** cyan (`#06B6D4`) y purple (`#A855F7`)
-- Variantes en botones, enlaces, alertas y timeline (`Roadmap`)
-- **Modo claro y oscuro:** estilos base para fondos claros y prefijo Tailwind `dark:` para el aspecto oscuro. En el consumidor, `darkMode: 'class'` y la clase `dark` en `<html>` (como en el playground)
+- **Acentos:** cyan (`#06B6D4`) y purple (`#A855F7`)
+- **Temas:** estilos base claros y prefijo `dark:` (consumidor con `darkMode: 'class'`)
 
 ---
 
 ## Publicar en npm
+
+> [!NOTE]
+> para desarrollador.
 
 ```bash
 pnpm run build
 npm publish --access public
 ```
 
-Scope `@fravelz` — paquete público en [npmjs.com](https://www.npmjs.com/package/@fravelz/ui-kit-fravelz).
-
 ---
 
-## Changelog resumido (1.1.0)
+## Información del proyecto
 
-- Mejoras en `Button`, `Text`, `Link`, `Title`, `Line`, `Code`, `Table`, `Message`, `Roadmap`
-- Nuevos atoms: `Alert`, `Badge`, `Divider`, `GradientText`, `Input`, `Tag`, `Tooltip`
-- Nuevas molecules: `CallToAction`, `Card`, `Container`, `Grid`, `ProgressBar`
-- Organism `Section` con encabezados
+|                 |                                                                                  |
+| --------------- | -------------------------------------------------------------------------------- |
+| **Versión**     | 1.2.0                                                                            |
+| **Autor**       | [Fravelz](https://github.com/FraVelz)                                            |
+| **Licencia**    | [Apache-2.0](LICENSE)                                                            |
+| **Repositorio** | [github.com/FraVelz/ui-kit-fravelz](https://github.com/FraVelz/ui-kit-fravelz)   |
+| **npm**         | [@fravelz/ui-kit-fravelz](https://www.npmjs.com/package/@fravelz/ui-kit-fravelz) |
+| **Playground**  | [ui-kit-fravelz.vercel.app](https://ui-kit-fravelz.vercel.app/)                  |
+
+> Al publicar una nueva versión, actualiza `version` aquí y en `package.json`, luego `npm publish`.
