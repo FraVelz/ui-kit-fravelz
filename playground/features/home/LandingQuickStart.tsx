@@ -10,6 +10,7 @@ export default function LandingQuickStart() {
       title={t("landing.quickStartTitle")}
       subtitle={t("landing.quickStartSubtitle")}
       variant="elevated"
+      align="center"
       className="mx-auto max-w-6xl rounded-xl"
     >
       <Grid cols={2} gap="lg" responsive>

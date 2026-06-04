@@ -7,8 +7,14 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { translate, type MessageKey } from "./messages";
-import { DEFAULT_LOCALE, LOCALE_STORAGE_KEY, type Locale } from "./types";
+import {
+  parseLocaleFromPathname,
+  readStoredLocale,
+  switchLocaleInPathname,
+} from "./routes";
+import { LOCALE_STORAGE_KEY, type Locale } from "./types";
 
 interface LocaleContextValue {
   locale: Locale;
@@ -18,27 +24,42 @@ interface LocaleContextValue {
 
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
-function readStoredLocale(): Locale {
+function persistLocale(locale: Locale) {
   try {
-    const stored = localStorage.getItem(LOCALE_STORAGE_KEY);
-    if (stored === "es" || stored === "en") return stored;
+    localStorage.setItem(LOCALE_STORAGE_KEY, locale);
   } catch {
     /* ignore */
   }
-  return DEFAULT_LOCALE;
 }
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(readStoredLocale);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const urlLocale = parseLocaleFromPathname(location.pathname);
 
-  const setLocale = useCallback((next: Locale) => {
-    setLocaleState(next);
-    try {
-      localStorage.setItem(LOCALE_STORAGE_KEY, next);
-    } catch {
-      /* ignore */
+  const [locale, setLocaleState] = useState<Locale>(() => urlLocale ?? readStoredLocale());
+
+  useEffect(() => {
+    if (urlLocale && urlLocale !== locale) {
+      setLocaleState(urlLocale);
+      persistLocale(urlLocale);
     }
-  }, []);
+  }, [urlLocale, locale]);
+
+  const setLocale = useCallback(
+    (next: Locale) => {
+      if (next === locale && urlLocale === next) return;
+
+      setLocaleState(next);
+      persistLocale(next);
+
+      const pathname = switchLocaleInPathname(location.pathname, next);
+      if (pathname !== location.pathname) {
+        navigate({ pathname, search: location.search, hash: location.hash });
+      }
+    },
+    [locale, urlLocale, location.pathname, location.search, location.hash, navigate]
+  );
 
   useEffect(() => {
     document.documentElement.lang = locale;

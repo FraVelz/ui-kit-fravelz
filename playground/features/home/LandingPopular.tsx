@@ -1,18 +1,20 @@
 import { Link } from "react-router-dom";
 import { Badge, Card, Grid, IconArrowRight, Section, Text } from "../../kit";
-import { docsPath } from "../docs/paths";
+import { useLocalePaths } from "../docs/paths";
 import { COMPONENT_DOCS } from "../docs/registry";
 import { useLocale } from "../../i18n/LocaleContext";
 import { POPULAR_DOC_IDS, type PopularDocId } from "./landing-data";
 
 export default function LandingPopular() {
   const { t } = useLocale();
+  const { docsPath } = useLocalePaths();
 
   return (
     <Section
       title={t("landing.popularTitle")}
       subtitle={t("landing.popularSubtitle")}
       variant="minimal"
+      align="center"
     >
       <Grid cols={3} gap="md" responsive={false} className="!grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3">
         {POPULAR_DOC_IDS.map((id) => {

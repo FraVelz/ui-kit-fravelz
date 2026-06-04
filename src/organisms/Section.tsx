@@ -13,6 +13,8 @@ export interface SectionProps {
   subtitle?: string | null;
   variant?: SectionVariant;
   id?: string | null;
+  /** Alineación del bloque título/subtítulo */
+  align?: "left" | "center";
 }
 
 export default function Section({
@@ -22,6 +24,7 @@ export default function Section({
   subtitle = null,
   variant = "default",
   id = null,
+  align = "left",
 }: SectionProps) {
   return (
     <section
@@ -44,22 +47,24 @@ export default function Section({
         className
       )}
     >
-      {title && (
-        <div className="mb-6 md:mb-8">
-          <h2
-            className={cn(
-              "text-2xl font-bold mb-2 sm:text-3xl md:text-4xl md:mb-3",
-              "bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
+      <div className="mx-auto max-w-6xl">
+        {title && (
+          <div className={cn("mb-6 md:mb-8", align === "center" && "text-center")}>
+            <h2
+              className={cn(
+                "text-2xl font-bold mb-2 sm:text-3xl md:text-4xl md:mb-3",
+                "bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
+              )}
+            >
+              {title}
+            </h2>
+            {subtitle && (
+              <p className="text-base text-gray-600 dark:text-gray-400 sm:text-lg">{subtitle}</p>
             )}
-          >
-            {title}
-          </h2>
-          {subtitle && (
-            <p className="text-base text-gray-600 dark:text-gray-400 sm:text-lg">{subtitle}</p>
-          )}
-        </div>
-      )}
-      <div className="max-w-6xl mx-auto">{children}</div>
+          </div>
+        )}
+        {children}
+      </div>
     </section>
   );
 }

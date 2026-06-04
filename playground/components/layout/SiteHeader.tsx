@@ -6,7 +6,8 @@ import {
   SiteHeader as SiteHeaderShell,
   Text,
 } from "../../kit";
-import { DOCS_HOME, SITE_HOME } from "../../features/docs/paths";
+import { isDocsPath, isSiteHomePath } from "../../features/docs/paths";
+import { useLocalePaths } from "../../i18n/useLocalePaths";
 import { PACKAGE } from "../../features/docs/registry";
 import { useHeaderScroll } from "../../hooks/useHeaderScroll";
 import LanguageSwitcher from "../../i18n/LanguageSwitcher";
@@ -22,8 +23,9 @@ const NPM_URL = "https://www.npmjs.com/package/@fravelz/ui-kit-fravelz";
 export default function SiteHeader() {
   const { pathname } = useLocation();
   const { t } = useLocale();
-  const onDocs = pathname === DOCS_HOME || pathname.startsWith(`${DOCS_HOME}/`);
-  const isHome = pathname === SITE_HOME;
+  const { siteHome, docsHome } = useLocalePaths();
+  const onDocs = isDocsPath(pathname);
+  const isHome = isSiteHomePath(pathname);
   const { progress, logoInteractive, headerOpacity, logoOpacity } = useHeaderScroll(isHome);
 
   const headerStyle = {
@@ -36,10 +38,10 @@ export default function SiteHeader() {
 
   const navLinks = (
     <>
-      <SiteNavLink to={SITE_HOME} end layout="header">
+      <SiteNavLink to={siteHome} end layout="header">
         {t("nav.home")}
       </SiteNavLink>
-      <SiteNavLink to={DOCS_HOME} layout="header">
+      <SiteNavLink to={docsHome} layout="header">
         {t("nav.docs")}
       </SiteNavLink>
       <SiteExternalLink href={NPM_URL} layout="header">
@@ -79,7 +81,7 @@ export default function SiteHeader() {
         <div className="flex min-h-9 items-center md:min-h-10">
           <NavLink
             id="logo-container"
-            to={SITE_HOME}
+            to={siteHome}
             end
             className="logo-scroll block rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
             style={logoStyle}

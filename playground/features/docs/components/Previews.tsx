@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import { useLocale } from "../../../i18n/LocaleContext";
-import { docsPath } from "../paths";
+import { useLocalePaths } from "../paths";
 import {
   Alert,
   Badge,
@@ -53,11 +53,12 @@ function CurriculumList({
 
 function DynamicLinkPreview() {
   const location = useLocation();
+  const { siteHome, docsPath } = useLocalePaths();
 
   return (
     <div className="w-full space-y-2">
       <nav className="flex flex-wrap gap-4">
-        <DynamicLink to="/">Inicio</DynamicLink>
+        <DynamicLink to={siteHome}>Inicio</DynamicLink>
         <DynamicLink to={docsPath("button")}>Button</DynamicLink>
         <DynamicLink to={docsPath("alert")}>Alert</DynamicLink>
       </nav>

@@ -6,7 +6,7 @@ export default function LandingFaq() {
   const { t } = useLocale();
 
   return (
-    <Section title={t("landing.faqTitle")} variant="minimal">
+    <Section title={t("landing.faqTitle")} variant="minimal" align="center">
       <Grid cols={2} gap="md" responsive>
         {FAQ_KEYS.map((key) => (
           <Card key={key} variant="default" hoverable={false}>

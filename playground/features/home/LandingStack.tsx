@@ -17,6 +17,7 @@ export default function LandingStack() {
       title={t("landing.stackTitle")}
       subtitle={t("landing.stackSubtitle")}
       variant="default"
+      align="center"
       className="border-y border-gray-200/80 dark:border-cyan-500/20"
     >
       <Grid cols={2} gap="lg" responsive>

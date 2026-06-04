@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { GradientText, SiteFooter as SiteFooterShell, SiteFooterColumn, Text } from "../../kit";
-import { DOCS_HOME, SITE_HOME } from "../../features/docs/paths";
+import { useLocalePaths } from "../../i18n/useLocalePaths";
 import { useLocale } from "../../i18n/LocaleContext";
 import ThemeSwitcher from "../../theme/ThemeSwitcher";
 import SiteExternalLink from "./SiteExternalLink";
@@ -14,13 +14,14 @@ const CURRENT_YEAR = new Date().getFullYear();
 
 export default function SiteFooter() {
   const { t } = useLocale();
+  const { siteHome, docsHome } = useLocalePaths();
 
   return (
     <SiteFooterShell
       brand={
         <>
           <Link
-            to={SITE_HOME}
+            to={siteHome}
             className="inline-block rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
           >
             <span className="text-lg font-semibold">
@@ -63,13 +64,13 @@ export default function SiteFooter() {
     >
       <SiteFooterColumn title={t("footer.documentation")} ariaLabel={t("footer.documentation")}>
         <nav className="flex flex-col gap-1">
-          <SiteNavLink to={SITE_HOME} end layout="footer">
+          <SiteNavLink to={siteHome} end layout="footer">
             {t("nav.home")}
           </SiteNavLink>
-          <SiteNavLink to={DOCS_HOME} layout="footer">
+          <SiteNavLink to={docsHome} layout="footer">
             {t("nav.docs")}
           </SiteNavLink>
-          <SiteNavLink to={DOCS_HOME} layout="footer">
+          <SiteNavLink to={docsHome} layout="footer">
             {t("nav.componentIndex")}
           </SiteNavLink>
         </nav>

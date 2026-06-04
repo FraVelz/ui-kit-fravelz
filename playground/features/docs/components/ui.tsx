@@ -3,17 +3,18 @@ import { Code, Text, Title } from "../../../kit";
 import SiteNavLink from "../../../components/layout/SiteNavLink";
 import { useLocale } from "../../../i18n/LocaleContext";
 import { localizeDocEntry } from "../../../i18n/localize-doc";
-import { docsPath, DOCS_HOME } from "../paths";
+import { useLocalePaths } from "../paths";
 import type { ComponentDocEntry, DocPropRow, DocSectionGroup } from "../registry";
 
 export function DocSidebar({ sections }: { sections: DocSectionGroup[] }) {
   const { t } = useLocale();
+  const { docsHome, docsPath } = useLocalePaths();
 
   return (
     <nav className="pr-2 lg:pr-4" aria-label={t("docs.sidebarAria")}>
       <ul className="mb-6 space-y-1">
         <li>
-          <SiteNavLink to={DOCS_HOME} end layout="docs">
+          <SiteNavLink to={docsHome} end layout="docs">
             {t("docs.sidebarHome")}
           </SiteNavLink>
         </li>

@@ -11,7 +11,7 @@ import {
   Title,
 } from "../../kit";
 import RouterButtonLink from "../../components/RouterButtonLink";
-import { DOCS_HOME } from "../docs/paths";
+import { useLocalePaths } from "../docs/paths";
 import { PACKAGE } from "../docs/registry";
 import { useLocale } from "../../i18n/LocaleContext";
 import { countByLayer } from "./landing-data";
@@ -27,6 +27,7 @@ const NPM_URL = "https://www.npmjs.com/package/@fravelz/ui-kit-fravelz";
 
 export default function LandingPage() {
   const { t } = useLocale();
+  const { docsHome } = useLocalePaths();
 
   const features = [
     { key: "atoms" as const, badge: "cyan" as const, count: countByLayer("Atom") },
@@ -56,7 +57,7 @@ export default function LandingPage() {
               <code className="text-cyan-700 dark:text-cyan-400/90">{PACKAGE}</code>
             </p>
               <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
-                <RouterButtonLink to={DOCS_HOME} size="lg" className="w-full sm:w-auto">
+                <RouterButtonLink to={docsHome} size="lg" className="w-full sm:w-auto">
                   {t("landing.ctaExplore")}
                   <IconArrowRight />
                 </RouterButtonLink>
@@ -81,6 +82,7 @@ export default function LandingPage() {
           title={t("landing.sectionTitle")}
           subtitle={`${totalDocumented} ${t("landing.sectionSubtitle")}`}
           variant="minimal"
+          align="center"
           className="border-t border-gray-200/80 dark:border-gray-800/80"
         >
           <Grid cols={3} gap="lg" responsive={false} className="!grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3">
@@ -116,7 +118,7 @@ export default function LandingPage() {
               {t("landing.integrateText")}
             </Text>
             <RouterButtonLink
-              to={DOCS_HOME}
+              to={docsHome}
               variant="secondary"
               className="inline-flex w-full gap-2 sm:w-auto"
             >

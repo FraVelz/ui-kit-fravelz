@@ -2,7 +2,7 @@ import { Link, Navigate, NavLink, useParams } from "react-router-dom";
 import { useLocale } from "../../../i18n/LocaleContext";
 import { ComponentPreview } from "../components/Previews";
 import { DocSection } from "../components/ui";
-import { docsPath, DOCS_HOME } from "../paths";
+import { useLocalePaths } from "../paths";
 import type { ComponentDocEntry } from "../registry";
 import { COMPONENT_DOCS, DOC_BY_ID } from "../registry";
 
@@ -23,15 +23,16 @@ function neighborDocs(componentId: string): {
 export default function ComponentDocPage() {
   const { componentId } = useParams<{ componentId: string }>();
   const { t } = useLocale();
+  const { docsHome, docsPath } = useLocalePaths();
 
   if (!componentId) {
-    return <Navigate to={DOCS_HOME} replace />;
+    return <Navigate to={docsHome} replace />;
   }
 
   const entry = DOC_BY_ID[componentId];
 
   if (!entry) {
-    return <Navigate to={DOCS_HOME} replace />;
+    return <Navigate to={docsHome} replace />;
   }
 
   const { prev, next } = neighborDocs(componentId);
@@ -75,7 +76,7 @@ export default function ComponentDocPage() {
           <span />
         )}
         <Link
-          to={DOCS_HOME}
+          to={docsHome}
           className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-300 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
         >
           {t("nav.index")}

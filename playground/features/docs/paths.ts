@@ -1,9 +1,13 @@
-/** Rutas del playground. */
+/** Rutas del playground con prefijo de idioma (/es, /en). Usa useLocalePaths() en componentes. */
 
-export const SITE_HOME = "/";
+export {
+  isDocsPath,
+  isSiteHomePath,
+  parseLocaleFromPathname,
+  pathsForLocale,
+  readStoredLocale,
+  stripLocalePrefix,
+  switchLocaleInPathname,
+} from "../../i18n/routes";
 
-export const DOCS_HOME = "/docs";
-
-export function docsPath(componentId: string) {
-  return `${DOCS_HOME}/${componentId}`;
-}
+export { useLocalePaths } from "../../i18n/useLocalePaths";

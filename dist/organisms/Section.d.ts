@@ -11,6 +11,8 @@ export interface SectionProps {
     subtitle?: string | null;
     variant?: SectionVariant;
     id?: string | null;
+    /** Alineación del bloque título/subtítulo */
+    align?: "left" | "center";
 }
-export default function Section({ children, className, title, subtitle, variant, id, }: SectionProps): import("react").JSX.Element;
+export default function Section({ children, className, title, subtitle, variant, id, align, }: SectionProps): import("react").JSX.Element;
 //# sourceMappingURL=Section.d.ts.map
