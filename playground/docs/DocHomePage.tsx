@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Text, Title } from "../kit";
+import { Code, Text, Title } from "../kit";
 import { COMPONENT_DOCS, DOC_SECTIONS, PACKAGE } from "./registry";
 import { docsPath } from "./paths";
 
@@ -15,10 +15,11 @@ export default function DocHomePage() {
           Cada componente tiene su propia ruta (<code className="text-cyan-400">/docs/:id</code>
           ). El índice lateral usa React Router; en móvil, elige un componente abajo.
         </Text>
-        <pre className="overflow-x-auto rounded-lg border border-gray-800 bg-gray-900 p-4 text-sm text-gray-300">
-          {`npm install ${PACKAGE}
-npm run dev`}
-        </pre>
+        <Code
+          codeContent={`npm install ${PACKAGE}\nnpm run dev`}
+          language="bash"
+          className="!my-0"
+        />
       </div>
 
       <nav className="mb-8 flex flex-wrap gap-2 lg:hidden" aria-label="Componentes">

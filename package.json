@@ -24,7 +24,7 @@
     "dev": "vite",
     "build:playground": "vite build",
     "vercel-build": "npm run build:playground",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json && cp src/molecules/code-block.css dist/molecules/",
     "typecheck": "tsc -p tsconfig.build.json --noEmit && tsc -p tsconfig.playground.json",
     "prepublishOnly": "npm run build",
     "lint": "eslint src playground",

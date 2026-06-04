@@ -579,8 +579,14 @@ export const COMPONENT_DOCS: ComponentDocEntry[] = [
         default: '"javascript"',
         description: "Lenguaje Prism (javascript, bash…).",
       },
+      {
+        name: "compact",
+        type: "boolean",
+        default: "false",
+        description: "Sin barra de lenguaje; botón copiar en la esquina (ideal para imports).",
+      },
     ],
-    notes: ["Incluye estilos de prism-twilight en el bundle del componente."],
+    notes: ["Incluye code-block.css en el bundle (tokens cyan/púrpura del kit)."],
   },
   {
     id: "container",

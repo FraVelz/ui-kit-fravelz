@@ -1,4 +1,4 @@
-declare module "prismjs/themes/prism-twilight.css";
+declare module "*.css";
 
 declare module "@lottiefiles/dotlottie-react" {
   import type { ComponentType } from "react";

@@ -1,21 +1,44 @@
-import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 /**
  * Code Component
  * Syntax-highlighted code block with copy-to-clipboard functionality
  */
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Prism from "prismjs";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-bash";
-import "prismjs/themes/prism-twilight.css";
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-markup";
+import "./code-block.css";
 import { cn } from "../lib/cn";
 import { focusCyan } from "../lib/focus";
 import { IconCheck, IconCopy } from "../lib/icons";
-export default function Code({ codeContent, language = "javascript" }) {
+const LANGUAGE_LABEL = {
+    javascript: "JavaScript",
+    bash: "Bash",
+    typescript: "TypeScript",
+    markup: "Markup",
+};
+function resolveLanguage(content, language) {
+    if (language !== "javascript") {
+        return language;
+    }
+    if (/<[A-Za-z]/.test(content)) {
+        return "markup";
+    }
+    return "javascript";
+}
+export default function Code({ codeContent, language = "javascript", className, compact = false, }) {
     const [isCopied, setIsCopied] = useState(false);
+    const codeRef = useRef(null);
+    const prismLanguage = resolveLanguage(codeContent, language);
+    const langClass = `language-${prismLanguage}`;
     useEffect(() => {
-        Prism.highlightAll();
-    }, [codeContent, language]);
+        const el = codeRef.current;
+        if (el) {
+            Prism.highlightElement(el);
+        }
+    }, [codeContent, prismLanguage]);
     const handleCopy = async () => {
         try {
             await navigator.clipboard.writeText(codeContent);
@@ -26,7 +49,8 @@ export default function Code({ codeContent, language = "javascript" }) {
             console.error("Error copying to clipboard:", error);
         }
     };
-    return (_jsxs("div", { className: "relative my-4", children: [_jsx("button", { type: "button", onClick: handleCopy, "aria-label": isCopied ? "Copied to clipboard" : "Copy code to clipboard", className: cn("absolute top-2 right-2 inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-md transition-all duration-200", "cursor-pointer border border-cyan-500/30", focusCyan, isCopied
-                    ? "bg-cyan-600/20 text-cyan-300 border-cyan-400/60"
-                    : cn("bg-gray-800 text-gray-300", "hover:bg-gray-700 hover:text-gray-200 hover:border-cyan-400/40")), children: isCopied ? (_jsxs(_Fragment, { children: [_jsx(IconCheck, {}), _jsx("span", { children: "Copied" })] })) : (_jsxs(_Fragment, { children: [_jsx(IconCopy, {}), _jsx("span", { children: "Copy" })] })) }), _jsx("pre", { className: cn("rounded-lg bg-gray-900 text-sm overflow-x-auto p-4", "border border-cyan-500/20 hover:border-cyan-500/40 transition-colors"), children: _jsx("code", { className: `language-${language}`, children: codeContent }) })] }));
+    const copyLabel = isCopied ? "Copied" : "Copy";
+    const CopyIcon = isCopied ? IconCheck : IconCopy;
+    const copyButton = (_jsxs("button", { type: "button", onClick: handleCopy, "aria-label": isCopied ? "Copied to clipboard" : "Copy code to clipboard", className: cn("fz-code-block__copy", isCopied && "fz-code-block__copy--copied", compact && "fz-code-block__copy--overlay", focusCyan), children: [_jsx(CopyIcon, { className: "!size-3.5 shrink-0" }), _jsx("span", { children: copyLabel })] }));
+    return (_jsx("div", { className: cn("fz-code-block", compact && "fz-code-block--compact", className), children: _jsxs("div", { className: "fz-code-block__shell", children: [!compact && (_jsxs("div", { className: "fz-code-block__toolbar", children: [_jsx("span", { className: "fz-code-block__lang", children: LANGUAGE_LABEL[prismLanguage] ?? prismLanguage }), copyButton] })), compact && copyButton, _jsx("pre", { className: cn("fz-code-block__pre", langClass), children: _jsx("code", { ref: codeRef, className: langClass, children: codeContent }) })] }) }));
 }

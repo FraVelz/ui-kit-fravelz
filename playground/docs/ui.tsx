@@ -100,14 +100,14 @@ export function DocSection({ entry, children }: { entry: ComponentDocEntry; chil
           <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
             Importación
           </p>
-          <Code codeContent={entry.importLine} language="javascript" />
+          <Code codeContent={entry.importLine} language="javascript" compact />
         </div>
       )}
 
       {entry.usage && (
         <div className="mb-4">
           <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Uso</p>
-          <Code codeContent={entry.usage} language="javascript" />
+          <Code codeContent={entry.usage} language="markup" />
         </div>
       )}
 
