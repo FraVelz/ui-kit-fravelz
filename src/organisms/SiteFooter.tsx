@@ -58,8 +58,8 @@ export default function SiteFooter({
       )}
     >
       <Container size={containerSize} className={cn("py-10 md:py-12", containerClassName)}>
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          <div className="lg:col-span-2">{brand}</div>
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4">
+          <div className="sm:col-span-2 lg:col-span-2">{brand}</div>
           {children}
         </div>
 

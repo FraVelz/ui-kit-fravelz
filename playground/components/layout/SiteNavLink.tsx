@@ -13,7 +13,7 @@ export default function SiteNavLink({ layout = "header", ...props }: SiteNavLink
         cn(
           layout === "header" &&
             cn(
-              "rounded-md px-3 py-1.5 text-sm font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80",
+              "block w-full rounded-md px-3 py-2 text-center text-sm font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80 sm:inline-block sm:w-auto sm:py-1.5 sm:text-left",
               isActive
                 ? "bg-cyan-500/15 text-cyan-700 dark:text-cyan-300"
                 : "text-gray-600 hover:bg-gray-200/80 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800/80 dark:hover:text-gray-200"

@@ -28,7 +28,7 @@ export default function InstallPanel() {
   const peersNote = "react react-dom";
 
   return (
-    <Card variant="default" hoverable={false} className="h-full">
+    <Card variant="default" hoverable={false} className="h-full min-w-0 w-full">
       <Title headingLevel="h2" className="!mb-1 !text-lg">
         {t("landing.installTitle")}
       </Title>
@@ -60,22 +60,28 @@ export default function InstallPanel() {
         ))}
       </div>
 
-      <Code codeContent={installCommand(manager, PACKAGE)} language="bash" className="!my-0" compact />
+      <div className="min-w-0 overflow-x-auto">
+        <Code codeContent={installCommand(manager, PACKAGE)} language="bash" className="!my-0" compact />
+      </div>
 
       <p className="mt-4 mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
         {t("landing.peersTitle")}
       </p>
-      <Code
-        codeContent={`${manager === "npm" ? "npm install" : manager === "pnpm" ? "pnpm add" : manager === "bun" ? "bun add" : "yarn add"} ${peersNote}`}
-        language="bash"
-        className="!my-0"
-        compact
-      />
+      <div className="min-w-0 overflow-x-auto">
+        <Code
+          codeContent={`${manager === "npm" ? "npm install" : manager === "pnpm" ? "pnpm add" : manager === "bun" ? "bun add" : "yarn add"} ${peersNote}`}
+          language="bash"
+          className="!my-0"
+          compact
+        />
+      </div>
 
       <p className="mt-4 mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
         {t("landing.importExampleTitle")}
       </p>
-      <Code codeContent={importExample} language="javascript" className="!my-0" compact />
+      <div className="min-w-0 overflow-x-auto">
+        <Code codeContent={importExample} language="javascript" className="!my-0" compact />
+      </div>
 
       <Text variant="muted" size="sm" className="!py-0 mt-4">
         {t("landing.tailwindNote")}

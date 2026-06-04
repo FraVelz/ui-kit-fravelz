@@ -39,24 +39,29 @@ export default function LandingPage() {
     <div className="relative isolate">
       <LandingBackground />
       <div className="relative z-10">
-        <Container size="md" className="py-12 md:py-20">
-          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+        <Container size="md" className="py-10 sm:py-12 md:py-20">
+          <div className="grid min-w-0 items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12">
             <div className="text-center lg:text-left">
               <Badge variant="purple" size="sm" className="mb-6">
                 {t("landing.badge")}
               </Badge>
-              <Title headingLevel="h1" className="!mb-4 !text-4xl md:!text-5xl">
+              <Title headingLevel="h1" className="!mb-4 !text-3xl sm:!text-4xl md:!text-5xl">
                 <GradientText variant="cyan-purple">UI Kit Fravelz</GradientText>
               </Title>
               <Text size="lg" className="!py-0 mb-8 text-gray-600 dark:text-gray-300">
                 {t("landing.hero")}
               </Text>
-              <div className="flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-                <RouterButtonLink to={DOCS_HOME} size="lg">
+              <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
+                <RouterButtonLink to={DOCS_HOME} size="lg" className="w-full sm:w-auto">
                   {t("landing.ctaExplore")}
                   <IconArrowRight />
                 </RouterButtonLink>
-                <CallToAction href={NPM_URL} variant="outline" target="_blank" className="!gap-2">
+                <CallToAction
+                  href={NPM_URL}
+                  variant="outline"
+                  target="_blank"
+                  className="!w-full !justify-center !gap-2 sm:!w-auto"
+                >
                   npm
                 </CallToAction>
               </div>
@@ -74,7 +79,7 @@ export default function LandingPage() {
           variant="minimal"
           className="border-t border-gray-200/80 dark:border-gray-800/80"
         >
-          <Grid cols={3} gap="lg" responsive={false}>
+          <Grid cols={3} gap="lg" responsive={false} className="!grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3">
             {features.map((feature) => (
               <Card
                 key={feature.key}
@@ -106,7 +111,11 @@ export default function LandingPage() {
             <Text variant="muted" size="sm" className="!py-0 mb-6">
               {t("landing.integrateText")}
             </Text>
-            <RouterButtonLink to={DOCS_HOME} variant="secondary" className="inline-flex gap-2">
+            <RouterButtonLink
+              to={DOCS_HOME}
+              variant="secondary"
+              className="inline-flex w-full gap-2 sm:w-auto"
+            >
               {t("landing.integrateCta")}
               <IconArrowRight className="!size-4" />
             </RouterButtonLink>

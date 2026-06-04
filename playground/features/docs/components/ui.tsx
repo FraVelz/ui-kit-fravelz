@@ -11,7 +11,7 @@ export function DocSidebar({ sections }: { sections: DocSectionGroup[] }) {
 
   return (
     <nav
-      className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-4"
+      className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto pr-2 lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:pr-4"
       aria-label={t("docs.sidebarAria")}
     >
       <ul className="mb-6 space-y-1">
@@ -146,7 +146,7 @@ export function DocSection({ entry, children }: { entry: ComponentDocEntry; chil
       <p className="mb-3 mt-6 text-xs font-semibold uppercase tracking-wide text-gray-500">
         {t("docs.preview")}
       </p>
-      <div className="rounded-lg border border-gray-200 bg-gray-100/80 p-6 dark:border-gray-800 dark:bg-gray-900/50">
+      <div className="min-w-0 overflow-x-auto rounded-lg border border-gray-200 bg-gray-100/80 p-4 sm:p-6 dark:border-gray-800 dark:bg-gray-900/50">
         {children}
       </div>
     </article>

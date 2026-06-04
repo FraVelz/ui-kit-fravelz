@@ -37,12 +37,14 @@ export default function SiteHeader({
       )}
     >
       <Container size={containerSize} className={cn("py-3 md:py-4", containerClassName)}>
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="min-w-0">
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between lg:gap-6">
+          <div className="min-w-0 w-full md:flex-1">
             {brand}
             {meta ? <div className="mt-0.5">{meta}</div> : null}
           </div>
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">{actions}</div>
+          <div className="flex w-full min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end md:w-auto md:max-w-full lg:gap-3">
+            {actions}
+          </div>
         </div>
       </Container>
     </header>

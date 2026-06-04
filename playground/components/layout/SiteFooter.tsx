@@ -31,11 +31,15 @@ export default function SiteFooter() {
           <Text variant="secondary" size="sm" className="!py-0 mt-3 max-w-md">
             {t("footer.tagline")}
           </Text>
-          <p className="mt-4 font-mono text-xs text-gray-600 dark:text-gray-500">
+          <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-gray-600 dark:text-gray-500">
             <code className="text-cyan-700 dark:text-cyan-400/90">{PACKAGE}</code>
-            <span className="mx-2 text-gray-400 dark:text-gray-700">·</span>
+            <span className="text-gray-400 dark:text-gray-700" aria-hidden>
+              ·
+            </span>
             <span>v{packageJson.version}</span>
-            <span className="mx-2 text-gray-400 dark:text-gray-700">·</span>
+            <span className="text-gray-400 dark:text-gray-700" aria-hidden>
+              ·
+            </span>
             <span>
               {COMPONENT_DOCS.length} {t("footer.documented")}
             </span>

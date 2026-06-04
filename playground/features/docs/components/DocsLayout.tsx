@@ -9,13 +9,13 @@ export default function DocsLayout() {
   const sections = getDocSections(locale);
 
   return (
-    <Container size="md" className="py-10">
-      <div className="grid gap-10 lg:grid-cols-[220px_1fr]">
+    <Container size="md" className="py-6 sm:py-8 md:py-10">
+      <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,220px)_1fr] lg:gap-10">
         <aside className="hidden lg:block">
           <DocSidebar sections={sections} />
         </aside>
 
-        <div className="min-w-0">
+        <div className="min-w-0 overflow-x-hidden">
           <Outlet />
         </div>
       </div>

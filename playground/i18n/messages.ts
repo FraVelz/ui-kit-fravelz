@@ -12,6 +12,7 @@ const es = {
     prev: "anterior",
     next: "siguiente",
     componentIndex: "Índice de componentes",
+    menu: "Menú",
   },
   footer: {
     tagline:
@@ -192,6 +193,7 @@ const en = {
     prev: "previous",
     next: "next",
     componentIndex: "Component index",
+    menu: "Menu",
   },
   footer: {
     tagline:
