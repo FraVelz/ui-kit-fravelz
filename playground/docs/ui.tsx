@@ -3,6 +3,8 @@ import { NavLink, type NavLinkProps } from "react-router-dom";
 import { Code, Text, Title } from "../kit";
 import type { ComponentDocEntry, DocPropRow, DocSectionGroup } from "./registry";
 import { docsPath, DOCS_HOME } from "./paths";
+import { useLocale } from "../i18n/LocaleContext";
+import { localizeDocEntry } from "../i18n/localize-doc";
 
 const navLinkClass: NavLinkProps["className"] = ({ isActive = false }) =>
   `block rounded-md px-2 py-1 text-sm transition-colors outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80 ${
@@ -12,15 +14,17 @@ const navLinkClass: NavLinkProps["className"] = ({ isActive = false }) =>
   }`;
 
 export function DocSidebar({ sections }: { sections: DocSectionGroup[] }) {
+  const { t } = useLocale();
+
   return (
     <nav
       className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-4"
-      aria-label="Índice de componentes"
+      aria-label={t("docs.sidebarAria")}
     >
       <ul className="mb-6 space-y-1">
         <li>
           <NavLink to={DOCS_HOME} end className={navLinkClass}>
-            Inicio
+            {t("docs.sidebarHome")}
           </NavLink>
         </li>
       </ul>
@@ -45,10 +49,12 @@ export function DocSidebar({ sections }: { sections: DocSectionGroup[] }) {
 }
 
 export function PropsTable({ props = [] }: { props?: DocPropRow[] }) {
+  const { t } = useLocale();
+
   if (props.length === 0) {
     return (
       <Text variant="muted" className="text-sm">
-        Sin props documentadas.
+        {t("docs.noProps")}
       </Text>
     );
   }
@@ -58,10 +64,10 @@ export function PropsTable({ props = [] }: { props?: DocPropRow[] }) {
       <table className="w-full text-left text-sm">
         <thead className="bg-gray-800/80 text-cyan-300">
           <tr>
-            <th className="px-4 py-3 font-semibold">Prop</th>
-            <th className="px-4 py-3 font-semibold">Tipo</th>
-            <th className="px-4 py-3 font-semibold">Por defecto</th>
-            <th className="px-4 py-3 font-semibold">Descripción</th>
+            <th className="px-4 py-3 font-semibold">{t("docs.tableProp")}</th>
+            <th className="px-4 py-3 font-semibold">{t("docs.tableType")}</th>
+            <th className="px-4 py-3 font-semibold">{t("docs.tableDefault")}</th>
+            <th className="px-4 py-3 font-semibold">{t("docs.tableDescription")}</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-800 text-gray-300">
@@ -80,55 +86,62 @@ export function PropsTable({ props = [] }: { props?: DocPropRow[] }) {
 }
 
 export function DocSection({ entry, children }: { entry: ComponentDocEntry; children: ReactNode }) {
+  const { locale, t } = useLocale();
+  const doc = localizeDocEntry(entry, locale);
+
   return (
     <article className="pb-8">
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <span className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-2 py-0.5 font-mono text-xs text-cyan-300">
-          {entry.layer}
+          {doc.layer}
         </span>
         {entry.packageExport && (
           <span className="font-mono text-xs text-gray-500">@fravelz/ui-kit-fravelz</span>
         )}
       </div>
       <Title headingLevel="h2" className="!mb-2">
-        {entry.name}
+        {doc.name}
       </Title>
-      <Text className="!py-0 mb-4 max-w-3xl">{entry.description}</Text>
+      <Text className="!py-0 mb-4 max-w-3xl">{doc.description}</Text>
 
-      {entry.importLine && (
+      {doc.importLine && (
         <div className="mb-4">
           <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
-            Importación
+            {t("docs.import")}
           </p>
-          <Code codeContent={entry.importLine} language="javascript" compact />
+          <Code codeContent={doc.importLine} language="javascript" compact />
         </div>
       )}
 
-      {entry.usage && (
+      {doc.usage && (
         <div className="mb-4">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Uso</p>
-          <Code codeContent={entry.usage} language="markup" />
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
+            {t("docs.usage")}
+          </p>
+          <Code codeContent={doc.usage} language="markup" />
         </div>
       )}
 
-      {entry.notes && entry.notes.length > 0 && (
+      {doc.notes && doc.notes.length > 0 && (
         <ul className="mb-4 list-disc space-y-1 pl-5 text-sm text-gray-400">
-          {entry.notes.map((note) => (
+          {doc.notes.map((note) => (
             <li key={note}>{note}</li>
           ))}
         </ul>
       )}
 
-      {entry.props && entry.props.length > 0 && (
+      {doc.props && doc.props.length > 0 && (
         <>
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Props</p>
-          <PropsTable props={entry.props} />
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
+            {t("docs.props")}
+          </p>
+          <PropsTable props={doc.props} />
         </>
       )}
 
-      {entry.subComponents && entry.subComponents.length > 0 && (
+      {doc.subComponents && doc.subComponents.length > 0 && (
         <div className="mb-4 space-y-6">
-          {entry.subComponents.map((sub) => (
+          {doc.subComponents.map((sub) => (
             <div key={sub.name}>
               <p className="mb-2 font-mono text-sm text-purple-300">{sub.name}</p>
               <PropsTable props={sub.props} />
@@ -138,7 +151,7 @@ export function DocSection({ entry, children }: { entry: ComponentDocEntry; chil
       )}
 
       <p className="mb-3 mt-6 text-xs font-semibold uppercase tracking-wide text-gray-500">
-        Vista previa
+        {t("docs.preview")}
       </p>
       <div className="rounded-lg border border-gray-800 bg-gray-900/50 p-6">{children}</div>
     </article>

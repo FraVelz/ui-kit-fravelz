@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { useLocation } from "react-router-dom";
+import { useLocale } from "../i18n/LocaleContext";
 import { docsPath } from "./paths";
 import {
   Alert,
@@ -74,6 +75,7 @@ const ROADMAP_STEPS = [
 ];
 
 export function ComponentPreview({ id }: { id: string }) {
+  const { t } = useLocale();
   const [showMessage, setShowMessage] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [tagVisible, setTagVisible] = useState(true);
@@ -348,6 +350,6 @@ export function ComponentPreview({ id }: { id: string }) {
       return <Roadmap steps={ROADMAP_STEPS} />;
 
     default:
-      return <Text variant="muted">Sin vista previa.</Text>;
+      return <Text variant="muted">{t("docs.noPreview")}</Text>;
   }
 }

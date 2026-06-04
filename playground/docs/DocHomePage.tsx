@@ -1,19 +1,21 @@
 import { NavLink } from "react-router-dom";
 import { Code, Text, Title } from "../kit";
-import { COMPONENT_DOCS, DOC_SECTIONS, PACKAGE } from "./registry";
+import { COMPONENT_DOCS, PACKAGE } from "./registry";
 import { docsPath } from "./paths";
+import { useLocale } from "../i18n/LocaleContext";
+import { getDocSections, localizeDocEntry } from "../i18n/localize-doc";
 
 export default function DocHomePage() {
+  const { locale, t } = useLocale();
+  const sections = getDocSections(locale);
+
   return (
     <>
       <div className="mb-10 rounded-lg border border-cyan-500/20 bg-cyan-500/5 p-6">
         <Title headingLevel="h2" className="!text-xl !mb-2">
-          Documentación del UI Kit
+          {t("docs.homeTitle")}
         </Title>
-        <Text className="text-sm !py-0 mb-4">
-          Índice de componentes en <code className="text-cyan-400">/docs</code> y una página por pieza en{" "}
-          <code className="text-cyan-400">/docs/:id</code>. En móvil, elige un componente abajo.
-        </Text>
+        <Text className="text-sm !py-0 mb-4">{t("docs.homeIntro")}</Text>
         <Code
           codeContent={`npm install ${PACKAGE}\nnpm run dev`}
           language="bash"
@@ -21,8 +23,8 @@ export default function DocHomePage() {
         />
       </div>
 
-      <nav className="mb-8 flex flex-wrap gap-2 lg:hidden" aria-label="Componentes">
-        {DOC_SECTIONS.flatMap((group) =>
+      <nav className="mb-8 flex flex-wrap gap-2 lg:hidden" aria-label={t("docs.mobileNav")}>
+        {sections.flatMap((group) =>
           group.items.map((item) => (
             <NavLink
               key={item.id}
@@ -42,14 +44,15 @@ export default function DocHomePage() {
       </nav>
 
       <div className="space-y-8">
-        {DOC_SECTIONS.map((group) => (
+        {sections.map((group) => (
           <section key={group.id}>
             <p className="mb-3 font-mono text-xs uppercase tracking-wider text-purple-400">
               {group.label}
             </p>
             <ul className="grid gap-2 sm:grid-cols-2">
               {group.items.map((item) => {
-                const doc = COMPONENT_DOCS.find((d) => d.id === item.id);
+                const raw = COMPONENT_DOCS.find((d) => d.id === item.id);
+                const doc = raw ? localizeDocEntry(raw, locale) : null;
                 return (
                   <li key={item.id}>
                     <NavLink
@@ -75,7 +78,9 @@ export default function DocHomePage() {
         ))}
       </div>
 
-      <p className="mt-10 text-sm text-gray-500">{COMPONENT_DOCS.length} entradas documentadas.</p>
+      <p className="mt-10 text-sm text-gray-500">
+        {COMPONENT_DOCS.length} {t("docs.entriesCount")}
+      </p>
     </>
   );
 }

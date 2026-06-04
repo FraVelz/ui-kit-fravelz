@@ -2,6 +2,8 @@ import { NavLink, useLocation } from "react-router-dom";
 import { cn, Container, GradientText, IconArrowRight, Text, Title } from "./kit";
 import { PACKAGE } from "./docs/registry";
 import { DOCS_HOME, SITE_HOME } from "./docs/paths";
+import LanguageSwitcher from "./i18n/LanguageSwitcher";
+import { useLocale } from "./i18n/LocaleContext";
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   cn(
@@ -20,6 +22,7 @@ const ctaClass = cn(
 
 export default function SiteHeader() {
   const { pathname } = useLocation();
+  const { t } = useLocale();
   const onDocs = pathname === DOCS_HOME || pathname.startsWith(`${DOCS_HOME}/`);
 
   return (
@@ -41,40 +44,43 @@ export default function SiteHeader() {
               {onDocs && (
                 <span className="text-gray-500">
                   {" "}
-                  · <span className="text-gray-400">documentación</span>
+                  · <span className="text-gray-400">{t("nav.docsBadge")}</span>
                 </span>
               )}
             </Text>
           </div>
 
-          <nav
-            className="flex flex-wrap items-center gap-1 sm:gap-2"
-            aria-label="Navegación principal"
-          >
-            <NavLink to={SITE_HOME} end className={navLinkClass}>
-              Inicio
-            </NavLink>
-            <NavLink to={DOCS_HOME} className={navLinkClass}>
-              Documentación
-            </NavLink>
-            <a
-              href="https://www.npmjs.com/package/@fravelz/ui-kit-fravelz"
-              target="_blank"
-              rel="noreferrer"
-              className={cn(
-                "rounded-md px-3 py-1.5 text-sm text-gray-500 transition-colors",
-                "hover:text-purple-300 outline-none focus-visible:ring-2 focus-visible:ring-purple-400/80"
-              )}
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <LanguageSwitcher />
+            <nav
+              className="flex flex-wrap items-center gap-1 sm:gap-2"
+              aria-label={t("lang.label")}
             >
-              npm
-            </a>
-            {!onDocs && (
-              <NavLink to={DOCS_HOME} className={ctaClass}>
-                Componentes
-                <IconArrowRight className="!size-4" />
+              <NavLink to={SITE_HOME} end className={navLinkClass}>
+                {t("nav.home")}
               </NavLink>
-            )}
-          </nav>
+              <NavLink to={DOCS_HOME} className={navLinkClass}>
+                {t("nav.docs")}
+              </NavLink>
+              <a
+                href="https://www.npmjs.com/package/@fravelz/ui-kit-fravelz"
+                target="_blank"
+                rel="noreferrer"
+                className={cn(
+                  "rounded-md px-3 py-1.5 text-sm text-gray-500 transition-colors",
+                  "hover:text-purple-300 outline-none focus-visible:ring-2 focus-visible:ring-purple-400/80"
+                )}
+              >
+                {t("nav.npm")}
+              </a>
+              {!onDocs && (
+                <NavLink to={DOCS_HOME} className={ctaClass}>
+                  {t("nav.components")}
+                  <IconArrowRight className="!size-4" />
+                </NavLink>
+              )}
+            </nav>
+          </div>
         </div>
       </Container>
     </header>

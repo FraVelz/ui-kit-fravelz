@@ -4,6 +4,7 @@ import type { ComponentDocEntry } from "./registry";
 import { COMPONENT_DOCS, DOC_BY_ID } from "./registry";
 import { DocSection } from "./ui";
 import { docsPath, DOCS_HOME } from "./paths";
+import { useLocale } from "../i18n/LocaleContext";
 
 function neighborDocs(componentId: string): {
   prev: ComponentDocEntry | null;
@@ -21,6 +22,8 @@ function neighborDocs(componentId: string): {
 
 export default function ComponentDocPage() {
   const { componentId } = useParams<{ componentId: string }>();
+  const { t } = useLocale();
+
   if (!componentId) {
     return <Navigate to={DOCS_HOME} replace />;
   }
@@ -35,7 +38,7 @@ export default function ComponentDocPage() {
 
   return (
     <>
-      <nav className="mb-6 flex flex-wrap gap-2 lg:hidden" aria-label="Componentes">
+      <nav className="mb-6 flex flex-wrap gap-2 lg:hidden" aria-label={t("docs.mobileNav")}>
         {COMPONENT_DOCS.map((doc) => (
           <NavLink
             key={doc.id}
@@ -59,7 +62,7 @@ export default function ComponentDocPage() {
 
       <nav
         className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-gray-800 pt-6"
-        aria-label="Documentación anterior y siguiente"
+        aria-label={t("docs.pagerAria")}
       >
         {prev ? (
           <Link
@@ -75,7 +78,7 @@ export default function ComponentDocPage() {
           to={DOCS_HOME}
           className="text-sm text-gray-500 hover:text-gray-300 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
         >
-          Índice
+          {t("nav.index")}
         </Link>
         {next ? (
           <Link

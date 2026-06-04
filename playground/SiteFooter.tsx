@@ -3,6 +3,7 @@ import packageJson from "../package.json";
 import { cn, Container, GradientText, Line, Text } from "./kit";
 import { COMPONENT_DOCS, PACKAGE } from "./docs/registry";
 import { DOCS_HOME, SITE_HOME } from "./docs/paths";
+import { useLocale } from "./i18n/LocaleContext";
 
 const footerLinkClass = ({ isActive }: { isActive: boolean }) =>
   cn(
@@ -18,6 +19,8 @@ const externalLinkClass = cn(
 const CURRENT_YEAR = new Date().getFullYear();
 
 export default function SiteFooter() {
+  const { t } = useLocale();
+
   return (
     <footer className="mt-auto border-t border-cyan-500/20 bg-gradient-to-b from-gray-950 via-gray-950 to-gray-900/80">
       <Container className="py-10 md:py-12">
@@ -32,47 +35,48 @@ export default function SiteFooter() {
               </span>
             </Link>
             <Text variant="secondary" size="sm" className="!py-0 mt-3 max-w-md">
-              Biblioteca React con atoms, molecules y organisms para proyectos del portfolio.
-              Tipos TypeScript y estilos Tailwind en el consumidor.
+              {t("footer.tagline")}
             </Text>
             <p className="mt-4 font-mono text-xs text-gray-500">
               <code className="text-cyan-400/90">{PACKAGE}</code>
               <span className="mx-2 text-gray-700">·</span>
               <span>v{packageJson.version}</span>
               <span className="mx-2 text-gray-700">·</span>
-              <span>{COMPONENT_DOCS.length} componentes documentados</span>
+              <span>
+                {COMPONENT_DOCS.length} {t("footer.documented")}
+              </span>
             </p>
           </div>
 
           <div>
             <p className="mb-3 font-mono text-[10px] font-semibold uppercase tracking-wider text-purple-400">
-              Navegación
+              {t("footer.navigation")}
             </p>
-            <nav className="flex flex-col gap-0.5" aria-label="Pie — navegación">
+            <nav className="flex flex-col gap-0.5" aria-label={t("footer.navigation")}>
               <NavLink to={SITE_HOME} end className={footerLinkClass}>
-                Inicio
+                {t("nav.home")}
               </NavLink>
               <NavLink to={DOCS_HOME} className={footerLinkClass}>
-                Documentación
+                {t("nav.docs")}
               </NavLink>
               <NavLink to={DOCS_HOME} className={footerLinkClass}>
-                Índice de componentes
+                {t("nav.componentIndex")}
               </NavLink>
             </nav>
           </div>
 
           <div>
             <p className="mb-3 font-mono text-[10px] font-semibold uppercase tracking-wider text-purple-400">
-              Recursos
+              {t("footer.resources")}
             </p>
-            <nav className="flex flex-col gap-0.5" aria-label="Pie — recursos">
+            <nav className="flex flex-col gap-0.5" aria-label={t("footer.resources")}>
               <a
                 href="https://www.npmjs.com/package/@fravelz/ui-kit-fravelz"
                 target="_blank"
                 rel="noreferrer"
                 className={externalLinkClass}
               >
-                npm
+                {t("nav.npm")}
               </a>
               <a
                 href="https://github.com/FraVelz/ui-kit-fravelz"
@@ -88,7 +92,7 @@ export default function SiteFooter() {
                 rel="noreferrer"
                 className={externalLinkClass}
               >
-                README
+                {t("footer.readme")}
               </a>
             </nav>
           </div>
@@ -98,7 +102,7 @@ export default function SiteFooter() {
 
         <div className="flex flex-col gap-3 text-center text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <p>
-            © {CURRENT_YEAR} Fravelz · Licencia{" "}
+            © {CURRENT_YEAR} {t("footer.copyright")} · {t("footer.license")}{" "}
             <a
               href="https://opensource.org/licenses/ISC"
               target="_blank"
@@ -109,7 +113,7 @@ export default function SiteFooter() {
             </a>
           </p>
           <p>
-            Playground Vite — <code className="text-gray-600">npm run dev</code>
+            {t("footer.playground")} — <code className="text-gray-600">npm run dev</code>
           </p>
         </div>
       </Container>
