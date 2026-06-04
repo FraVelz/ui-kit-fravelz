@@ -9,7 +9,7 @@ import SiteNavLink from "./SiteNavLink";
 const NPM_URL = "https://www.npmjs.com/package/@fravelz/ui-kit-fravelz";
 const GITHUB_URL = "https://github.com/FraVelz/ui-kit-fravelz";
 const README_URL = "https://github.com/FraVelz/ui-kit-fravelz#readme";
-const LICENSE_URL = "https://opensource.org/licenses/ISC";
+const LICENSE_URL = "https://www.apache.org/licenses/LICENSE-2.0";
 const CURRENT_YEAR = new Date().getFullYear();
 
 export default function SiteFooter() {
@@ -46,7 +46,7 @@ export default function SiteFooter() {
               rel="noreferrer"
               className="text-gray-600 underline decoration-gray-400 underline-offset-2 hover:text-cyan-600 dark:text-gray-400 dark:decoration-gray-700 dark:hover:text-cyan-400"
             >
-              ISC
+              Apache-2.0
             </a>
             {" · "}
             <a

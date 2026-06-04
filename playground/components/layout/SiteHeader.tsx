@@ -67,12 +67,14 @@ export default function SiteHeader() {
   );
 
   const showMetaInHeader = !isHome || progress > 0.35;
+  const scrollHeader = isHome;
 
   return (
     <SiteHeaderShell
-      appearance="scroll"
-      className="header-scroll"
-      style={headerStyle}
+      appearance={scrollHeader ? "scroll" : "default"}
+      sticky
+      className={scrollHeader ? "header-scroll shrink-0" : "shrink-0"}
+      style={scrollHeader ? headerStyle : undefined}
       brand={
         <div className="flex min-h-9 items-center md:min-h-10">
           <NavLink

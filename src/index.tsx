@@ -77,6 +77,11 @@ export { default as Divided } from "./molecules/Divided";
 export { default as Grid } from "./molecules/Grid";
 export { default as List } from "./molecules/List";
 export { default as ProgressBar } from "./molecules/ProgressBar";
+export {
+  default as SegmentedControl,
+  type SegmentedControlOption,
+  type SegmentedControlProps,
+} from "./molecules/SegmentedControl";
 export { Table, TableHeader, TableRow, TableCell } from "./molecules/Table";
 export { default as Title } from "./molecules/Title";
 

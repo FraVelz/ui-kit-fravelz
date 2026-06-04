@@ -1,24 +1,26 @@
+/* Alineado con footer y shell del playground (gray-950, cyan/purple) */
+
 html:not(.dark) {
-  --fz-theme-segment-bg: #f4f4f5;
-  --fz-theme-segment-border: #d4d4d8;
-  --fz-theme-chip-active: #ffffff;
-  --fz-theme-chip-active-border: rgb(24 24 27 / 0.08);
-  --fz-theme-chip-active-shadow: 0 1px 2px rgb(15 23 42 / 0.08);
-  --fz-theme-icon: #71717a;
-  --fz-theme-icon-hover: #18181b;
+  --fz-theme-segment-bg: rgb(249 250 251 / 0.65);
+  --fz-theme-segment-border: rgb(6 182 212 / 0.18);
+  --fz-theme-chip-active: rgb(255 255 255 / 0.95);
+  --fz-theme-chip-active-border: rgb(6 182 212 / 0.28);
+  --fz-theme-chip-active-shadow: 0 1px 2px rgb(15 23 42 / 0.06);
+  --fz-theme-icon: #6b7280;
+  --fz-theme-icon-hover: #374151;
   --fz-theme-icon-active: #0891b2;
 }
 
 html.dark {
-  --fz-theme-segment-bg: #18181b;
-  --fz-theme-segment-border: #3f3f46;
-  --fz-theme-chip-active: #09090b;
-  --fz-theme-chip-active-border: rgb(250 250 250 / 0.12);
+  --fz-theme-segment-bg: rgb(17 24 39 / 0.45);
+  --fz-theme-segment-border: rgb(6 182 212 / 0.12);
+  --fz-theme-chip-active: rgb(3 7 18 / 0.85);
+  --fz-theme-chip-active-border: rgb(6 182 212 / 0.22);
   --fz-theme-chip-active-shadow:
-    0 0 0 1px rgb(255 255 255 / 0.08), inset 0 1px 0 rgb(255 255 255 / 0.04);
-  --fz-theme-icon: #a1a1aa;
-  --fz-theme-icon-hover: #fafafa;
-  --fz-theme-icon-active: #22d3ee;
+    0 0 0 1px rgb(6 182 212 / 0.08), inset 0 1px 0 rgb(6 182 212 / 0.06);
+  --fz-theme-icon: #6b7280;
+  --fz-theme-icon-hover: #9ca3af;
+  --fz-theme-icon-active: #67e8f9;
 }
 
 .fz-theme-segment {
@@ -29,6 +31,12 @@ html.dark {
   border-radius: 9999px;
   border: 1px solid var(--fz-theme-segment-border);
   background: var(--fz-theme-segment-bg);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.03);
+}
+
+html:not(.dark) .fz-theme-segment {
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.6);
 }
 
 .fz-theme-segment-btn {
@@ -37,7 +45,7 @@ html.dark {
   justify-content: center;
   width: 2.25rem;
   height: 2.25rem;
-  border: 0;
+  border: 1px solid transparent;
   padding: 0;
   border-radius: 9999px;
   background: transparent;
@@ -52,11 +60,15 @@ html.dark {
 
 .fz-theme-segment-btn:hover {
   color: var(--fz-theme-icon-hover);
-  background: color-mix(in srgb, var(--fz-theme-icon-hover) 6%, transparent);
+  background: rgb(6 182 212 / 0.06);
+}
+
+html.dark .fz-theme-segment-btn:hover {
+  background: rgb(6 182 212 / 0.08);
 }
 
 .fz-theme-segment-btn:focus-visible {
-  outline: 2px solid rgb(34 211 238 / 0.8);
+  outline: 2px solid rgb(34 211 238 / 0.55);
   outline-offset: 2px;
 }
 
@@ -64,7 +76,7 @@ html.dark {
   color: var(--fz-theme-icon-active);
   background-color: var(--fz-theme-chip-active);
   box-shadow: var(--fz-theme-chip-active-shadow);
-  border: 1px solid var(--fz-theme-chip-active-border);
+  border-color: var(--fz-theme-chip-active-border);
 }
 
 .fz-theme-segment-icon {

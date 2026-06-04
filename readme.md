@@ -8,7 +8,7 @@ Publicada en npm como [`@fravelz/ui-kit-fravelz`](https://www.npmjs.com/package/
 | ------------ | ------- |
 | **Versión**  | 1.2.0   |
 | **Autor**    | Fravelz |
-| **Licencia** | ISC     |
+| **Licencia** | Apache-2.0 |
 
 > Al publicar una nueva versión, actualiza `version` aquí y en `package.json`, luego `npm publish`.
 

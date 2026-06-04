@@ -9,9 +9,9 @@ import LandingPage from "./features/home/LandingPage";
 
 export default function App() {
   return (
-    <div className="flex min-h-screen flex-col overflow-x-hidden bg-gray-50 text-gray-900 transition-colors dark:bg-gray-950 dark:text-gray-100">
+    <div className="flex min-h-screen flex-col bg-gray-50 text-gray-900 transition-colors dark:bg-gray-950 dark:text-gray-100">
       <SiteHeader />
-      <main className="flex-1">
+      <main className="min-w-0 flex-1">
         <Routes>
           <Route path={SITE_HOME} element={<LandingPage />} />
           <Route path={DOCS_HOME} element={<DocsLayout />}>

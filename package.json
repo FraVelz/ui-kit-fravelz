@@ -15,6 +15,7 @@
   },
   "files": [
     "dist",
+    "LICENSE",
     "readme.md"
   ],
   "publishConfig": {
@@ -81,7 +82,7 @@
     "fravelz"
   ],
   "author": "Fravelz",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/FraVelz/ui-kit-fravelz/issues"
   },

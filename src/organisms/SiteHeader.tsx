@@ -41,7 +41,7 @@ export default function SiteHeader({
         "z-50 border-b",
         appearance === "default" &&
           "border-cyan-500/20 bg-white/90 backdrop-blur-md dark:bg-gray-950/95",
-        appearance === "scroll" && "border-transparent",
+        appearance === "scroll" && "border-b bg-transparent",
         sticky && "sticky top-0",
         className
       )}

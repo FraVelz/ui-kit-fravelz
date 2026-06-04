@@ -10,10 +10,7 @@ export function DocSidebar({ sections }: { sections: DocSectionGroup[] }) {
   const { t } = useLocale();
 
   return (
-    <nav
-      className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto pr-2 lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:pr-4"
-      aria-label={t("docs.sidebarAria")}
-    >
+    <nav className="pr-2 lg:pr-4" aria-label={t("docs.sidebarAria")}>
       <ul className="mb-6 space-y-1">
         <li>
           <SiteNavLink to={DOCS_HOME} end layout="docs">
