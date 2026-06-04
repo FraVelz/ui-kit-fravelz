@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import packageJson from "../../../package.json";
 import { GradientText, SiteFooter as SiteFooterShell, SiteFooterColumn, Text } from "../../kit";
 import { DOCS_HOME, SITE_HOME } from "../../features/docs/paths";
-import { COMPONENT_DOCS, PACKAGE } from "../../features/docs/registry";
 import { useLocale } from "../../i18n/LocaleContext";
+import ThemeSwitcher from "../../theme/ThemeSwitcher";
 import SiteExternalLink from "./SiteExternalLink";
 import SiteNavLink from "./SiteNavLink";
 
@@ -31,25 +30,16 @@ export default function SiteFooter() {
           <Text variant="secondary" size="sm" className="!py-0 mt-3 max-w-md">
             {t("footer.tagline")}
           </Text>
-          <p className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-gray-600 dark:text-gray-500">
-            <code className="text-cyan-700 dark:text-cyan-400/90">{PACKAGE}</code>
-            <span className="text-gray-400 dark:text-gray-700" aria-hidden>
-              ·
-            </span>
-            <span>v{packageJson.version}</span>
-            <span className="text-gray-400 dark:text-gray-700" aria-hidden>
-              ·
-            </span>
-            <span>
-              {COMPONENT_DOCS.length} {t("footer.documented")}
-            </span>
-          </p>
         </>
       }
-      bottom={
+      toolbar={<ThemeSwitcher />}
+      legal={
         <>
           <p>
-            © {CURRENT_YEAR} {t("footer.copyright")} · {t("footer.license")}{" "}
+            © {CURRENT_YEAR} {t("footer.copyright")}
+          </p>
+          <p>
+            {t("footer.license")}{" "}
             <a
               href={LICENSE_URL}
               target="_blank"
@@ -58,15 +48,21 @@ export default function SiteFooter() {
             >
               ISC
             </a>
-          </p>
-          <p>
-            {t("footer.playground")} — <code className="text-gray-600">npm run dev</code>
+            {" · "}
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="text-gray-600 hover:text-cyan-600 dark:text-gray-400 dark:hover:text-cyan-400"
+            >
+              Fravelz
+            </a>
           </p>
         </>
       }
     >
-      <SiteFooterColumn title={t("footer.navigation")} ariaLabel={t("footer.navigation")}>
-        <nav className="flex flex-col gap-0.5">
+      <SiteFooterColumn title={t("footer.documentation")} ariaLabel={t("footer.documentation")}>
+        <nav className="flex flex-col gap-1">
           <SiteNavLink to={SITE_HOME} end layout="footer">
             {t("nav.home")}
           </SiteNavLink>
@@ -79,8 +75,8 @@ export default function SiteFooter() {
         </nav>
       </SiteFooterColumn>
 
-      <SiteFooterColumn title={t("footer.resources")} ariaLabel={t("footer.resources")}>
-        <nav className="flex flex-col gap-0.5">
+      <SiteFooterColumn title={t("footer.project")} ariaLabel={t("footer.project")}>
+        <nav className="flex flex-col gap-1">
           <SiteExternalLink href={NPM_URL}>{t("nav.npm")}</SiteExternalLink>
           <SiteExternalLink href={GITHUB_URL}>GitHub</SiteExternalLink>
           <SiteExternalLink href={README_URL}>{t("footer.readme")}</SiteExternalLink>

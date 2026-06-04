@@ -12,6 +12,7 @@ import {
 } from "../../kit";
 import RouterButtonLink from "../../components/RouterButtonLink";
 import { DOCS_HOME } from "../docs/paths";
+import { PACKAGE } from "../docs/registry";
 import { useLocale } from "../../i18n/LocaleContext";
 import { countByLayer } from "./landing-data";
 import InstallPanel from "./InstallPanel";
@@ -48,9 +49,12 @@ export default function LandingPage() {
               <Title headingLevel="h1" className="!mb-4 !text-3xl sm:!text-4xl md:!text-5xl">
                 <GradientText variant="cyan-purple">UI Kit Fravelz</GradientText>
               </Title>
-              <Text size="lg" className="!py-0 mb-8 text-gray-600 dark:text-gray-300">
-                {t("landing.hero")}
-              </Text>
+            <Text size="lg" className="!py-0 mb-4 text-gray-600 dark:text-gray-300">
+              {t("landing.hero")}
+            </Text>
+            <p className="mb-8 font-mono text-xs text-gray-500 sm:text-sm">
+              <code className="text-cyan-700 dark:text-cyan-400/90">{PACKAGE}</code>
+            </p>
               <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
                 <RouterButtonLink to={DOCS_HOME} size="lg" className="w-full sm:w-auto">
                   {t("landing.ctaExplore")}

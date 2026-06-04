@@ -17,6 +17,8 @@ const es = {
   footer: {
     tagline:
       "Biblioteca React con atoms, molecules y organisms para proyectos del portfolio. Tipos TypeScript y estilos Tailwind en el consumidor.",
+    documentation: "Documentación",
+    project: "Proyecto",
     navigation: "Navegación",
     resources: "Recursos",
     readme: "README",
@@ -177,6 +179,7 @@ const es = {
   theme: {
     label: "Tema",
     light: "Claro",
+    system: "Sistema",
     dark: "Oscuro",
   },
 } as const;
@@ -198,6 +201,8 @@ const en = {
   footer: {
     tagline:
       "React library with atoms, molecules, and organisms for portfolio projects. TypeScript types and Tailwind styles in the consumer app.",
+    documentation: "Documentation",
+    project: "Project",
     navigation: "Navigation",
     resources: "Resources",
     readme: "README",
@@ -355,6 +360,7 @@ const en = {
   theme: {
     label: "Theme",
     light: "Light",
+    system: "System",
     dark: "Dark",
   },
 };

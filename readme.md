@@ -12,6 +12,8 @@ Publicada en npm como [`@fravelz/ui-kit-fravelz`](https://www.npmjs.com/package/
 
 > Al publicar una nueva versión, actualiza `version` aquí y en `package.json`, luego `npm publish`.
 
+**Idiomas:** Español · [English](readme.en.md)
+
 ---
 
 ## Instalación
@@ -50,6 +52,32 @@ Importación por componente (tree-shaking depende del bundler):
 
 ```tsx
 import { Alert, Badge, Grid, Roadmap } from "@fravelz/ui-kit-fravelz";
+```
+
+### Shells de cabecera y pie
+
+```tsx
+import {
+  SiteHeader,
+  SiteFooter,
+  SiteFooterColumn,
+} from "@fravelz/ui-kit-fravelz";
+
+<SiteHeader
+  brand={<a href="/">Mi app</a>}
+  meta={<span className="text-xs">v1.0</span>}
+  actions={<nav>{/* enlaces */}</nav>}
+/>;
+
+<SiteFooter
+  brand={<p>Descripción del proyecto</p>}
+  toolbar={/* selector de tema, etc. */}
+  legal={<p>© 2026 Mi equipo</p>}
+>
+  <SiteFooterColumn title="Enlaces">
+    <nav>{/* … */}</nav>
+  </SiteFooterColumn>
+</SiteFooter>;
 ```
 
 ---
@@ -102,7 +130,7 @@ npm link @fravelz/ui-kit-fravelz
 src/
   atoms/          # Button, Link, Input, Alert, … (.tsx)
   molecules/      # Card, Grid, Table, Title, …
-  organisms/      # Section, Message, Roadmap, Structure
+  organisms/      # Section, Message, Roadmap, SiteHeader, SiteFooter, …
   types/          # unions y tipos compartidos
   index.tsx       # reexportaciones públicas
 playground/       # app Vite solo para desarrollo (no se publica en npm)
@@ -127,7 +155,7 @@ dist/             # salida de tsc: .js + .d.ts (lo que publica npm)
 
 ### Organisms
 
-`Section`, `Structure` (+ `CurriculumAside`, `CurriculumFull`), `Message`, `Roadmap`
+`Section`, `Structure` (+ `CurriculumAside`, `CurriculumFull`), `Message`, `Roadmap`, `SiteHeader`, `SiteFooter` (+ `SiteFooterColumn`)
 
 ---
 
@@ -135,7 +163,7 @@ dist/             # salida de tsc: .js + .d.ts (lo que publica npm)
 
 - **Primarios:** cyan (`#06B6D4`) y purple (`#A855F7`)
 - Variantes en botones, enlaces, alertas y timeline (`Roadmap`)
-- Pensado para fondos oscuros (`gray-900`)
+- Pensado para fondos oscuros (`gray-900`); el playground incluye selector de tema claro/oscuro
 
 ---
 

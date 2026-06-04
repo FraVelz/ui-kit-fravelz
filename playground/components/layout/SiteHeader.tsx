@@ -1,17 +1,18 @@
+import type { CSSProperties } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   GradientText,
   IconArrowRight,
   SiteHeader as SiteHeaderShell,
   Text,
-  Title,
 } from "../../kit";
 import { DOCS_HOME, SITE_HOME } from "../../features/docs/paths";
 import { PACKAGE } from "../../features/docs/registry";
+import { useHeaderScroll } from "../../hooks/useHeaderScroll";
 import LanguageSwitcher from "../../i18n/LanguageSwitcher";
-import ThemeSwitcher from "../../theme/ThemeSwitcher";
 import { useLocale } from "../../i18n/LocaleContext";
 import HeaderComponentsCta from "./HeaderComponentsCta";
+import "./header-scroll.css";
 import SiteExternalLink from "./SiteExternalLink";
 import SiteHeaderNav from "./SiteHeaderNav";
 import SiteNavLink from "./SiteNavLink";
@@ -22,6 +23,16 @@ export default function SiteHeader() {
   const { pathname } = useLocation();
   const { t } = useLocale();
   const onDocs = pathname === DOCS_HOME || pathname.startsWith(`${DOCS_HOME}/`);
+  const isHome = pathname === SITE_HOME;
+  const { progress, logoInteractive, headerOpacity, logoOpacity } = useHeaderScroll(isHome);
+
+  const headerStyle = {
+    "--header-opacity": String(headerOpacity),
+  } as CSSProperties;
+
+  const logoStyle = {
+    "--logo-opacity": String(logoOpacity),
+  } as CSSProperties;
 
   const navLinks = (
     <>
@@ -43,34 +54,46 @@ export default function SiteHeader() {
     </>
   );
 
+  const metaLine = (
+    <Text variant="muted" className="!py-0 truncate text-xs sm:text-sm">
+      <code className="text-cyan-700 dark:text-cyan-400/90">{PACKAGE}</code>
+      {onDocs && (
+        <span className="text-gray-600 dark:text-gray-500">
+          {" "}
+          · <span className="text-gray-700 dark:text-gray-400">{t("nav.docsBadge")}</span>
+        </span>
+      )}
+    </Text>
+  );
+
+  const showMetaInHeader = !isHome || progress > 0.35;
+
   return (
     <SiteHeaderShell
+      appearance="scroll"
+      className="header-scroll"
+      style={headerStyle}
       brand={
-        <NavLink
-          to={SITE_HOME}
-          className="block rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
-          end
-        >
-          <Title headingLevel="h1" className="!mb-0 !text-xl sm:!text-2xl">
-            <GradientText variant="cyan-purple">UI Kit Fravelz</GradientText>
-          </Title>
-        </NavLink>
-      }
-      meta={
-        <Text variant="muted" className="!py-0 truncate text-xs sm:text-sm">
-          <code className="text-cyan-700 dark:text-cyan-400/90">{PACKAGE}</code>
-          {onDocs && (
-            <span className="text-gray-600 dark:text-gray-500">
-              {" "}
-              · <span className="text-gray-700 dark:text-gray-400">{t("nav.docsBadge")}</span>
+        <div className="flex min-h-9 items-center md:min-h-10">
+          <NavLink
+            id="logo-container"
+            to={SITE_HOME}
+            end
+            className="logo-scroll block rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
+            style={logoStyle}
+            aria-hidden={logoInteractive ? undefined : true}
+            tabIndex={logoInteractive ? undefined : -1}
+          >
+            <span className="text-lg font-bold sm:text-xl">
+              <GradientText variant="cyan-purple">UI Kit Fravelz</GradientText>
             </span>
-          )}
-        </Text>
+          </NavLink>
+        </div>
       }
+      meta={showMetaInHeader ? metaLine : null}
       actions={
         <>
           <div className="flex w-full flex-wrap items-center justify-center gap-2 sm:justify-end">
-            <ThemeSwitcher />
             <LanguageSwitcher />
           </div>
           <SiteHeaderNav menuLabel={t("nav.menu")} ariaLabel={t("lang.label")}>

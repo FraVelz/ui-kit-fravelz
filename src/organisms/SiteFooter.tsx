@@ -5,7 +5,6 @@ import type { ReactNode } from "react";
 import type { ContainerSize } from "../types";
 import { cn } from "../lib/cn";
 import Container from "../molecules/Container";
-import Line from "../atoms/Line";
 
 export interface SiteFooterColumnProps {
   title: string;
@@ -31,12 +30,14 @@ export function SiteFooterColumn({ title, children, ariaLabel, className }: Site
 }
 
 export interface SiteFooterProps {
-  /** Columna principal (logo, tagline, metadatos); ocupa 2 columnas en lg */
+  /** Columna principal (logo, tagline); ocupa 2 columnas en lg */
   brand: ReactNode;
   /** Columnas secundarias: usar `<SiteFooterColumn />` */
   children: ReactNode;
-  /** Barra bajo el separador (copyright, notas) */
-  bottom: ReactNode;
+  /** Barra inferior izquierda (p. ej. selector de tema) */
+  toolbar?: ReactNode;
+  /** Barra inferior derecha (copyright, legal) */
+  legal?: ReactNode;
   className?: string;
   containerClassName?: string;
   containerSize?: ContainerSize;
@@ -45,11 +46,14 @@ export interface SiteFooterProps {
 export default function SiteFooter({
   brand,
   children,
-  bottom,
+  toolbar,
+  legal,
   className = "",
   containerClassName = "",
   containerSize = "md",
 }: SiteFooterProps) {
+  const showBottomBar = toolbar != null || legal != null;
+
   return (
     <footer
       className={cn(
@@ -58,16 +62,27 @@ export default function SiteFooter({
       )}
     >
       <Container size={containerSize} className={cn("py-10 md:py-12", containerClassName)}>
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4">
-          <div className="sm:col-span-2 lg:col-span-2">{brand}</div>
-          {children}
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+          <div className="sm:col-span-2 lg:col-span-5">{brand}</div>
+          <div className="grid grid-cols-1 gap-8 sm:col-span-2 sm:grid-cols-2 lg:col-span-7 lg:gap-10">
+            {children}
+          </div>
         </div>
 
-        <Line variant="subtle" className="!my-8" />
-
-        <div className="flex flex-col gap-3 text-center text-xs text-gray-600 dark:text-gray-500 sm:flex-row sm:items-center sm:justify-between sm:text-left">
-          {bottom}
-        </div>
+        {showBottomBar ? (
+          <div className="mt-10 flex flex-col gap-4 border-t border-gray-200 pt-8 dark:border-gray-800/80 sm:mt-12 sm:flex-row sm:items-center sm:justify-between">
+            {toolbar ? (
+              <div className="flex justify-center sm:justify-start">{toolbar}</div>
+            ) : (
+              <span className="hidden sm:block" />
+            )}
+            {legal ? (
+              <div className="flex flex-col gap-1 text-center text-xs text-gray-600 dark:text-gray-500 sm:items-end sm:text-right">
+                {legal}
+              </div>
+            ) : null}
+          </div>
+        ) : null}
       </Container>
     </footer>
   );

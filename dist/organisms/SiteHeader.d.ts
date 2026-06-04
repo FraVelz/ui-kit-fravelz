@@ -1,7 +1,7 @@
 /**
  * SiteHeader — shell de cabecera global (marca, meta y acciones configurables).
  */
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import type { ContainerSize } from "../types";
 export interface SiteHeaderProps {
     /** Bloque izquierdo: título, logo o enlace de inicio */
@@ -11,9 +11,12 @@ export interface SiteHeaderProps {
     /** Bloque derecho: idioma, navegación, CTAs */
     actions: ReactNode;
     className?: string;
+    style?: CSSProperties;
     containerClassName?: string;
     containerSize?: ContainerSize;
     sticky?: boolean;
+    /** `scroll`: fondo vía CSS vars (--header-opacity) en className del consumidor */
+    appearance?: "default" | "scroll";
 }
-export default function SiteHeader({ brand, meta, actions, className, containerClassName, containerSize, sticky, }: SiteHeaderProps): import("react").JSX.Element;
+export default function SiteHeader({ brand, meta, actions, className, style, containerClassName, containerSize, sticky, appearance, }: SiteHeaderProps): import("react").JSX.Element;
 //# sourceMappingURL=SiteHeader.d.ts.map

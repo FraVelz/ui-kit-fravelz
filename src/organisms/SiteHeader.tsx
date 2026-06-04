@@ -1,7 +1,7 @@
 /**
  * SiteHeader — shell de cabecera global (marca, meta y acciones configurables).
  */
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import type { ContainerSize } from "../types";
 import { cn } from "../lib/cn";
 import Container from "../molecules/Container";
@@ -14,9 +14,12 @@ export interface SiteHeaderProps {
   /** Bloque derecho: idioma, navegación, CTAs */
   actions: ReactNode;
   className?: string;
+  style?: CSSProperties;
   containerClassName?: string;
   containerSize?: ContainerSize;
   sticky?: boolean;
+  /** `scroll`: fondo vía CSS vars (--header-opacity) en className del consumidor */
+  appearance?: "default" | "scroll";
 }
 
 export default function SiteHeader({
@@ -24,14 +27,21 @@ export default function SiteHeader({
   meta,
   actions,
   className = "",
+  style,
   containerClassName = "",
   containerSize = "md",
   sticky = true,
+  appearance = "default",
 }: SiteHeaderProps) {
   return (
     <header
+      id={appearance === "scroll" ? "header" : undefined}
+      style={style}
       className={cn(
-        "z-50 border-b border-cyan-500/20 bg-white/90 backdrop-blur-md dark:bg-gray-950/95",
+        "z-50 border-b",
+        appearance === "default" &&
+          "border-cyan-500/20 bg-white/90 backdrop-blur-md dark:bg-gray-950/95",
+        appearance === "scroll" && "border-transparent",
         sticky && "sticky top-0",
         className
       )}
