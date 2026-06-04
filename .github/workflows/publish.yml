@@ -40,8 +40,6 @@ jobs:
   publish:
     needs: quality
     runs-on: ubuntu-latest
-    # Debe coincidir exactamente con el environment en GitHub y en npm Trusted Publisher
-    environment: Production
 
     steps:
       - name: Checkout
@@ -65,7 +63,8 @@ jobs:
       - name: Ensure npm for OIDC token exchange
         run: npm install -g npm@11.6.2
 
+      - name: Build package for registry
+        run: pnpm run build
+
       - name: Publish to npm (OIDC)
-        run: pnpm publish --access public --provenance --no-git-checks
-        env:
-          NODE_AUTH_TOKEN: ""
+        run: npm publish --access public --provenance

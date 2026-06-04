@@ -2,11 +2,11 @@
 
 Usar cuando el usuario invoque **`/release-publish`** o pida **publicar en npm**, **subir tag** y **disparar el workflow Publish**.
 
-Publicación vía **OIDC** (Trusted Publisher en npm): workflow `.github/workflows/publish.yml`, environment `production`, archivo `publish.yml`. El push del tag `v*` dispara el publish en GitHub.
+Publicación vía **OIDC** (Trusted Publisher en npm): workflow `.github/workflows/publish.yml`. El push del tag `v*` dispara el publish en GitHub.
 
 ## Requisitos previos (comprobar una vez)
 
-- Trusted Publisher en npm: repo **`FraVelz/ui-kit-fravelz`**, workflow **`publish.yml`**, environment **`Production`** (igual que en GitHub → Settings → Environments).
+- Trusted Publisher en npm: repo **`FraVelz/ui-kit-fravelz`**, workflow **`publish.yml`**, campo **Environment vacío** (no hace falta crear environments en GitHub).
 - `git config core.hooksPath` → `.githooks`
 - Rama **`main`** actualizada en remoto.
 - **No** usar `Co-authored-by: Cursor` ni trailers del agente en commits.
@@ -115,7 +115,7 @@ git push origin :refs/tags/vVERSION
 # corregir, luego de nuevo tag + push
 ```
 
-Alternativa manual sin tag: **Actions → Publish → Run workflow** en `main` (environment `production`), con `package.json` ya en la versión deseada.
+Alternativa manual sin tag: **Actions → Publish → Run workflow** en `main`, con `package.json` ya en la versión deseada.
 
 ## No hacer
 
