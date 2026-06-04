@@ -11,7 +11,6 @@ import "prismjs/components/prism-markup";
 import "./code-block.css";
 import type { CodeLanguage } from "../types";
 import { cn } from "../lib/cn";
-import { focusCyan } from "../lib/focus";
 import { IconCheck, IconCopy } from "../lib/icons";
 
 export interface CodeProps {
@@ -79,7 +78,7 @@ export default function Code({
         "fz-code-block__copy",
         isCopied && "fz-code-block__copy--copied",
         compact && "fz-code-block__copy--overlay",
-        focusCyan
+        "outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"
       )}
     >
       <CopyIcon className="!size-3.5 shrink-0" />

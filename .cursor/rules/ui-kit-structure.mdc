@@ -20,7 +20,8 @@ Este repositorio es una **biblioteca npm** de componentes React, no una app web.
 - **No** promover componentes a carpetas globales fuera de atoms/molecules/organisms.
 - El código fuente editable está en **`src/**/*.tsx`** y **`src/**/*.ts`**; **`dist/`** es salida de `tsc` (JS + `.d.ts`) y es lo que publica npm (`files: ["dist"]`).
 - Tras cambiar `src/`, ejecutar `npm run build` antes de publicar o linkear.
-- Estilos con **clases Tailwind**; el consumidor debe tener Tailwind configurado.
+- Estilos con **clases Tailwind** en el JSX del componente; el consumidor debe tener Tailwind configurado.
+- **No** extraer clases repetidas a variables ni `src/lib/focus.ts`-style helpers; ver regla `no-style-variables.mdc`.
 - **React** y **react-dom** son solo `peerDependencies`; no añadirlos a `dependencies`.
 
 ## Imports internos

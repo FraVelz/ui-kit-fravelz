@@ -1,0 +1,142 @@
+@keyframes fz-landing-drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6%, -5%) scale(1.08);
+  }
+}
+
+@keyframes fz-landing-drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-5%, 6%) scale(1.06);
+  }
+}
+
+@keyframes fz-landing-drift-c {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.28;
+  }
+  50% {
+    transform: translate(4%, 4%) scale(1.1);
+    opacity: 0.38;
+  }
+}
+
+@keyframes fz-landing-shimmer {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.fz-landing-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.fz-landing-bg__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(88px);
+  will-change: transform;
+}
+
+.fz-landing-bg__orb--cyan {
+  width: min(58vw, 440px);
+  height: min(58vw, 440px);
+  left: -12%;
+  top: 0;
+  animation: fz-landing-drift-a 24s ease-in-out infinite;
+}
+
+.fz-landing-bg__orb--purple {
+  width: min(50vw, 380px);
+  height: min(50vw, 380px);
+  right: -8%;
+  top: 18%;
+  animation: fz-landing-drift-b 28s ease-in-out infinite;
+}
+
+.fz-landing-bg__orb--mix {
+  width: min(42vw, 320px);
+  height: min(42vw, 320px);
+  left: 35%;
+  top: 42%;
+  animation: fz-landing-drift-c 32s ease-in-out infinite;
+}
+
+.fz-landing-bg__mesh {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 20%, rgb(6 182 212 / 0.12), transparent 55%),
+    radial-gradient(ellipse 70% 45% at 80% 30%, rgb(168 85 247 / 0.1), transparent 50%);
+  animation: fz-landing-shimmer 20s ease-in-out infinite;
+}
+
+.fz-landing-bg__fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgb(248 250 252 / 0.5) 45%,
+    rgb(248 250 252 / 0.95) 78%,
+    rgb(248 250 252) 100%
+  );
+}
+
+.dark .fz-landing-bg__fade {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgb(3 7 18 / 0.4) 45%,
+    rgb(3 7 18 / 0.92) 78%,
+    rgb(3 7 18) 100%
+  );
+}
+
+.dark .fz-landing-bg__orb--cyan {
+  background: rgb(6 182 212 / 0.22);
+}
+
+.dark .fz-landing-bg__orb--purple {
+  background: rgb(168 85 247 / 0.2);
+}
+
+.fz-landing-bg__orb--cyan {
+  background: rgb(6 182 212 / 0.14);
+}
+
+.fz-landing-bg__orb--purple {
+  background: rgb(168 85 247 / 0.12);
+}
+
+.fz-landing-bg__orb--mix {
+  background: linear-gradient(135deg, rgb(6 182 212 / 0.1), rgb(168 85 247 / 0.08));
+}
+
+.dark .fz-landing-bg__orb--mix {
+  background: linear-gradient(135deg, rgb(6 182 212 / 0.18), rgb(168 85 247 / 0.16));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fz-landing-bg__orb,
+  .fz-landing-bg__mesh {
+    animation: none;
+  }
+}

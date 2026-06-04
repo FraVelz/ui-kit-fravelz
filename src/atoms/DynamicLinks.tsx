@@ -6,7 +6,6 @@ import { useState } from "react";
 import type { ReactNode } from "react";
 import { NavLink, type NavLinkProps } from "react-router-dom";
 import { cn } from "../lib/cn";
-import { focusLinkCyan } from "../lib/focus";
 
 export interface DynamicLinkProps {
   children: ReactNode;
@@ -32,7 +31,7 @@ export default function DynamicLink({ children, to, className = "" }: DynamicLin
       className={({ isActive }) =>
         cn(
           "cursor-pointer select-none transition-all duration-300 pb-[2px] border-b-2 rounded-sm",
-          focusLinkCyan,
+          "outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950",
           isActive && "border-blue-500 focus-visible:ring-blue-400/80",
           !isActive && visitedLinks[pathKey] && "border-gray-500",
           !isActive && !visitedLinks[pathKey] && "border-transparent hover:border-gray-400",

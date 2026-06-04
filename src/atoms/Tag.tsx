@@ -5,7 +5,6 @@
 import type { ReactNode } from "react";
 import type { TagVariant } from "../types";
 import { cn } from "../lib/cn";
-import { focusForTagVariant } from "../lib/focus";
 import { IconClose } from "../lib/icons";
 
 export interface TagProps {
@@ -25,15 +24,19 @@ export default function Tag({
   onRemove,
   interactive = false,
 }: TagProps) {
-  const focusRing = focusForTagVariant(variant);
-
   return (
     <span
       role={interactive ? "button" : undefined}
       tabIndex={interactive ? 0 : undefined}
       className={cn(
         "inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-all",
-        interactive && cn("cursor-pointer", focusRing),
+        interactive &&
+          cn(
+            "cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950",
+            variant === "purple"
+              ? "focus-visible:ring-purple-400/80"
+              : "focus-visible:ring-cyan-400/80"
+          ),
         variant === "cyan" &&
           cn("bg-cyan-500/10 text-cyan-300 border border-cyan-500/30", "hover:border-cyan-400/60"),
         variant === "purple" &&
@@ -59,7 +62,10 @@ export default function Tag({
           aria-label="Remove tag"
           className={cn(
             "ml-1 hover:opacity-75 transition-opacity cursor-pointer p-0.5 rounded-full",
-            focusRing
+            "outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950",
+            variant === "purple"
+              ? "focus-visible:ring-purple-400/80"
+              : "focus-visible:ring-cyan-400/80"
           )}
         >
           <IconClose />

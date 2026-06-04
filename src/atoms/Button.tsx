@@ -1,7 +1,6 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import type { ButtonVariant, SizeSmMdLg } from "../types";
 import { cn } from "../lib/cn";
-import { focusForVariant } from "../lib/focus";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -22,7 +21,10 @@ export default function Button({
       type="button"
       className={cn(
         "rounded-full cursor-pointer transition-all duration-300",
-        focusForVariant(variant),
+        "outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950",
+        variant === "outline"
+          ? "focus-visible:ring-purple-400/80"
+          : "focus-visible:ring-cyan-400/80",
         size === "sm" && "px-3 py-1 text-sm",
         size === "md" && "px-4 py-2",
         size === "lg" && "px-6 py-3 text-lg",

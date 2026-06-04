@@ -5,7 +5,6 @@
 import type { MouseEvent, ReactNode } from "react";
 import type { LinkVariant } from "../types";
 import { cn } from "../lib/cn";
-import { focusLinkCyan, focusLinkPurple } from "../lib/focus";
 
 export interface LinkProps {
   href: string;
@@ -51,10 +50,21 @@ export default function Link({
       onClick={handleClick}
       className={cn(
         "select-none underline transition-colors",
-        variant === "default" && cn("text-cyan-300 hover:text-cyan-200", focusLinkCyan),
-        variant === "purple" && cn("text-purple-300 hover:text-purple-200", focusLinkPurple),
+        variant === "default" &&
+          cn(
+            "text-cyan-300 hover:text-cyan-200",
+            "outline-none rounded-sm focus-visible:ring-2 focus-visible:ring-cyan-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"
+          ),
+        variant === "purple" &&
+          cn(
+            "text-purple-300 hover:text-purple-200",
+            "outline-none rounded-sm focus-visible:ring-2 focus-visible:ring-purple-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"
+          ),
         variant === "accent" &&
-          cn("text-cyan-400 font-semibold hover:text-cyan-300", focusLinkCyan),
+          cn(
+            "text-cyan-400 font-semibold hover:text-cyan-300",
+            "outline-none rounded-sm focus-visible:ring-2 focus-visible:ring-cyan-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"
+          ),
         className
       )}
     >

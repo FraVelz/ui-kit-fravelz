@@ -56,6 +56,82 @@ const es = {
     integrateText:
       "Instala el paquete, configura Tailwind en tu app e importa solo lo que necesitas.",
     integrateCta: "Ir a la documentación",
+    stats: {
+      version: "Versión publicada",
+      documented: "Piezas documentadas",
+      typescript: "Tipos incluidos",
+      license: "Licencia abierta",
+    },
+    quickStartTitle: "Empezar en minutos",
+    quickStartSubtitle: "Cuatro pasos desde cero hasta el primer componente en pantalla",
+    steps: {
+      install: {
+        title: "Instalar el paquete",
+        description: "Añade @fravelz/ui-kit-fravelz con npm, pnpm, bun o yarn junto a react y react-dom.",
+      },
+      tailwind: {
+        title: "Configurar Tailwind",
+        description:
+          "Incluye el paquete en el content de Tailwind para que escanee las clases de dist/.",
+      },
+      import: {
+        title: "Importar componentes",
+        description: "Importa solo lo que uses desde el entry público; el bundle admite tree-shaking.",
+      },
+      docs: {
+        title: "Explorar la documentación",
+        description: "Revisa props, ejemplos y vistas previas interactivas en /docs.",
+      },
+    },
+    popularTitle: "Componentes más consultados",
+    popularSubtitle: "Acceso directo a fichas con demo en vivo",
+    popular: {
+      button: "Botones con variantes y tamaños",
+      card: "Cards para bloques de contenido",
+      code: "Bloques de código con copiar",
+      section: "Secciones de página con título",
+      "call-to-action": "CTAs con gradiente cyan–púrpura",
+    },
+    viewDoc: "Ver ficha",
+    stackTitle: "Requisitos del proyecto",
+    stackSubtitle: "Pensado para apps React modernas con utilidades Tailwind",
+    stack: {
+      react: {
+        title: "React 18+",
+        description: "Peer dependencies: react y react-dom en tu aplicación.",
+      },
+      tailwind: {
+        title: "Tailwind CSS v4",
+        description: "Las clases viven en los componentes; tu app debe compilar Tailwind.",
+      },
+      typescript: {
+        title: "TypeScript",
+        description: "Definiciones .d.ts publicadas en npm para autocompletado seguro.",
+      },
+      tree: {
+        title: "Importaciones modulares",
+        description: "Sin estilos globales obligatorios; importa átomos o organismos sueltos.",
+      },
+    },
+    faqTitle: "Preguntas frecuentes",
+    faq: {
+      tailwind: {
+        q: "¿Por qué no veo los estilos?",
+        a: "Tailwind debe escanear node_modules/@fravelz/ui-kit-fravelz/dist. Sin eso, las utilidades del kit no se generan.",
+      },
+      theme: {
+        q: "¿El kit trae tema claro?",
+        a: "Los componentes usan paleta oscura por defecto. En tu app puedes envolverlos y añadir variantes dark: en Tailwind.",
+      },
+      playground: {
+        q: "¿Qué es este sitio?",
+        a: "Es un playground Vite para probar el paquete. La librería publicada solo incluye dist/, no esta web.",
+      },
+      router: {
+        q: "¿Funciona con React Router?",
+        a: "Sí. Los enlaces internos de tu app los defines tú; DynamicLink y los organismos SiteHeader/SiteFooter aceptan slots.",
+      },
+    },
   },
   docs: {
     homeTitle: "Documentación del UI Kit",
@@ -96,6 +172,11 @@ const es = {
     label: "Idioma",
     es: "ES",
     en: "EN",
+  },
+  theme: {
+    label: "Tema",
+    light: "Claro",
+    dark: "Oscuro",
   },
 } as const;
 
@@ -153,6 +234,81 @@ const en = {
     integrateTitle: "Ready to integrate",
     integrateText: "Install the package, configure Tailwind, and import only what you need.",
     integrateCta: "Go to documentation",
+    stats: {
+      version: "Published version",
+      documented: "Documented pieces",
+      typescript: "Types included",
+      license: "Open license",
+    },
+    quickStartTitle: "Get started in minutes",
+    quickStartSubtitle: "Four steps from zero to your first component on screen",
+    steps: {
+      install: {
+        title: "Install the package",
+        description: "Add @fravelz/ui-kit-fravelz with npm, pnpm, bun, or yarn plus react and react-dom.",
+      },
+      tailwind: {
+        title: "Configure Tailwind",
+        description: "Include the package in Tailwind content so it scans classes from dist/.",
+      },
+      import: {
+        title: "Import components",
+        description: "Import only what you need from the public entry; the bundle supports tree-shaking.",
+      },
+      docs: {
+        title: "Browse the docs",
+        description: "Check props, examples, and live previews at /docs.",
+      },
+    },
+    popularTitle: "Popular components",
+    popularSubtitle: "Jump straight to docs with live demos",
+    popular: {
+      button: "Buttons with variants and sizes",
+      card: "Cards for content blocks",
+      code: "Syntax-highlighted code with copy",
+      section: "Page sections with titles",
+      "call-to-action": "CTAs with cyan–purple gradient",
+    },
+    viewDoc: "View docs",
+    stackTitle: "Project requirements",
+    stackSubtitle: "Built for modern React apps using Tailwind utilities",
+    stack: {
+      react: {
+        title: "React 18+",
+        description: "Peer dependencies: react and react-dom in your application.",
+      },
+      tailwind: {
+        title: "Tailwind CSS v4",
+        description: "Classes ship with components; your app must compile Tailwind.",
+      },
+      typescript: {
+        title: "TypeScript",
+        description: ".d.ts definitions published on npm for safe autocomplete.",
+      },
+      tree: {
+        title: "Modular imports",
+        description: "No mandatory global CSS; import individual atoms or organisms.",
+      },
+    },
+    faqTitle: "FAQ",
+    faq: {
+      tailwind: {
+        q: "Why don't I see any styles?",
+        a: "Tailwind must scan node_modules/@fravelz/ui-kit-fravelz/dist. Without that, kit utilities won't be generated.",
+      },
+      theme: {
+        q: "Does the kit include a light theme?",
+        a: "Components default to a dark palette. Wrap them in your app and add dark: variants in Tailwind if needed.",
+      },
+      playground: {
+        q: "What is this site?",
+        a: "A Vite playground to try the package. The published library only ships dist/, not this website.",
+      },
+      router: {
+        q: "Does it work with React Router?",
+        a: "Yes. You wire internal links; DynamicLink and SiteHeader/SiteFooter organisms accept custom slots.",
+      },
+    },
   },
   docs: {
     homeTitle: "UI Kit documentation",
@@ -193,6 +349,11 @@ const en = {
     label: "Language",
     es: "ES",
     en: "EN",
+  },
+  theme: {
+    label: "Theme",
+    light: "Light",
+    dark: "Dark",
   },
 };
 

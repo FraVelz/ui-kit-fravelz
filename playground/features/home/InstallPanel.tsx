@@ -37,7 +37,7 @@ export default function InstallPanel() {
       </Text>
 
       <div
-        className="mb-4 inline-flex flex-wrap gap-1 rounded-md border border-gray-700 p-0.5"
+        className="mb-4 inline-flex flex-wrap gap-1 rounded-md border border-gray-300 p-0.5 dark:border-gray-700"
         role="tablist"
         aria-label={t("landing.installTitle")}
       >
@@ -51,8 +51,8 @@ export default function InstallPanel() {
             className={cn(
               "rounded px-3 py-1.5 font-mono text-xs transition-colors outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80",
               manager === pm
-                ? "bg-cyan-500/15 text-cyan-300"
-                : "text-gray-500 hover:text-gray-300"
+                ? "bg-cyan-500/15 text-cyan-700 dark:text-cyan-300"
+                : "text-gray-500 hover:text-gray-800 dark:hover:text-gray-300"
             )}
           >
             {pm}

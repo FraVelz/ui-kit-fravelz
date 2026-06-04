@@ -33,11 +33,11 @@ export default function Text({
         size === "base" && "text-base",
         size === "lg" && "text-lg",
         size === "xl" && "text-xl",
-        variant === "default" && "text-gray-300",
-        variant === "secondary" && "text-gray-400",
+        variant === "default" && "text-gray-700 dark:text-gray-300",
+        variant === "secondary" && "text-gray-600 dark:text-gray-400",
         variant === "muted" && "text-gray-500",
-        variant === "accent" && "text-cyan-300",
-        variant === "highlight" && "text-purple-300",
+        variant === "accent" && "text-cyan-700 dark:text-cyan-300",
+        variant === "highlight" && "text-purple-700 dark:text-purple-300",
         className
       )}
     >

@@ -1,0 +1,57 @@
+---
+description: No extraer clases Tailwind a variables ni helpers de estilos
+alwaysApply: true
+---
+
+# Estilos en componentes, no en variables
+
+**Nunca** refactorizar clases Tailwind repetidas en:
+
+- Constantes (`const linkClass = "..."`)
+- Variables de módulo (`const navLinkClass = ...`)
+- Funciones cuyo único propósito sea devolver `className` (`function buttonStyles() { return cn(...) }`)
+- Archivos tipo `styles.ts`, `classes.ts`, `focus.ts` solo para strings de utilidades
+
+Si el mismo aspecto visual se usa en varios sitios, **crea o extiende un componente React** (atom, molecule o componente de layout del playground) y declara las clases **dentro del JSX** de ese componente.
+
+## Permitido
+
+- `className` en el elemento con utilidades Tailwind
+- `cn(...)` **inline** en el `className` del componente (condiciones por props/estado)
+- Callback de `NavLink` **inline** en el prop: `className={({ isActive }) => cn("...", isActive && "...")}` solo si no se extrae a una constante del módulo
+- `className` como prop del componente para overrides puntuales del consumidor
+
+## No permitido
+
+```tsx
+// ❌
+const primaryBtn =
+  "rounded-full bg-gradient-to-r from-cyan-600 to-purple-600 ...";
+<Link className={cn(primaryBtn, "px-6")} />
+
+// ❌
+const navLinkClass = ({ isActive }) => cn("...", isActive && "...");
+<NavLink className={navLinkClass} />
+```
+
+```tsx
+// ✅
+function RouterPrimaryLink({ to, children }) {
+  return (
+    <Link
+      to={to}
+      className="inline-flex rounded-full bg-gradient-to-r from-cyan-600 to-purple-600 ..."
+    >
+      {children}
+    </Link>
+  );
+}
+```
+
+## Playground
+
+Los patrones del header, footer, landing y docs deben vivir en `playground/components/` (p. ej. `SiteNavLink`, `RouterButtonLink`), no en strings compartidas fuera de un componente.
+
+## Biblioteca (`src/`)
+
+Misma regla: focus rings, variantes y estados van en cada atom/molecule, no en `src/lib/focus.ts` ni módulos equivalentes.

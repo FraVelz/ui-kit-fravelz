@@ -11,7 +11,6 @@ import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-markup";
 import "./code-block.css";
 import { cn } from "../lib/cn";
-import { focusCyan } from "../lib/focus";
 import { IconCheck, IconCopy } from "../lib/icons";
 const LANGUAGE_LABEL = {
     javascript: "JavaScript",
@@ -51,6 +50,6 @@ export default function Code({ codeContent, language = "javascript", className, 
     };
     const copyLabel = isCopied ? "Copied" : "Copy";
     const CopyIcon = isCopied ? IconCheck : IconCopy;
-    const copyButton = (_jsxs("button", { type: "button", onClick: handleCopy, "aria-label": isCopied ? "Copied to clipboard" : "Copy code to clipboard", className: cn("fz-code-block__copy", isCopied && "fz-code-block__copy--copied", compact && "fz-code-block__copy--overlay", focusCyan), children: [_jsx(CopyIcon, { className: "!size-3.5 shrink-0" }), _jsx("span", { children: copyLabel })] }));
+    const copyButton = (_jsxs("button", { type: "button", onClick: handleCopy, "aria-label": isCopied ? "Copied to clipboard" : "Copy code to clipboard", className: cn("fz-code-block__copy", isCopied && "fz-code-block__copy--copied", compact && "fz-code-block__copy--overlay", "outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"), children: [_jsx(CopyIcon, { className: "!size-3.5 shrink-0" }), _jsx("span", { children: copyLabel })] }));
     return (_jsx("div", { className: cn("fz-code-block", compact && "fz-code-block--compact", className), children: _jsxs("div", { className: "fz-code-block__shell", children: [!compact && (_jsxs("div", { className: "fz-code-block__toolbar", children: [_jsx("span", { className: "fz-code-block__lang", children: LANGUAGE_LABEL[prismLanguage] ?? prismLanguage }), copyButton] })), compact && copyButton, _jsx("pre", { className: cn("fz-code-block__pre", langClass), children: _jsx("code", { ref: codeRef, className: langClass, children: codeContent }) })] }) }));
 }

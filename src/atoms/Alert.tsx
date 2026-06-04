@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import type { AlertType } from "../types";
 import { cn } from "../lib/cn";
-import { focusForAlertType } from "../lib/focus";
 import { alertIcons, IconClose } from "../lib/icons";
 
 export interface AlertProps {
@@ -50,7 +49,10 @@ export default function Alert({
             aria-label="Dismiss alert"
             className={cn(
               "hover:opacity-75 transition-opacity cursor-pointer p-0.5 rounded-md",
-              focusForAlertType(type)
+              "outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950",
+              type === "warning" || type === "error"
+                ? "focus-visible:ring-purple-400/80"
+                : "focus-visible:ring-cyan-400/80"
             )}
           >
             <IconClose />

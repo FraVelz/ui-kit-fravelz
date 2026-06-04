@@ -34,3 +34,5 @@ export { default as Section } from "../src/organisms/Section";
 export { default as Structure, CurriculumAside, CurriculumFull } from "../src/organisms/Structure";
 export { default as Message } from "../src/organisms/Message";
 export { default as Roadmap } from "../src/organisms/Roadmap";
+export { default as SiteHeader } from "../src/organisms/SiteHeader";
+export { default as SiteFooter, SiteFooterColumn } from "../src/organisms/SiteFooter";

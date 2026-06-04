@@ -9,7 +9,7 @@ import LandingPage from "./features/home/LandingPage";
 
 export default function App() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-gray-50 text-gray-900 transition-colors dark:bg-gray-950 dark:text-gray-100">
       <SiteHeader />
       <main className="flex-1">
         <Routes>

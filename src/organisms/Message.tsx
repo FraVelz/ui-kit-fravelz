@@ -6,7 +6,6 @@ import { createPortal } from "react-dom";
 import type { ReactNode } from "react";
 import type { MessageVariant } from "../types";
 import { cn } from "../lib/cn";
-import { focusGradient } from "../lib/focus";
 
 export interface MessageProps {
   children: ReactNode;
@@ -45,7 +44,7 @@ export default function Message({ children, onClose, title, variant = "default" 
             "bg-gradient-to-r from-cyan-600 to-purple-600",
             "hover:from-cyan-500 hover:to-purple-500",
             "shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50",
-            focusGradient
+            "outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"
           )}
         >
           Close

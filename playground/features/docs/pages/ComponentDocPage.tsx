@@ -46,8 +46,8 @@ export default function ComponentDocPage() {
             className={({ isActive }) =>
               `rounded-full border px-3 py-1 text-xs transition-colors ${
                 isActive
-                  ? "border-cyan-500/50 bg-cyan-500/10 text-cyan-300"
-                  : "border-gray-700 text-gray-300"
+                  ? "border-cyan-500/50 bg-cyan-500/10 text-cyan-700 dark:text-cyan-300"
+                  : "border-gray-300 text-gray-700 dark:border-gray-700 dark:text-gray-300"
               }`
             }
           >
@@ -61,13 +61,13 @@ export default function ComponentDocPage() {
       </DocSection>
 
       <nav
-        className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-gray-800 pt-6"
+        className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-gray-200 pt-6 dark:border-gray-800"
         aria-label={t("docs.pagerAria")}
       >
         {prev ? (
           <Link
             to={docsPath(prev.id)}
-            className="text-sm text-cyan-300 hover:text-cyan-200 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
+            className="text-sm text-cyan-700 hover:text-cyan-900 dark:text-cyan-300 dark:hover:text-cyan-200 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
           >
             ← {prev.name}
           </Link>
@@ -76,14 +76,14 @@ export default function ComponentDocPage() {
         )}
         <Link
           to={DOCS_HOME}
-          className="text-sm text-gray-500 hover:text-gray-300 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
+          className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-300 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
         >
           {t("nav.index")}
         </Link>
         {next ? (
           <Link
             to={docsPath(next.id)}
-            className="text-sm text-cyan-300 hover:text-cyan-200 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
+            className="text-sm text-cyan-700 hover:text-cyan-900 dark:text-cyan-300 dark:hover:text-cyan-200 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
           >
             {next.name} →
           </Link>

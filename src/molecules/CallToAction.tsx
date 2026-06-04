@@ -5,7 +5,6 @@
 import type { ReactNode } from "react";
 import type { ButtonVariant } from "../types";
 import { cn } from "../lib/cn";
-import { focusForVariant } from "../lib/focus";
 
 export interface CallToActionProps {
   children: ReactNode;
@@ -31,7 +30,10 @@ export default function CallToAction({
       draggable={false}
       className={cn(
         "inline-flex items-center gap-3 px-6 py-3 rounded-full font-semibold transition-all text-lg",
-        focusForVariant(variant),
+        "outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950",
+        variant === "outline"
+          ? "focus-visible:ring-purple-400/80"
+          : "focus-visible:ring-cyan-400/80",
         variant === "primary" &&
           cn(
             "bg-gradient-to-r from-cyan-600 to-purple-600 text-white",
