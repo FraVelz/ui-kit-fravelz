@@ -4,23 +4,24 @@ const SCROLL_RANGE_PX = 100;
 const LOGO_INTERACTIVE_THRESHOLD = 0.05;
 
 export function useHeaderScroll(enabled: boolean) {
-  const [progress, setProgress] = useState(enabled ? 0 : 1);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     if (!enabled) {
-      setProgress(1);
       return;
     }
 
     const handleScroll = () => {
       const next = Math.min(window.scrollY / SCROLL_RANGE_PX, 1);
-      setProgress(next);
+      setScrollProgress(next);
     };
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [enabled]);
+
+  const progress = enabled ? scrollProgress : 1;
 
   return {
     progress,

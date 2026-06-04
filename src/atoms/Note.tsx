@@ -13,7 +13,10 @@ export interface NoteProps {
 
 export default function Note({ children, className = "", id = "" }: NoteProps) {
   return (
-    <p className={cn("text-gray-500 select-auto text-lg py-2", className)} id={id}>
+    <p
+      className={cn("text-gray-600 select-auto text-lg py-2 dark:text-gray-500", className)}
+      id={id}
+    >
       {children}
     </p>
   );

@@ -36,34 +36,29 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const location = useLocation();
   const urlLocale = parseLocaleFromPathname(location.pathname);
+  const [fallbackLocale, setFallbackLocale] = useState<Locale>(readStoredLocale);
+  const { pathname, search, hash } = location;
 
-  const [locale, setLocaleState] = useState<Locale>(() => urlLocale ?? readStoredLocale());
+  const locale = urlLocale ?? fallbackLocale;
 
   useEffect(() => {
-    if (urlLocale && urlLocale !== locale) {
-      setLocaleState(urlLocale);
-      persistLocale(urlLocale);
-    }
-  }, [urlLocale, locale]);
+    persistLocale(locale);
+    document.documentElement.lang = locale;
+  }, [locale]);
 
   const setLocale = useCallback(
     (next: Locale) => {
-      if (next === locale && urlLocale === next) return;
+      if (next === locale) return;
 
-      setLocaleState(next);
-      persistLocale(next);
+      setFallbackLocale(next);
 
-      const pathname = switchLocaleInPathname(location.pathname, next);
-      if (pathname !== location.pathname) {
-        navigate({ pathname, search: location.search, hash: location.hash });
+      const nextPathname = switchLocaleInPathname(pathname, next);
+      if (nextPathname !== pathname) {
+        navigate({ pathname: nextPathname, search, hash });
       }
     },
-    [locale, urlLocale, location.pathname, location.search, location.hash, navigate]
+    [locale, navigate, pathname, search, hash]
   );
-
-  useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
 
   const value = useMemo(
     () => ({

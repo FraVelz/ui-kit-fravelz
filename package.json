@@ -3,7 +3,10 @@
   "version": "1.2.0",
   "packageManager": "pnpm@11.1.1",
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "msgpackr-extract"]
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "msgpackr-extract"
+    ]
   },
   "description": "Biblioteca de componentes React personalizados (atoms, molecules, organisms) para sitios de notas y proyectos del portfolio de Fravelz.",
   "main": "dist/index.js",
@@ -37,7 +40,7 @@
     "format": "prettier --write \"src/**/*.{ts,tsx}\" \"playground/**/*.{ts,tsx}\" \"*.{json,md}\" \".github/**/*.yml\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\" \"playground/**/*.{ts,tsx}\" \"*.{json,md}\" \".github/**/*.yml\"",
     "lint:md": "markdownlint-cli2",
-    "react-doctor": "react-doctor . --full --verbose",
+    "react:doctor": "react-doctor . --full --verbose",
     "validate": "pnpm run lint && pnpm run format:check && pnpm run typecheck && pnpm run lint:md && pnpm run build",
     "test": "echo \"No tests specified\" && exit 0"
   },
@@ -57,6 +60,7 @@
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^8.60.1",
     "@typescript-eslint/parser": "^8.60.1",
+    "@vercel/analytics": "^2.0.1",
     "@vitejs/plugin-react": "^4.7.0",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",

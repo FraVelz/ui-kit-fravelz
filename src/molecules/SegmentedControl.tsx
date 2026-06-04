@@ -13,7 +13,7 @@ export interface SegmentedControlProps<T extends string = string> {
   value: T;
   onChange: (value: T) => void;
   options: SegmentedControlOption<T>[];
-  /** Etiqueta accesible del grupo (role="group") */
+  /** Etiqueta accesible del grupo */
   "aria-label": string;
   className?: string;
 }
@@ -26,13 +26,13 @@ export default function SegmentedControl<T extends string = string>({
   className = "",
 }: SegmentedControlProps<T>) {
   return (
-    <div
+    <fieldset
+      aria-label={ariaLabel}
       className={cn(
-        "inline-flex items-center rounded-md border border-gray-300 p-0.5 dark:border-gray-700",
+        "inline-flex min-w-0 items-center rounded-md border border-gray-300 p-0.5 dark:border-gray-700",
+        "m-0 border-solid",
         className
       )}
-      role="group"
-      aria-label={ariaLabel}
     >
       {options.map((option) => (
         <button
@@ -41,7 +41,8 @@ export default function SegmentedControl<T extends string = string>({
           onClick={() => onChange(option.value)}
           aria-pressed={value === option.value}
           className={cn(
-            "rounded px-2 py-1 font-mono text-xs transition-colors outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80",
+            "rounded px-2 py-1 font-mono text-xs transition-colors",
+            "outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80",
             value === option.value
               ? "bg-cyan-500/15 text-cyan-700 dark:text-cyan-300"
               : "text-gray-500 hover:text-gray-800 dark:hover:text-gray-300"
@@ -50,6 +51,6 @@ export default function SegmentedControl<T extends string = string>({
           {option.label}
         </button>
       ))}
-    </div>
+    </fieldset>
   );
 }

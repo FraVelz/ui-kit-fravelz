@@ -52,7 +52,12 @@ export default function SiteHeader({
             {brand}
             {meta ? <div className="mt-0.5">{meta}</div> : null}
           </div>
-          <div className="flex w-full min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-end md:w-auto md:max-w-full lg:gap-3">
+          <div
+            className={cn(
+              "flex w-full min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap",
+              "sm:items-center sm:justify-end md:w-auto md:max-w-full lg:gap-3"
+            )}
+          >
             {actions}
           </div>
         </div>

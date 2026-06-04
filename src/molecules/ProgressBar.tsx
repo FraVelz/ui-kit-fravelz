@@ -32,15 +32,20 @@ export default function ProgressBar({
     <div className={className}>
       {(label || showPercentage) && (
         <div className="flex justify-between items-center mb-2">
-          {label && <span className="text-sm font-semibold text-cyan-300">{label}</span>}
+          {label && (
+            <span className="text-sm font-semibold text-cyan-700 dark:text-cyan-300">{label}</span>
+          )}
           {showPercentage && (
-            <span className="text-xs text-gray-400">{Math.round(percentage)}%</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">
+              {Math.round(percentage)}%
+            </span>
           )}
         </div>
       )}
       <div
         className={cn(
-          "w-full bg-gray-800 rounded-full overflow-hidden border border-gray-700 transition-all",
+          "w-full overflow-hidden rounded-full border border-gray-200 bg-gray-100 transition-all",
+          "dark:border-gray-700 dark:bg-gray-800",
           size === "sm" && "h-2",
           size === "md" && "h-3",
           size === "lg" && "h-4",

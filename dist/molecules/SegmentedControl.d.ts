@@ -10,7 +10,7 @@ export interface SegmentedControlProps<T extends string = string> {
     value: T;
     onChange: (value: T) => void;
     options: SegmentedControlOption<T>[];
-    /** Etiqueta accesible del grupo (role="group") */
+    /** Etiqueta accesible del grupo */
     "aria-label": string;
     className?: string;
 }

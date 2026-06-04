@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes, useParams } from "react-router-dom";
+import { cn } from "./kit";
 import SiteFooter from "./components/layout/SiteFooter";
 import SiteHeader from "./components/layout/SiteHeader";
 import DocsLayout from "./features/docs/components/DocsLayout";
@@ -26,7 +27,12 @@ function LegacyComponentDocRedirect() {
 
 export default function App() {
   return (
-    <div className="flex min-h-screen flex-col bg-gray-50 text-gray-900 transition-colors dark:bg-gray-950 dark:text-gray-100">
+    <div
+      className={cn(
+        "flex min-h-screen flex-col bg-gray-50 text-gray-900 transition-colors",
+        "dark:bg-gray-950 dark:text-gray-100"
+      )}
+    >
       <SiteHeader />
       <main className="min-w-0 flex-1">
         <Routes>

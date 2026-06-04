@@ -25,3 +25,9 @@ export type StackKey = (typeof STACK_KEYS)[number];
 export const FAQ_KEYS = ["tailwind", "theme", "playground", "router"] as const;
 
 export type FaqKey = (typeof FAQ_KEYS)[number];
+
+export const LANDING_FEATURES = [
+  { key: "atoms" as const, badge: "cyan" as const, count: countByLayer("Atom") },
+  { key: "molecules" as const, badge: "purple" as const, count: countByLayer("Molecule") },
+  { key: "organisms" as const, badge: "success" as const, count: countByLayer("Organism") },
+];

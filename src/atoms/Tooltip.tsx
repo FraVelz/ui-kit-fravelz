@@ -41,12 +41,20 @@ export default function Tooltip({
             position === "bottom" && "top-full mt-2",
             position === "left" && "right-full mr-2",
             position === "right" && "left-full ml-2",
-            variant === "default" && cn("bg-gray-800 border border-cyan-500/40 text-cyan-300"),
-            variant === "dark" && cn("bg-gray-900 border border-gray-700 text-gray-200"),
+            variant === "default" &&
+              cn(
+                "bg-white border border-cyan-500/50 text-cyan-800 shadow-md",
+                "dark:bg-gray-800 dark:border-cyan-500/40 dark:text-cyan-300 dark:shadow-none"
+              ),
+            variant === "dark" &&
+              cn(
+                "bg-gray-100 border border-gray-300 text-gray-800",
+                "dark:bg-gray-900 dark:border-gray-700 dark:text-gray-200"
+              ),
             variant === "highlight" &&
               cn(
-                "bg-gradient-to-r from-cyan-600/20 to-purple-600/20",
-                "border border-cyan-500/40 text-cyan-300"
+                "bg-gradient-to-r from-cyan-500/15 to-purple-500/15 border border-cyan-500/50 text-cyan-800",
+                "dark:from-cyan-600/20 dark:to-purple-600/20 dark:border-cyan-500/40 dark:text-cyan-300"
               ),
             className
           )}
@@ -54,7 +62,8 @@ export default function Tooltip({
           {content}
           <div
             className={cn(
-              "absolute w-2 h-2 bg-gray-800 border-b border-r border-cyan-500/40 transform rotate-45",
+              "absolute w-2 h-2 bg-white border-b border-r border-cyan-500/50 transform rotate-45",
+              "dark:bg-gray-800 dark:border-cyan-500/40",
               position === "top" && "bottom-0 translate-y-1/2",
               position === "bottom" && "top-0 -translate-y-1/2"
             )}

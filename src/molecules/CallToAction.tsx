@@ -30,7 +30,8 @@ export default function CallToAction({
       draggable={false}
       className={cn(
         "inline-flex items-center gap-3 px-6 py-3 rounded-full font-semibold transition-all text-lg",
-        "outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950",
+        "outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+        "focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950",
         variant === "outline"
           ? "focus-visible:ring-purple-400/80"
           : "focus-visible:ring-cyan-400/80",
@@ -42,15 +43,23 @@ export default function CallToAction({
           ),
         variant === "secondary" &&
           cn(
-            "bg-gray-900 border-2 border-cyan-500/40 text-cyan-300",
-            "hover:border-cyan-400/60 hover:text-cyan-200"
+            "bg-white border-2 border-cyan-600/40 text-cyan-700",
+            "hover:border-cyan-500/60 hover:text-cyan-800",
+            "dark:bg-gray-900 dark:border-cyan-500/40 dark:text-cyan-300",
+            "dark:hover:border-cyan-400/60 dark:hover:text-cyan-200"
           ),
         variant === "outline" &&
           cn(
-            "bg-transparent border-2 border-purple-500/40 text-purple-300",
-            "hover:border-purple-400/60 hover:text-purple-200"
+            "bg-transparent border-2 border-purple-600/40 text-purple-700",
+            "hover:border-purple-500/60 hover:text-purple-800",
+            "dark:border-purple-500/40 dark:text-purple-300",
+            "dark:hover:border-purple-400/60 dark:hover:text-purple-200"
           ),
-        variant === "ghost" && "text-cyan-300 hover:text-cyan-200 hover:bg-cyan-500/10",
+        variant === "ghost" &&
+          cn(
+            "text-cyan-700 hover:text-cyan-800 hover:bg-cyan-500/10",
+            "dark:text-cyan-300 dark:hover:text-cyan-200"
+          ),
         className
       )}
     >

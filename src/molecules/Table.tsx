@@ -6,6 +6,15 @@ import type { ReactNode } from "react";
 import type { TableCellAlignment } from "../types";
 import { cn } from "../lib/cn";
 
+const EMPTY_HEADERS: string[] = [];
+
+const EXAMPLE_TABLE_HEADERS = ["Name", "Email", "Role", "Status"];
+
+const EXAMPLE_TABLE_DATA = [
+  { name: "Carlos Pérez", email: "carlos@example.com", role: "Admin", status: "Active" },
+  { name: "Laura Gómez", email: "laura@example.com", role: "Editor", status: "Inactive" },
+];
+
 export interface TableProps {
   children: ReactNode;
   className?: string;
@@ -15,12 +24,15 @@ export function Table({ children, className = "" }: TableProps) {
   return (
     <div
       className={cn(
-        "m-4 h-fit overflow-x-auto rounded-lg border border-cyan-500/30",
-        "hover:border-cyan-400/60 transition-colors",
+        "m-4 h-fit overflow-x-auto rounded-lg border border-cyan-500/40 shadow-sm",
+        "hover:border-cyan-500/60 transition-colors",
+        "dark:border-cyan-500/30 dark:shadow-none dark:hover:border-cyan-400/60",
         className
       )}
     >
-      <table className="w-full text-left border-collapse bg-gray-900">{children}</table>
+      <table className="w-full text-left border-collapse bg-white dark:bg-gray-900">
+        {children}
+      </table>
     </div>
   );
 }
@@ -29,12 +41,17 @@ export interface TableHeaderProps {
   headers?: string[];
 }
 
-export function TableHeader({ headers = [] }: TableHeaderProps) {
+export function TableHeader({ headers = EMPTY_HEADERS }: TableHeaderProps) {
   return (
-    <thead className="bg-gray-800 text-cyan-300 uppercase text-xs font-semibold border-b border-cyan-500/30">
+    <thead
+      className={cn(
+        "bg-gray-100 text-xs font-semibold uppercase text-cyan-800",
+        "border-b border-cyan-500/40 dark:bg-gray-800 dark:text-cyan-300 dark:border-cyan-500/30"
+      )}
+    >
       <tr>
-        {headers.map((header, index) => (
-          <th key={index} className="px-4 py-4">
+        {headers.map((header) => (
+          <th key={header} className="px-4 py-4">
             {header}
           </th>
         ))}
@@ -52,8 +69,8 @@ export function TableRow({ children, enableHover = true }: TableRowProps) {
   return (
     <tr
       className={cn(
-        "border-b border-gray-700/50 text-gray-300",
-        enableHover && "hover:bg-gray-800/50 transition-colors"
+        "border-b border-gray-200/80 text-gray-700 dark:border-gray-700/50 dark:text-gray-300",
+        enableHover && "hover:bg-gray-50 transition-colors dark:hover:bg-gray-800/50"
       )}
     >
       {children}
@@ -82,18 +99,12 @@ export function TableCell({ children, alignment = "left" }: TableCellProps) {
 }
 
 export default function ExampleTable() {
-  const tableHeaders = ["Name", "Email", "Role", "Status"];
-  const tableData = [
-    { name: "Carlos Pérez", email: "carlos@example.com", role: "Admin", status: "Active" },
-    { name: "Laura Gómez", email: "laura@example.com", role: "Editor", status: "Inactive" },
-  ];
-
   return (
     <Table className="max-w-6xl mx-auto">
-      <TableHeader headers={tableHeaders} />
+      <TableHeader headers={EXAMPLE_TABLE_HEADERS} />
       <tbody>
-        {tableData.map((user, index) => (
-          <TableRow key={index}>
+        {EXAMPLE_TABLE_DATA.map((user) => (
+          <TableRow key={user.email}>
             <TableCell>{user.name}</TableCell>
             <TableCell>{user.email}</TableCell>
             <TableCell>{user.role}</TableCell>
@@ -102,9 +113,15 @@ export default function ExampleTable() {
                 className={cn(
                   "px-3 py-1 rounded-full text-xs font-semibold",
                   user.status === "Active" &&
-                    "bg-cyan-500/20 text-cyan-300 border border-cyan-500/40",
+                    cn(
+                      "border border-cyan-500/50 bg-cyan-500/15 text-cyan-800",
+                      "dark:border-cyan-500/40 dark:bg-cyan-500/20 dark:text-cyan-300"
+                    ),
                   user.status !== "Active" &&
-                    "bg-gray-700/40 text-gray-400 border border-gray-600/40"
+                    cn(
+                      "border border-gray-300 bg-gray-100 text-gray-600",
+                      "dark:border-gray-600/40 dark:bg-gray-700/40 dark:text-gray-400"
+                    )
                 )}
               >
                 {user.status}

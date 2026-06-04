@@ -1,7 +1,8 @@
 import { Link, Navigate, NavLink, useParams } from "react-router-dom";
+import { cn } from "../../../kit";
 import { useLocale } from "../../../i18n/LocaleContext";
-import { ComponentPreview } from "../components/Previews";
-import { DocSection } from "../components/ui";
+import { ComponentPreview } from "../components/previews";
+import DocSection from "../components/DocSection";
 import { useLocalePaths } from "../paths";
 import type { ComponentDocEntry } from "../registry";
 import { COMPONENT_DOCS, DOC_BY_ID } from "../registry";
@@ -62,13 +63,19 @@ export default function ComponentDocPage() {
       </DocSection>
 
       <nav
-        className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-gray-200 pt-6 dark:border-gray-800"
+        className={cn(
+          "mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-gray-200 pt-6",
+          "dark:border-gray-800"
+        )}
         aria-label={t("docs.pagerAria")}
       >
         {prev ? (
           <Link
             to={docsPath(prev.id)}
-            className="text-sm text-cyan-700 hover:text-cyan-900 dark:text-cyan-300 dark:hover:text-cyan-200 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
+            className={cn(
+              "rounded-md text-sm outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80",
+              "text-cyan-700 hover:text-cyan-900 dark:text-cyan-300 dark:hover:text-cyan-200"
+            )}
           >
             ← {prev.name}
           </Link>
@@ -77,14 +84,20 @@ export default function ComponentDocPage() {
         )}
         <Link
           to={docsHome}
-          className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-300 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
+          className={cn(
+            "rounded-md text-sm outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80",
+            "text-gray-600 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-300"
+          )}
         >
           {t("nav.index")}
         </Link>
         {next ? (
           <Link
             to={docsPath(next.id)}
-            className="text-sm text-cyan-700 hover:text-cyan-900 dark:text-cyan-300 dark:hover:text-cyan-200 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
+            className={cn(
+              "rounded-md text-sm outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80",
+              "text-cyan-700 hover:text-cyan-900 dark:text-cyan-300 dark:hover:text-cyan-200"
+            )}
           >
             {next.name} →
           </Link>

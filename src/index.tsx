@@ -86,7 +86,9 @@ export { Table, TableHeader, TableRow, TableCell } from "./molecules/Table";
 export { default as Title } from "./molecules/Title";
 
 export { default as Section } from "./organisms/Section";
-export { default as Structure, CurriculumAside, CurriculumFull } from "./organisms/Structure";
+export { default as Structure } from "./organisms/Structure";
+export { default as CurriculumAside } from "./organisms/CurriculumAside";
+export { default as CurriculumFull } from "./organisms/CurriculumFull";
 export { default as Message } from "./organisms/Message";
 export { default as Roadmap } from "./organisms/Roadmap";
 export { default as SiteHeader } from "./organisms/SiteHeader";

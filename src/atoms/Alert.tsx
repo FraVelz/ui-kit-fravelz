@@ -27,11 +27,14 @@ export default function Alert({
       className={cn(
         "p-4 rounded-lg transition-all",
         (type === "info" || type === "success") &&
-          cn("bg-cyan-500/10 border border-cyan-500/30 text-cyan-300", "hover:border-cyan-500/60"),
+          cn(
+            "bg-cyan-50 border border-cyan-500/40 text-cyan-900 hover:border-cyan-500/70",
+            "dark:bg-cyan-500/10 dark:border-cyan-500/30 dark:text-cyan-300 dark:hover:border-cyan-500/60"
+          ),
         (type === "warning" || type === "error") &&
           cn(
-            "bg-purple-500/10 border border-purple-500/30 text-purple-300",
-            "hover:border-purple-500/60"
+            "bg-purple-50 border border-purple-500/40 text-purple-900 hover:border-purple-500/70",
+            "dark:bg-purple-500/10 dark:border-purple-500/30 dark:text-purple-300 dark:hover:border-purple-500/60"
           ),
         className
       )}
@@ -49,7 +52,8 @@ export default function Alert({
             aria-label="Dismiss alert"
             className={cn(
               "hover:opacity-75 transition-opacity cursor-pointer p-0.5 rounded-md",
-              "outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950",
+              "outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+              "focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950",
               type === "warning" || type === "error"
                 ? "focus-visible:ring-purple-400/80"
                 : "focus-visible:ring-cyan-400/80"

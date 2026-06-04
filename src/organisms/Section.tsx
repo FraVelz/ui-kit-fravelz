@@ -31,11 +31,16 @@ export default function Section({
       id={id ?? undefined}
       className={cn(
         "py-8 px-4 transition-all sm:py-10 md:py-12",
-        variant === "default" && cn("bg-gray-900/50 border-t border-b border-cyan-500/20"),
+        variant === "default" &&
+          cn(
+            "bg-gray-50/80 border-t border-b border-cyan-500/25",
+            "dark:bg-gray-900/50 dark:border-cyan-500/20"
+          ),
         variant === "highlighted" &&
           cn(
-            "bg-gradient-to-br from-cyan-900/10 via-gray-900 to-purple-900/10",
-            "border border-cyan-500/30 rounded-lg"
+            "bg-gradient-to-br from-cyan-50/60 via-white to-purple-50/60",
+            "border border-cyan-500/35 rounded-lg",
+            "dark:from-cyan-900/10 dark:via-gray-900 dark:to-purple-900/10 dark:border-cyan-500/30"
           ),
         variant === "minimal" && "bg-transparent",
         variant === "elevated" &&

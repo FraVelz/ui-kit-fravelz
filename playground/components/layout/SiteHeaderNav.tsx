@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { cn } from "../../kit";
 
 type SiteHeaderNavProps = {
   children: ReactNode;
@@ -39,7 +40,12 @@ export default function SiteHeaderNav({ children, menuLabel, ariaLabel }: SiteHe
           ref={menuBtnRef}
           id="menu-btn"
           type="button"
-          className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-md border border-gray-300 bg-white/80 px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:border-cyan-500/40 dark:border-gray-700 dark:bg-gray-900/80 dark:text-gray-300"
+          className={cn(
+            "flex w-full cursor-pointer items-center justify-center gap-2 rounded-md border",
+            "border-gray-300 bg-white/80 px-3 py-2 text-sm font-medium text-gray-700",
+            "transition-colors hover:border-cyan-500/40",
+            "dark:border-gray-700 dark:bg-gray-900/80 dark:text-gray-300"
+          )}
           aria-expanded={menuOpen}
           aria-controls={menuId}
           onClick={() => setMenuOpen((open) => !open)}
@@ -49,11 +55,15 @@ export default function SiteHeaderNav({ children, menuLabel, ariaLabel }: SiteHe
 
         <nav
           id={menuId}
-          className={
+          className={cn(
             menuOpen
-              ? "absolute left-0 right-0 top-[calc(100%+0.5rem)] z-50 flex flex-col gap-1 rounded-lg border border-gray-200 bg-white p-2 shadow-lg dark:border-gray-700 dark:bg-gray-900"
+              ? cn(
+                  "absolute left-0 right-0 top-[calc(100%+0.5rem)] z-50",
+                  "flex flex-col gap-1 rounded-lg border border-gray-200 bg-white p-2 shadow-lg",
+                  "dark:border-gray-700 dark:bg-gray-900"
+                )
               : "hidden"
-          }
+          )}
           aria-label={ariaLabel}
         >
           {children}

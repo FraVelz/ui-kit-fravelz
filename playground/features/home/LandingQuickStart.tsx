@@ -1,4 +1,4 @@
-import { Card, Grid, IconCheck, Section, Text } from "../../kit";
+import { Card, cn, Grid, IconCheck, Section, Text } from "../../kit";
 import { useLocale } from "../../i18n/LocaleContext";
 import { QUICK_START_STEP_KEYS } from "./landing-data";
 
@@ -17,7 +17,12 @@ export default function LandingQuickStart() {
         {QUICK_START_STEP_KEYS.map((key, index) => (
           <Card key={key} variant="default" hoverable={false}>
             <div className="mb-3 flex items-center gap-2">
-              <span className="flex size-8 items-center justify-center rounded-full bg-cyan-500/15 font-mono text-sm font-bold text-cyan-700 dark:text-cyan-300">
+              <span
+                className={cn(
+                  "flex size-8 items-center justify-center rounded-full bg-cyan-500/15",
+                  "font-mono text-sm font-bold text-cyan-700 dark:text-cyan-300"
+                )}
+              >
                 {index + 1}
               </span>
               <IconCheck className="size-5 text-cyan-600 dark:text-cyan-400" />

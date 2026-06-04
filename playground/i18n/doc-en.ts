@@ -7,13 +7,15 @@ export interface DocEnEntry {
 export const DOC_EN: Record<string, DocEnEntry> = {
   cn: {
     description:
-      "Merges classes with clsx and resolves Tailwind conflicts via tailwind-merge. Handy for custom components in consumer apps.",
+      "Merges classes with clsx and resolves Tailwind conflicts via tailwind-merge. " +
+      "Handy for custom components in consumer apps.",
   },
   icons: {
     description:
       "Inline SVG icons (no emojis). Used in Alert, Tag, and Code; also exported for Badge, Input, or CallToAction.",
     notes: [
-      "Exported: IconInfo, IconSuccess, IconWarning, IconError, IconClose, IconCheck, IconCopy, IconArrowRight, alertIcons.",
+      "Exported: IconInfo, IconSuccess, IconWarning, IconError, IconClose, " +
+        "IconCheck, IconCopy, IconArrowRight, alertIcons.",
       "All accept an optional className (Tailwind, e.g. size-4).",
     ],
   },

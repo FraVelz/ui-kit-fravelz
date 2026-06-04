@@ -9,12 +9,14 @@ import {
   Section,
   Text,
   Title,
+  cn,
 } from "../../kit";
 import RouterButtonLink from "../../components/RouterButtonLink";
+import siteMeta from "../../site-meta.json";
 import { useLocalePaths } from "../docs/paths";
 import { PACKAGE } from "../docs/registry";
 import { useLocale } from "../../i18n/LocaleContext";
-import { countByLayer } from "./landing-data";
+import { LANDING_FEATURES } from "./landing-data";
 import InstallPanel from "./InstallPanel";
 import LandingBackground from "./LandingBackground";
 import LandingFaq from "./LandingFaq";
@@ -29,13 +31,7 @@ export default function LandingPage() {
   const { t } = useLocale();
   const { docsHome } = useLocalePaths();
 
-  const features = [
-    { key: "atoms" as const, badge: "cyan" as const, count: countByLayer("Atom") },
-    { key: "molecules" as const, badge: "purple" as const, count: countByLayer("Molecule") },
-    { key: "organisms" as const, badge: "success" as const, count: countByLayer("Organism") },
-  ];
-
-  const totalDocumented = features.reduce((sum, f) => sum + f.count, 0);
+  const totalDocumented = LANDING_FEATURES.reduce((sum, f) => sum + f.count, 0);
 
   return (
     <div className="relative isolate">
@@ -44,11 +40,19 @@ export default function LandingPage() {
         <Container size="md" className="py-10 sm:py-12 md:py-20">
           <div className="grid min-w-0 items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12">
             <div className="text-center lg:text-left">
+              <img
+                src={siteMeta.logoPath}
+                alt={siteMeta.name}
+                width={72}
+                height={72}
+                draggable={false}
+                className="mx-auto mb-6 size-16 rounded-xl object-contain sm:size-[4.5rem] lg:mx-0"
+              />
               <Badge variant="purple" size="sm" className="mb-6">
                 {t("landing.badge")}
               </Badge>
               <Title headingLevel="h1" className="!mb-4 !text-3xl sm:!text-4xl md:!text-5xl">
-                <GradientText variant="cyan-purple">UI Kit Fravelz</GradientText>
+                <GradientText variant="cyan-purple">{siteMeta.name}</GradientText>
               </Title>
             <Text size="lg" className="!py-0 mb-4 text-gray-600 dark:text-gray-300">
               {t("landing.hero")}
@@ -56,7 +60,12 @@ export default function LandingPage() {
             <p className="mb-8 font-mono text-xs text-gray-500 sm:text-sm">
               <code className="text-cyan-700 dark:text-cyan-400/90">{PACKAGE}</code>
             </p>
-              <div className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
+              <div
+                className={cn(
+                  "flex w-full max-w-md flex-col gap-3 sm:max-w-none",
+                  "sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start"
+                )}
+              >
                 <RouterButtonLink to={docsHome} size="lg" className="w-full sm:w-auto">
                   {t("landing.ctaExplore")}
                   <IconArrowRight />
@@ -86,7 +95,7 @@ export default function LandingPage() {
           className="border-t border-gray-200/80 dark:border-gray-800/80"
         >
           <Grid cols={3} gap="lg" responsive={false} className="!grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3">
-            {features.map((feature) => (
+            {LANDING_FEATURES.map((feature) => (
               <Card
                 key={feature.key}
                 title={t(`landing.features.${feature.key}.title`)}

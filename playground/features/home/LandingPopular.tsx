@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { cn } from "../../kit";
 import { Badge, Card, Grid, IconArrowRight, Section, Text } from "../../kit";
 import { useLocalePaths } from "../docs/paths";
 import { COMPONENT_DOCS } from "../docs/registry";
@@ -34,7 +35,12 @@ export default function LandingPopular() {
               </Text>
               <Link
                 to={docsPath(id)}
-                className="inline-flex items-center gap-1 text-sm font-medium text-cyan-700 transition-colors hover:text-cyan-900 dark:text-cyan-300 dark:hover:text-cyan-200 outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80 rounded-sm"
+                className={cn(
+                  "inline-flex items-center gap-1 rounded-sm text-sm font-medium",
+                  "text-cyan-700 transition-colors hover:text-cyan-900",
+                  "outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80",
+                  "dark:text-cyan-300 dark:hover:text-cyan-200"
+                )}
               >
                 {t("landing.viewDoc")}
                 <IconArrowRight className="!size-4" />

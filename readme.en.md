@@ -163,7 +163,7 @@ dist/             # tsc output: .js + .d.ts (what npm publishes)
 
 - **Primary accents:** cyan (`#06B6D4`) and purple (`#A855F7`)
 - Variants on buttons, links, alerts, and timeline (`Roadmap`)
-- Designed for dark backgrounds (`gray-900`); the playground also supports a light theme toggle
+- **Light and dark:** base styles for light surfaces and Tailwind `dark:` for the dark look. Consumers need `darkMode: 'class'` and `dark` on `<html>` (same as the playground)
 
 ---
 

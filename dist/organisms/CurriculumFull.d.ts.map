@@ -1,0 +1,1 @@
+{"version":3,"file":"CurriculumFull.d.ts","sourceRoot":"","sources":["../../src/organisms/CurriculumFull.tsx"],"names":[],"mappings":"AAAA;;GAEG;AACH,OAAO,KAAK,EAAE,0BAA0B,EAAE,MAAM,UAAU,CAAC;AAI3D,MAAM,WAAW,mBAAmB;IAClC,iBAAiB,EAAE,0BAA0B,CAAC;CAC/C;AAED,MAAM,CAAC,OAAO,UAAU,cAAc,CAAC,EACrC,iBAAiB,EAAE,iBAAiB,GACrC,EAAE,mBAAmB,+BAcrB"}

@@ -1,11 +1,7 @@
-import type { CSSProperties } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import {
-  GradientText,
-  IconArrowRight,
-  SiteHeader as SiteHeaderShell,
-  Text,
-} from "../../kit";
+import { useMemo, type CSSProperties } from "react";
+import { useLocation } from "react-router-dom";
+import { IconArrowRight, SiteHeader as SiteHeaderShell, Text } from "../../kit";
+import SiteBrandLogo from "./SiteBrandLogo";
 import { isDocsPath, isSiteHomePath } from "../../features/docs/paths";
 import { useLocalePaths } from "../../i18n/useLocalePaths";
 import { PACKAGE } from "../../features/docs/registry";
@@ -28,13 +24,13 @@ export default function SiteHeader() {
   const isHome = isSiteHomePath(pathname);
   const { progress, logoInteractive, headerOpacity, logoOpacity } = useHeaderScroll(isHome);
 
-  const headerStyle = {
-    "--header-opacity": String(headerOpacity),
-  } as CSSProperties;
-
-  const logoStyle = {
-    "--logo-opacity": String(logoOpacity),
-  } as CSSProperties;
+  const headerStyle = useMemo(
+    () =>
+      ({
+        "--header-opacity": String(headerOpacity),
+      }) as CSSProperties,
+    [headerOpacity]
+  );
 
   const navLinks = (
     <>
@@ -71,29 +67,31 @@ export default function SiteHeader() {
   const showMetaInHeader = !isHome || progress > 0.35;
   const scrollHeader = isHome;
 
+  const brand = useMemo(
+    () => (
+      <div className="flex min-h-9 items-center md:min-h-10">
+        <SiteBrandLogo
+          id="logo-container"
+          to={siteHome}
+          end
+          navLink
+          className="logo-scroll block min-w-0"
+          style={{ "--logo-opacity": String(logoOpacity) } as CSSProperties}
+          aria-hidden={logoInteractive ? undefined : true}
+          tabIndex={logoInteractive ? undefined : -1}
+        />
+      </div>
+    ),
+    [siteHome, logoOpacity, logoInteractive]
+  );
+
   return (
     <SiteHeaderShell
       appearance={scrollHeader ? "scroll" : "default"}
       sticky
       className={scrollHeader ? "header-scroll shrink-0" : "shrink-0"}
       style={scrollHeader ? headerStyle : undefined}
-      brand={
-        <div className="flex min-h-9 items-center md:min-h-10">
-          <NavLink
-            id="logo-container"
-            to={siteHome}
-            end
-            className="logo-scroll block rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
-            style={logoStyle}
-            aria-hidden={logoInteractive ? undefined : true}
-            tabIndex={logoInteractive ? undefined : -1}
-          >
-            <span className="text-lg font-bold sm:text-xl">
-              <GradientText variant="cyan-purple">UI Kit Fravelz</GradientText>
-            </span>
-          </NavLink>
-        </div>
-      }
+      brand={brand}
       meta={showMetaInHeader ? metaLine : null}
       actions={
         <>

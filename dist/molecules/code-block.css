@@ -1,5 +1,6 @@
 /**
  * Code block — layout en CSS (no depende solo de utilidades Tailwind en consumidores)
+ * Modo claro por defecto; tema oscuro con `.dark` en ancestro (p. ej. `<html class="dark">`).
  */
 .fz-code-block {
   margin: 1rem 0;
@@ -9,12 +10,21 @@
   position: relative;
   overflow: hidden;
   border-radius: 0.5rem;
-  border: 1px solid rgb(31 41 55);
-  background: rgb(17 24 39 / 0.55);
+  border: 1px solid rgb(229 231 235);
+  background: rgb(249 250 251 / 0.98);
   transition: border-color 0.2s ease;
 }
 
 .fz-code-block__shell:hover {
+  border-color: rgb(203 213 225);
+}
+
+.dark .fz-code-block__shell {
+  border-color: rgb(31 41 55);
+  background: rgb(17 24 39 / 0.55);
+}
+
+.dark .fz-code-block__shell:hover {
   border-color: rgb(55 65 81);
 }
 
@@ -27,7 +37,12 @@
   gap: 0.75rem;
   min-height: 2.25rem;
   padding: 0.375rem 0.75rem;
-  border-bottom: 1px solid rgb(31 41 55);
+  border-bottom: 1px solid rgb(229 231 235);
+  background: rgb(243 244 246 / 0.9);
+}
+
+.dark .fz-code-block__toolbar {
+  border-bottom-color: rgb(31 41 55);
   background: rgb(31 41 55 / 0.45);
 }
 
@@ -35,6 +50,10 @@
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.75rem;
   line-height: 1;
+  color: rgb(75 85 99);
+}
+
+.dark .fz-code-block__lang {
   color: rgb(156 163 175);
 }
 
@@ -48,11 +67,11 @@
   height: 1.75rem;
   padding: 0 0.5rem;
   border-radius: 0.375rem;
-  border: 1px solid rgb(55 65 81);
+  border: 1px solid rgb(209 213 219);
   background: transparent;
   font-size: 0.75rem;
   line-height: 1;
-  color: rgb(156 163 175);
+  color: rgb(75 85 99);
   white-space: nowrap;
   cursor: pointer;
   transition:
@@ -62,12 +81,29 @@
 }
 
 .fz-code-block__copy:hover {
+  border-color: rgb(8 145 178 / 0.45);
+  background: rgb(8 145 178 / 0.08);
+  color: rgb(14 116 144);
+}
+
+.dark .fz-code-block__copy {
+  border-color: rgb(55 65 81);
+  color: rgb(156 163 175);
+}
+
+.dark .fz-code-block__copy:hover {
   border-color: rgb(34 211 238 / 0.4);
   background: rgb(34 211 238 / 0.05);
   color: rgb(103 232 249);
 }
 
 .fz-code-block__copy--copied {
+  border-color: rgb(8 145 178 / 0.55);
+  background: rgb(8 145 178 / 0.12);
+  color: rgb(14 116 144);
+}
+
+.dark .fz-code-block__copy--copied {
   border-color: rgb(34 211 238 / 0.5);
   background: rgb(34 211 238 / 0.1);
   color: rgb(103 232 249);
@@ -85,8 +121,12 @@
   top: 0.5rem;
   right: 0.5rem;
   z-index: 2;
-  background: rgb(17 24 39 / 0.92);
+  background: rgb(255 255 255 / 0.92);
   backdrop-filter: blur(4px);
+}
+
+.dark .fz-code-block--compact .fz-code-block__copy--overlay {
+  background: rgb(17 24 39 / 0.92);
 }
 
 .fz-code-block__pre {
@@ -95,6 +135,10 @@
   overflow-x: auto;
   font-size: 0.875rem;
   line-height: 1.65;
+  color: rgb(31 41 55);
+}
+
+.dark .fz-code-block__pre {
   color: rgb(229 231 235);
 }
 
@@ -128,6 +172,7 @@
   line-height: inherit;
 }
 
+/* Tokens — modo claro */
 .fz-code-block .token.comment,
 .fz-code-block .token.prolog,
 .fz-code-block .token.doctype,
@@ -136,7 +181,7 @@
 }
 
 .fz-code-block .token.punctuation {
-  color: rgb(156 163 175);
+  color: rgb(75 85 99);
 }
 
 .fz-code-block .token.property,
@@ -145,7 +190,7 @@
 .fz-code-block .token.number,
 .fz-code-block .token.constant,
 .fz-code-block .token.symbol {
-  color: rgb(196 181 253);
+  color: rgb(109 40 217);
 }
 
 .fz-code-block .token.selector,
@@ -153,28 +198,73 @@
 .fz-code-block .token.string,
 .fz-code-block .token.char,
 .fz-code-block .token.builtin {
-  color: rgb(103 232 249);
+  color: rgb(14 116 144);
 }
 
 .fz-code-block .token.operator,
 .fz-code-block .token.entity,
 .fz-code-block .token.url,
 .fz-code-block .token.variable {
-  color: rgb(209 213 219);
+  color: rgb(55 65 81);
 }
 
 .fz-code-block .token.atrule,
 .fz-code-block .token.attr-value,
 .fz-code-block .token.keyword {
-  color: rgb(250 204 21);
+  color: rgb(161 98 7);
 }
 
 .fz-code-block .token.function,
 .fz-code-block .token.class-name {
-  color: rgb(103 232 249);
+  color: rgb(8 145 178);
 }
 
 .fz-code-block .token.regex,
 .fz-code-block .token.important {
+  color: rgb(180 83 9);
+}
+
+/* Tokens — modo oscuro */
+.dark .fz-code-block .token.property,
+.dark .fz-code-block .token.tag,
+.dark .fz-code-block .token.boolean,
+.dark .fz-code-block .token.number,
+.dark .fz-code-block .token.constant,
+.dark .fz-code-block .token.symbol {
+  color: rgb(196 181 253);
+}
+
+.dark .fz-code-block .token.selector,
+.dark .fz-code-block .token.attr-name,
+.dark .fz-code-block .token.string,
+.dark .fz-code-block .token.char,
+.dark .fz-code-block .token.builtin {
+  color: rgb(103 232 249);
+}
+
+.dark .fz-code-block .token.operator,
+.dark .fz-code-block .token.entity,
+.dark .fz-code-block .token.url,
+.dark .fz-code-block .token.variable {
+  color: rgb(209 213 219);
+}
+
+.dark .fz-code-block .token.atrule,
+.dark .fz-code-block .token.attr-value,
+.dark .fz-code-block .token.keyword {
+  color: rgb(250 204 21);
+}
+
+.dark .fz-code-block .token.function,
+.dark .fz-code-block .token.class-name {
+  color: rgb(103 232 249);
+}
+
+.dark .fz-code-block .token.regex,
+.dark .fz-code-block .token.important {
   color: rgb(251 191 36);
+}
+
+.dark .fz-code-block .token.punctuation {
+  color: rgb(156 163 175);
 }

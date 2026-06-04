@@ -30,25 +30,34 @@ export default function Badge({
         size === "lg" && "text-base px-4 py-2",
         variant === "cyan" &&
           cn(
-            "text-cyan-300 bg-gray-900 border border-cyan-500/40",
-            "hover:border-cyan-400/60 hover:bg-gray-800"
+            "text-cyan-800 bg-cyan-50 border border-cyan-500/50",
+            "hover:border-cyan-500/70 hover:bg-cyan-100/80",
+            "dark:text-cyan-300 dark:bg-gray-900 dark:border-cyan-500/40",
+            "dark:hover:border-cyan-400/60 dark:hover:bg-gray-800"
           ),
         variant === "purple" &&
           cn(
-            "text-purple-300 bg-gray-900 border border-purple-500/40",
-            "hover:border-purple-400/60 hover:bg-gray-800"
+            "text-purple-800 bg-purple-50 border border-purple-500/50",
+            "hover:border-purple-500/70 hover:bg-purple-100/80",
+            "dark:text-purple-300 dark:bg-gray-900 dark:border-purple-500/40",
+            "dark:hover:border-purple-400/60 dark:hover:bg-gray-800"
           ),
         variant === "success" &&
-          cn("text-cyan-300 bg-cyan-500/10 border border-cyan-500/40", "hover:border-cyan-400/60"),
+          cn(
+            "text-cyan-800 bg-cyan-500/15 border border-cyan-500/50 hover:border-cyan-500/70",
+            "dark:text-cyan-300 dark:bg-cyan-500/10 dark:border-cyan-500/40 dark:hover:border-cyan-400/60"
+          ),
         variant === "highlight" &&
           cn(
-            "text-white bg-gradient-to-r from-cyan-600/20 to-purple-600/20",
-            "border border-cyan-500/40 hover:border-cyan-400/60"
+            "text-cyan-900 bg-gradient-to-r from-cyan-500/15 to-purple-500/15",
+            "border border-cyan-500/50 hover:border-cyan-500/70",
+            "dark:text-white dark:from-cyan-600/20 dark:to-purple-600/20",
+            "dark:border-cyan-500/40 dark:hover:border-cyan-400/60"
           ),
         className
       )}
     >
-      {icon && <span className="text-cyan-400">{icon}</span>}
+      {icon && <span className="text-cyan-600 dark:text-cyan-400">{icon}</span>}
       <span>{children}</span>
     </div>
   );

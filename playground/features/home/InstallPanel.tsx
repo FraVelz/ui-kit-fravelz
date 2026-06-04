@@ -20,6 +20,10 @@ function installCommand(pm: PackageManager, pkg: string): string {
   }
 }
 
+function peersInstallCommand(pm: PackageManager, peers: string): string {
+  return `${installCommand(pm, "").trim()} ${peers}`.replace(/\s+/g, " ").trim();
+}
+
 export default function InstallPanel() {
   const { t } = useLocale();
   const [manager, setManager] = useState<PackageManager>("npm");
@@ -49,7 +53,8 @@ export default function InstallPanel() {
             aria-selected={manager === pm}
             onClick={() => setManager(pm)}
             className={cn(
-              "rounded px-3 py-1.5 font-mono text-xs transition-colors outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80",
+              "rounded px-3 py-1.5 font-mono text-xs transition-colors",
+              "outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80",
               manager === pm
                 ? "bg-cyan-500/15 text-cyan-700 dark:text-cyan-300"
                 : "text-gray-500 hover:text-gray-800 dark:hover:text-gray-300"
@@ -69,7 +74,7 @@ export default function InstallPanel() {
       </p>
       <div className="min-w-0 overflow-x-auto">
         <Code
-          codeContent={`${manager === "npm" ? "npm install" : manager === "pnpm" ? "pnpm add" : manager === "bun" ? "bun add" : "yarn add"} ${peersNote}`}
+          codeContent={peersInstallCommand(manager, peersNote)}
           language="bash"
           className="!my-0"
           compact

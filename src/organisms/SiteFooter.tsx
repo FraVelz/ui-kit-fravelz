@@ -17,7 +17,12 @@ export interface SiteFooterColumnProps {
 export function SiteFooterColumn({ title, children, ariaLabel, className }: SiteFooterColumnProps) {
   return (
     <div className={className}>
-      <p className="mb-3 font-mono text-[10px] font-semibold uppercase tracking-wider text-purple-400">
+      <p
+        className={cn(
+          "mb-3 font-mono text-[10px] font-semibold uppercase tracking-wider",
+          "text-purple-600 dark:text-purple-400"
+        )}
+      >
         {title}
       </p>
       {ariaLabel ? (
@@ -57,7 +62,9 @@ export default function SiteFooter({
   return (
     <footer
       className={cn(
-        "mt-auto border-t border-cyan-500/20 bg-gradient-to-b from-gray-50 via-gray-50 to-gray-100/80 dark:from-gray-950 dark:via-gray-950 dark:to-gray-900/80",
+        "mt-auto border-t border-cyan-500/20 bg-gradient-to-b",
+        "from-gray-50 via-gray-50 to-gray-100/80",
+        "dark:from-gray-950 dark:via-gray-950 dark:to-gray-900/80",
         className
       )}
     >
@@ -70,14 +77,24 @@ export default function SiteFooter({
         </div>
 
         {showBottomBar ? (
-          <div className="mt-10 flex flex-col gap-4 border-t border-gray-200 pt-8 dark:border-gray-800/80 sm:mt-12 sm:flex-row sm:items-center sm:justify-between">
+          <div
+            className={cn(
+              "mt-10 flex flex-col gap-4 border-t border-gray-200 pt-8",
+              "dark:border-gray-800/80 sm:mt-12 sm:flex-row sm:items-center sm:justify-between"
+            )}
+          >
             {toolbar ? (
               <div className="flex justify-center sm:justify-start">{toolbar}</div>
             ) : (
               <span className="hidden sm:block" />
             )}
             {legal ? (
-              <div className="flex flex-col gap-1 text-center text-xs text-gray-600 dark:text-gray-500 sm:items-end sm:text-right">
+              <div
+                className={cn(
+                  "flex flex-col gap-1 text-center text-xs text-gray-600",
+                  "dark:text-gray-500 sm:items-end sm:text-right"
+                )}
+              >
                 {legal}
               </div>
             ) : null}

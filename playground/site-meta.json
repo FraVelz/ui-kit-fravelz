@@ -1,0 +1,16 @@
+{
+  "name": "Fravelz UI Kit",
+  "title": "Fravelz UI Kit — Sistema de diseño moderno",
+  "description": "Biblioteca de componentes React (atoms, molecules, organisms) con Tailwind para sitios del portfolio de Fravelz. Paquete npm @fravelz/ui-kit-fravelz.",
+  "keywords": "UI Kit, design system, React, componentes, Tailwind, Fravelz, frontend",
+  "author": "Fravelz",
+  "package": "@fravelz/ui-kit-fravelz",
+  "githubRepo": "FraVelz/ui-kit-fravelz",
+  "githubBranch": "main",
+  "githubUrl": "https://github.com/FraVelz/ui-kit-fravelz",
+  "npmUrl": "https://www.npmjs.com/package/@fravelz/ui-kit-fravelz",
+  "themeColor": "#06b6d4",
+  "ogImage": "https://raw.githubusercontent.com/FraVelz/ui-kit-fravelz/main/assets/brand/og-image.png",
+  "logoPath": "/brand/logo.png",
+  "twitterCard": "summary_large_image"
+}

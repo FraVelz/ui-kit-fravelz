@@ -32,20 +32,23 @@ export default function Roadmap({ steps }: RoadmapProps) {
             const isLeftAligned = index % 2 === 0;
 
             return (
-              <div key={index} className="relative w-full flex">
+              <div key={step.title} className="relative w-full flex">
                 <div
                   className={cn("w-1/2 pr-10", !isLeftAligned && "opacity-0 pointer-events-none")}
                 >
                   {isLeftAligned && (
                     <div
                       className={cn(
-                        "bg-gray-900 p-6 rounded-lg transition-all",
-                        "border border-cyan-500/30 hover:border-cyan-400/60",
-                        "shadow-lg shadow-cyan-500/10 hover:shadow-cyan-500/20"
+                        "bg-white p-6 rounded-lg transition-all border border-cyan-500/35 shadow-md",
+                        "hover:border-cyan-500/55 hover:shadow-lg hover:shadow-cyan-500/15",
+                        "dark:bg-gray-900 dark:border-cyan-500/30 dark:hover:border-cyan-400/60",
+                        "dark:shadow-lg dark:shadow-cyan-500/10 dark:hover:shadow-cyan-500/20"
                       )}
                     >
-                      <h3 className="text-xl font-bold text-cyan-300 mb-2">{step.title}</h3>
-                      <p className="mt-2 text-gray-400">{step.description}</p>
+                      <h3 className="text-xl font-bold text-cyan-700 mb-2 dark:text-cyan-300">
+                        {step.title}
+                      </h3>
+                      <p className="mt-2 text-gray-600 dark:text-gray-400">{step.description}</p>
                       {step.additionalContent}
                     </div>
                   )}
@@ -54,7 +57,7 @@ export default function Roadmap({ steps }: RoadmapProps) {
                   className={cn(
                     "absolute left-1/2 top-4 w-6 h-6 rounded-full transform -translate-x-1/2",
                     "bg-gradient-to-br from-cyan-500 to-purple-500",
-                    "border-4 border-gray-900 shadow-lg shadow-cyan-500/50"
+                    "border-4 border-white shadow-lg shadow-cyan-500/40 dark:border-gray-900 dark:shadow-cyan-500/50"
                   )}
                 />
                 <div
@@ -63,13 +66,16 @@ export default function Roadmap({ steps }: RoadmapProps) {
                   {!isLeftAligned && (
                     <div
                       className={cn(
-                        "bg-gray-900 p-6 rounded-lg transition-all",
-                        "border border-purple-500/30 hover:border-purple-400/60",
-                        "shadow-lg shadow-purple-500/10 hover:shadow-purple-500/20"
+                        "bg-white p-6 rounded-lg transition-all border border-purple-500/35 shadow-md",
+                        "hover:border-purple-500/55 hover:shadow-lg hover:shadow-purple-500/15",
+                        "dark:bg-gray-900 dark:border-purple-500/30 dark:hover:border-purple-400/60",
+                        "dark:shadow-lg dark:shadow-purple-500/10 dark:hover:shadow-purple-500/20"
                       )}
                     >
-                      <h3 className="text-xl font-bold text-purple-300 mb-2">{step.title}</h3>
-                      <p className="mt-2 text-gray-400">{step.description}</p>
+                      <h3 className="text-xl font-bold text-purple-700 mb-2 dark:text-purple-300">
+                        {step.title}
+                      </h3>
+                      <p className="mt-2 text-gray-600 dark:text-gray-400">{step.description}</p>
                       {step.additionalContent}
                     </div>
                   )}

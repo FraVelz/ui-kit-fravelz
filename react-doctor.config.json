@@ -1,0 +1,12 @@
+{
+  "ignore": {
+    "files": ["dist/**"],
+    "rules": ["deslop/unused-file"],
+    "overrides": [
+      {
+        "files": ["playground/**"],
+        "rules": ["deslop/unused-file"]
+      }
+    ]
+  }
+}

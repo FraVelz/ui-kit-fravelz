@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Code, Text, Title } from "../../../kit";
+import { cn, Code, Text, Title } from "../../../kit";
 import { useLocale } from "../../../i18n/LocaleContext";
 import { getDocSections, localizeDocEntry } from "../../../i18n/localize-doc";
 import { useLocalePaths } from "../paths";
@@ -12,7 +12,12 @@ export default function DocHomePage() {
 
   return (
     <>
-      <div className="mb-10 rounded-lg border border-cyan-500/25 bg-cyan-500/10 p-6 dark:border-cyan-500/20 dark:bg-cyan-500/5">
+      <div
+        className={cn(
+          "mb-10 rounded-lg border border-cyan-500/25 bg-cyan-500/10 p-6",
+          "dark:border-cyan-500/20 dark:bg-cyan-500/5"
+        )}
+      >
         <Title headingLevel="h2" className="!text-xl !mb-2">
           {t("docs.homeTitle")}
         </Title>
@@ -31,11 +36,15 @@ export default function DocHomePage() {
               key={item.id}
               to={docsPath(item.id)}
               className={({ isActive }) =>
-                `rounded-full border px-3 py-1 text-xs transition-colors ${
+                cn(
+                  "rounded-full border px-3 py-1 text-xs transition-colors",
                   isActive
                     ? "border-cyan-500/50 bg-cyan-500/10 text-cyan-700 dark:text-cyan-300"
-                    : "border-gray-300 text-gray-700 hover:border-cyan-500/50 dark:border-gray-700 dark:text-gray-300"
-                }`
+                    : cn(
+                        "border-gray-300 text-gray-700 hover:border-cyan-500/50",
+                        "dark:border-gray-700 dark:text-gray-300"
+                      )
+                )
               }
             >
               {item.name}
@@ -59,11 +68,15 @@ export default function DocHomePage() {
                     <NavLink
                       to={docsPath(item.id)}
                       className={({ isActive }) =>
-                        `block rounded-lg border p-4 transition-colors ${
+                        cn(
+                          "block rounded-lg border p-4 transition-colors",
                           isActive
                             ? "border-cyan-500/40 bg-cyan-500/10"
-                            : "border-gray-200 bg-white hover:border-cyan-500/30 dark:border-gray-800 dark:bg-gray-900/50"
-                        }`
+                            : cn(
+                                "border-gray-200 bg-white hover:border-cyan-500/30",
+                                "dark:border-gray-800 dark:bg-gray-900/50"
+                              )
+                        )
                       }
                     >
                       <span className="font-mono text-sm text-cyan-700 dark:text-cyan-300">{item.name}</span>

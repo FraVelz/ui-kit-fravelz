@@ -163,7 +163,7 @@ dist/             # salida de tsc: .js + .d.ts (lo que publica npm)
 
 - **Primarios:** cyan (`#06B6D4`) y purple (`#A855F7`)
 - Variantes en botones, enlaces, alertas y timeline (`Roadmap`)
-- Pensado para fondos oscuros (`gray-900`); el playground incluye selector de tema claro/oscuro
+- **Modo claro y oscuro:** estilos base para fondos claros y prefijo Tailwind `dark:` para el aspecto oscuro. En el consumidor, `darkMode: 'class'` y la clase `dark` en `<html>` (como en el playground)
 
 ---
 

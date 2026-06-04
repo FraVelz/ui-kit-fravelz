@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
-import { GradientText, SiteFooter as SiteFooterShell, SiteFooterColumn, Text } from "../../kit";
+import { useMemo } from "react";
+import { cn, SiteFooter as SiteFooterShell, SiteFooterColumn, Text } from "../../kit";
+import SiteBrandLogo from "./SiteBrandLogo";
 import { useLocalePaths } from "../../i18n/useLocalePaths";
 import { useLocale } from "../../i18n/LocaleContext";
 import ThemeSwitcher from "../../theme/ThemeSwitcher";
@@ -16,51 +17,57 @@ export default function SiteFooter() {
   const { t } = useLocale();
   const { siteHome, docsHome } = useLocalePaths();
 
+  const brand = useMemo(
+    () => (
+      <>
+        <SiteBrandLogo to={siteHome} end titleClassName="truncate text-lg font-semibold" />
+        <Text variant="secondary" size="sm" className="!py-0 mt-3 max-w-md">
+          {t("footer.tagline")}
+        </Text>
+      </>
+    ),
+    [siteHome, t]
+  );
+
+  const legal = useMemo(
+    () => (
+      <>
+        <p>
+          © {CURRENT_YEAR} {t("footer.copyright")}
+        </p>
+        <p>
+          {t("footer.license")}{" "}
+          <a
+            href={LICENSE_URL}
+            target="_blank"
+            rel="noreferrer"
+            className={cn(
+              "text-gray-600 underline decoration-gray-400 underline-offset-2 hover:text-cyan-600",
+              "dark:text-gray-400 dark:decoration-gray-700 dark:hover:text-cyan-400"
+            )}
+          >
+            Apache-2.0
+          </a>
+          {" · "}
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="text-gray-600 hover:text-cyan-600 dark:text-gray-400 dark:hover:text-cyan-400"
+          >
+            Fravelz
+          </a>
+        </p>
+      </>
+    ),
+    [t]
+  );
+
   return (
     <SiteFooterShell
-      brand={
-        <>
-          <Link
-            to={siteHome}
-            className="inline-block rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80"
-          >
-            <span className="text-lg font-semibold">
-              <GradientText variant="cyan-purple">UI Kit Fravelz</GradientText>
-            </span>
-          </Link>
-          <Text variant="secondary" size="sm" className="!py-0 mt-3 max-w-md">
-            {t("footer.tagline")}
-          </Text>
-        </>
-      }
+      brand={brand}
       toolbar={<ThemeSwitcher />}
-      legal={
-        <>
-          <p>
-            © {CURRENT_YEAR} {t("footer.copyright")}
-          </p>
-          <p>
-            {t("footer.license")}{" "}
-            <a
-              href={LICENSE_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="text-gray-600 underline decoration-gray-400 underline-offset-2 hover:text-cyan-600 dark:text-gray-400 dark:decoration-gray-700 dark:hover:text-cyan-400"
-            >
-              Apache-2.0
-            </a>
-            {" · "}
-            <a
-              href={GITHUB_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="text-gray-600 hover:text-cyan-600 dark:text-gray-400 dark:hover:text-cyan-400"
-            >
-              Fravelz
-            </a>
-          </p>
-        </>
-      }
+      legal={legal}
     >
       <SiteFooterColumn title={t("footer.documentation")} ariaLabel={t("footer.documentation")}>
         <nav className="flex flex-col gap-1">
