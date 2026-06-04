@@ -1,6 +1,6 @@
 import { useMemo, type CSSProperties } from "react";
 import { useLocation } from "react-router-dom";
-import { IconArrowRight, SiteHeader as SiteHeaderShell, Text } from "../../kit";
+import { SiteHeader as SiteHeaderShell, Text } from "../../kit";
 import SiteBrandLogo from "./SiteBrandLogo";
 import { isDocsPath, isSiteHomePath } from "../../features/docs/paths";
 import { useLocalePaths } from "../../i18n/useLocalePaths";
@@ -8,7 +8,7 @@ import { PACKAGE } from "../../features/docs/registry";
 import { useHeaderScroll } from "../../hooks/useHeaderScroll";
 import LanguageSwitcher from "../../i18n/LanguageSwitcher";
 import { useLocale } from "../../i18n/LocaleContext";
-import HeaderComponentsCta from "./HeaderComponentsCta";
+import siteMeta from "../../site-meta.json";
 import "./header-scroll.css";
 import SiteExternalLink from "./SiteExternalLink";
 import SiteHeaderNav from "./SiteHeaderNav";
@@ -43,12 +43,12 @@ export default function SiteHeader() {
       <SiteExternalLink href={NPM_URL} layout="header">
         {t("nav.npm")}
       </SiteExternalLink>
-      {!onDocs && (
-        <HeaderComponentsCta>
-          {t("nav.components")}
-          <IconArrowRight className="!size-4" />
-        </HeaderComponentsCta>
-      )}
+      <SiteExternalLink href={siteMeta.githubUrl} layout="header">
+        {t("nav.github")}
+      </SiteExternalLink>
+      <div className="flex w-full justify-center py-2 sm:w-auto sm:py-0 lg:py-0">
+        <LanguageSwitcher />
+      </div>
     </>
   );
 
@@ -94,14 +94,9 @@ export default function SiteHeader() {
       brand={brand}
       meta={showMetaInHeader ? metaLine : null}
       actions={
-        <>
-          <div className="flex w-full flex-wrap items-center justify-center gap-2 sm:justify-end">
-            <LanguageSwitcher />
-          </div>
-          <SiteHeaderNav menuLabel={t("nav.menu")} ariaLabel={t("lang.label")}>
-            {navLinks}
-          </SiteHeaderNav>
-        </>
+        <SiteHeaderNav menuLabel={t("nav.menu")} ariaLabel={t("footer.navigation")}>
+          {navLinks}
+        </SiteHeaderNav>
       }
     />
   );

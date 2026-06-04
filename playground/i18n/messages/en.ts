@@ -4,6 +4,7 @@ export const en = {
     docs: "Documentation",
     components: "Components",
     npm: "npm",
+    github: "GitHub",
     presentation: "Presentation",
     docsBadge: "documentation",
     index: "Index",

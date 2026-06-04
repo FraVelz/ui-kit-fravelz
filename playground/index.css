@@ -4,3 +4,25 @@
 
 @source "../src/**/*.{js,jsx,ts,tsx}";
 @source "./**/*.{js,jsx,ts,tsx}";
+
+@layer base {
+  *::selection {
+    background-color: #22d3ee;
+    color: #0f172a;
+  }
+
+  *::-moz-selection {
+    background-color: #22d3ee;
+    color: #0f172a;
+  }
+
+  .dark *::selection {
+    background-color: #0891b2;
+    color: #f9fafb;
+  }
+
+  .dark *::-moz-selection {
+    background-color: #0891b2;
+    color: #f9fafb;
+  }
+}
