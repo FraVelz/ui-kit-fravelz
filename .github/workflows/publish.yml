@@ -50,21 +50,19 @@ jobs:
         with:
           version: 11.1.1
 
+      # npm trusted publishing: Node >= 22.14, registry-url, sin NPM_TOKEN
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
           cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # npm >= 11.5.1: endpoint de intercambio OIDC que usa pnpm publish
-      - name: Ensure npm for OIDC token exchange
-        run: npm install -g npm@11.6.2
-
       - name: Build package for registry
         run: pnpm run build
 
       - name: Publish to npm (OIDC)
-        run: npm publish --access public --provenance
+        run: npm publish --access public
