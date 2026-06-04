@@ -132,7 +132,7 @@ npm publish --access public
 
 |                 |                                                                                  |
 | --------------- | -------------------------------------------------------------------------------- |
-| **Versión**     | 1.2.1                                                                            |
+| **Versión**     | 1.2.2                                                                            |
 | **Autor**       | [Fravelz](https://github.com/FraVelz)                                            |
 | **Licencia**    | [Apache-2.0](LICENSE)                                                            |
 | **Repositorio** | [github.com/FraVelz/ui-kit-fravelz](https://github.com/FraVelz/ui-kit-fravelz)   |
