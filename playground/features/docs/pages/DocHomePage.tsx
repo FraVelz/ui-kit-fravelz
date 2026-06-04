@@ -22,11 +22,7 @@ export default function DocHomePage() {
           {t("docs.homeTitle")}
         </Title>
         <Text className="text-sm !py-0 mb-4">{t("docs.homeIntro")}</Text>
-        <Code
-          codeContent={`pnpm add ${PACKAGE}\npnpm run dev`}
-          language="bash"
-          className="!my-0"
-        />
+        <Code codeContent={`pnpm add ${PACKAGE}\npnpm run dev`} language="bash" className="!my-0" />
       </div>
 
       <nav className="mb-8 flex flex-wrap gap-2 lg:hidden" aria-label={t("docs.mobileNav")}>
@@ -79,7 +75,9 @@ export default function DocHomePage() {
                         )
                       }
                     >
-                      <span className="font-mono text-sm text-cyan-700 dark:text-cyan-300">{item.name}</span>
+                      <span className="font-mono text-sm text-cyan-700 dark:text-cyan-300">
+                        {item.name}
+                      </span>
                       {doc && (
                         <p className="mt-1 line-clamp-2 text-xs text-gray-500">{doc.description}</p>
                       )}

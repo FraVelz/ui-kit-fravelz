@@ -28,26 +28,16 @@ function BrandContent({
         width={40}
         height={40}
         draggable={false}
-        className={
-          logoClassName ??
-          "size-9 shrink-0 rounded-lg object-contain sm:size-10"
-        }
+        className={logoClassName ?? "size-9 shrink-0 rounded-lg object-contain sm:size-10"}
       />
-      <span
-        className={
-          titleClassName ?? "truncate text-lg font-bold sm:text-xl"
-        }
-      >
+      <span className={titleClassName ?? "truncate text-lg font-bold sm:text-xl"}>
         <GradientText variant="cyan-purple">{siteMeta.name}</GradientText>
       </span>
     </span>
   );
 }
 
-function wrapLink(
-  children: ReactNode,
-  props: SiteBrandLogoProps,
-): ReactNode {
+function wrapLink(children: ReactNode, props: SiteBrandLogoProps): ReactNode {
   const className =
     props.className ??
     "inline-flex rounded-md outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80";
@@ -77,10 +67,7 @@ function wrapLink(
 
 export default function SiteBrandLogo(props: SiteBrandLogoProps) {
   return wrapLink(
-    <BrandContent
-      titleClassName={props.titleClassName}
-      logoClassName={props.logoClassName}
-    />,
-    props,
+    <BrandContent titleClassName={props.titleClassName} logoClassName={props.logoClassName} />,
+    props
   );
 }

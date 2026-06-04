@@ -71,7 +71,8 @@ export const es = {
     steps: {
       install: {
         title: "Instalar el paquete",
-        description: "Añade @fravelz/ui-kit-fravelz con npm, pnpm, bun o yarn junto a react y react-dom.",
+        description:
+          "Añade @fravelz/ui-kit-fravelz con npm, pnpm, bun o yarn junto a react y react-dom.",
       },
       tailwind: {
         title: "Configurar Tailwind",
@@ -80,7 +81,8 @@ export const es = {
       },
       import: {
         title: "Importar componentes",
-        description: "Importa solo lo que uses desde el entry público; el bundle admite tree-shaking.",
+        description:
+          "Importa solo lo que uses desde el entry público; el bundle admite tree-shaking.",
       },
       docs: {
         title: "Explorar la documentación",

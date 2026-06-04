@@ -86,9 +86,7 @@ export default function Input({
           {...props}
         />
       </div>
-      {error && (
-        <p className="text-purple-600 text-xs mt-1.5 dark:text-purple-400">{error}</p>
-      )}
+      {error && <p className="text-purple-600 text-xs mt-1.5 dark:text-purple-400">{error}</p>}
     </div>
   );
 }

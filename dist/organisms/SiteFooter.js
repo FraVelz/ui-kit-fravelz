@@ -2,7 +2,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { cn } from "../lib/cn";
 import Container from "../molecules/Container";
 export function SiteFooterColumn({ title, children, ariaLabel, className }) {
-    return (_jsxs("div", { className: className, children: [_jsx("p", { className: cn("mb-3 font-mono text-[10px] font-semibold uppercase tracking-wider", "text-purple-600 dark:text-purple-400"), children: title }), ariaLabel ? (_jsx("div", { "aria-label": ariaLabel, children: children })) : (children)] }));
+    return (_jsxs("div", { className: className, children: [_jsx("p", { className: cn("mb-3 font-mono text-[10px] font-semibold uppercase tracking-wider", "text-purple-600 dark:text-purple-400"), children: title }), ariaLabel ? _jsx("div", { "aria-label": ariaLabel, children: children }) : children] }));
 }
 export default function SiteFooter({ brand, children, toolbar, legal, className = "", containerClassName = "", containerSize = "md", }) {
     const showBottomBar = toolbar != null || legal != null;

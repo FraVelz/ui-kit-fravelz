@@ -25,11 +25,7 @@ export function SiteFooterColumn({ title, children, ariaLabel, className }: Site
       >
         {title}
       </p>
-      {ariaLabel ? (
-        <div aria-label={ariaLabel}>{children}</div>
-      ) : (
-        children
-      )}
+      {ariaLabel ? <div aria-label={ariaLabel}>{children}</div> : children}
     </div>
   );
 }

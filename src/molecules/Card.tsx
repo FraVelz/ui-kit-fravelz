@@ -61,9 +61,7 @@ export default function Card({
       {title && (
         <>
           <h3 className="text-lg font-semibold text-cyan-700 mb-2 dark:text-cyan-300">{title}</h3>
-          {subtitle && (
-            <p className="text-gray-600 text-sm mb-4 dark:text-gray-400">{subtitle}</p>
-          )}
+          {subtitle && <p className="text-gray-600 text-sm mb-4 dark:text-gray-400">{subtitle}</p>}
         </>
       )}
       <div className="text-gray-700 dark:text-gray-300">{children}</div>

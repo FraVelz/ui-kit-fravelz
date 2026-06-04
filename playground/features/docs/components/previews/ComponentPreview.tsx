@@ -26,8 +26,6 @@ export function ComponentPreview({ id }: { id: string }) {
     renderUtilsPreview(id) ??
     renderAtomPreview(id, state) ??
     renderMoleculePreview(id) ??
-    renderOrganismPreview(id, state) ?? (
-      <Text variant="muted">{t("docs.noPreview")}</Text>
-    )
+    renderOrganismPreview(id, state) ?? <Text variant="muted">{t("docs.noPreview")}</Text>
   );
 }

@@ -9,11 +9,7 @@ import {
 } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { translate, type MessageKey } from "./messages";
-import {
-  parseLocaleFromPathname,
-  readStoredLocale,
-  switchLocaleInPathname,
-} from "./routes";
+import { parseLocaleFromPathname, readStoredLocale, switchLocaleInPathname } from "./routes";
 import { LOCALE_STORAGE_KEY, type Locale } from "./types";
 
 interface LocaleContextValue {

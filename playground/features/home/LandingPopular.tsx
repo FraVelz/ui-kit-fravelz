@@ -17,7 +17,12 @@ export default function LandingPopular() {
       variant="minimal"
       align="center"
     >
-      <Grid cols={3} gap="md" responsive={false} className="!grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3">
+      <Grid
+        cols={3}
+        gap="md"
+        responsive={false}
+        className="!grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3"
+      >
         {POPULAR_DOC_IDS.map((id) => {
           const entry = COMPONENT_DOCS.find((doc) => doc.id === id);
           const layer = entry?.layer ?? "Molecule";

@@ -4,13 +4,7 @@ export function countByLayer(layer: "Atom" | "Molecule" | "Organism") {
   return COMPONENT_DOCS.filter((entry) => entry.layer === layer).length;
 }
 
-export const POPULAR_DOC_IDS = [
-  "button",
-  "card",
-  "code",
-  "section",
-  "call-to-action",
-] as const;
+export const POPULAR_DOC_IDS = ["button", "card", "code", "section", "call-to-action"] as const;
 
 export type PopularDocId = (typeof POPULAR_DOC_IDS)[number];
 

@@ -21,8 +21,7 @@ const dividerBorder = (variant: DividerVariant) =>
     variant === "purple" &&
       "border-purple-500/40 hover:border-purple-500/60 dark:border-purple-500/30",
     variant === "dotted" && "border-dashed border-gray-300 dark:border-gray-600",
-    variant === "gradient" &&
-      "border-gradient-to-r from-transparent via-cyan-500/30 to-transparent"
+    variant === "gradient" && "border-gradient-to-r from-transparent via-cyan-500/30 to-transparent"
   );
 
 export default function Divider({
@@ -34,13 +33,7 @@ export default function Divider({
 }: DividerProps) {
   if (orientation === "vertical") {
     return (
-      <div
-        className={cn(
-          "h-12 border-l-2 transition-colors",
-          dividerBorder(variant),
-          className
-        )}
-      />
+      <div className={cn("h-12 border-l-2 transition-colors", dividerBorder(variant), className)} />
     );
   }
 

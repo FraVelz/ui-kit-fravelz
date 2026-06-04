@@ -18,7 +18,9 @@ export default function LandingStats() {
       <Grid cols={4} gap="md" responsive={false} className="!grid-cols-2 lg:!grid-cols-4">
         {items.map((item) => (
           <Card key={item.label} variant="minimal" hoverable={false} className="text-center">
-            <p className="font-mono text-2xl font-bold text-cyan-700 dark:text-cyan-300">{item.value}</p>
+            <p className="font-mono text-2xl font-bold text-cyan-700 dark:text-cyan-300">
+              {item.value}
+            </p>
             <Text variant="muted" size="sm" className="!py-0 mt-1">
               {item.label}
             </Text>

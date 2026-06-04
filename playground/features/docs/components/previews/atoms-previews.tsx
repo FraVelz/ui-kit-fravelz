@@ -132,8 +132,8 @@ export function renderAtomPreview(id: string, state: PreviewState): ReactNode | 
     case "animation-development":
       return (
         <Text variant="muted" className="text-sm">
-          No renderizado en playground. Instala @lottiefiles/dotlottie-react y el archivo .lottie
-          en el consumidor.
+          No renderizado en playground. Instala @lottiefiles/dotlottie-react y el archivo .lottie en
+          el consumidor.
         </Text>
       );
 

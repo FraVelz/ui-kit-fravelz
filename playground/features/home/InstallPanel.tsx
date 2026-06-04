@@ -66,7 +66,12 @@ export default function InstallPanel() {
       </div>
 
       <div className="min-w-0 overflow-x-auto">
-        <Code codeContent={installCommand(manager, PACKAGE)} language="bash" className="!my-0" compact />
+        <Code
+          codeContent={installCommand(manager, PACKAGE)}
+          language="bash"
+          className="!my-0"
+          compact
+        />
       </div>
 
       <p className="mt-4 mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">

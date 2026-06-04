@@ -54,12 +54,12 @@ export default function LandingPage() {
               <Title headingLevel="h1" className="!mb-4 !text-3xl sm:!text-4xl md:!text-5xl">
                 <GradientText variant="cyan-purple">{siteMeta.name}</GradientText>
               </Title>
-            <Text size="lg" className="!py-0 mb-4 text-gray-600 dark:text-gray-300">
-              {t("landing.hero")}
-            </Text>
-            <p className="mb-8 font-mono text-xs text-gray-500 sm:text-sm">
-              <code className="text-cyan-700 dark:text-cyan-400/90">{PACKAGE}</code>
-            </p>
+              <Text size="lg" className="!py-0 mb-4 text-gray-600 dark:text-gray-300">
+                {t("landing.hero")}
+              </Text>
+              <p className="mb-8 font-mono text-xs text-gray-500 sm:text-sm">
+                <code className="text-cyan-700 dark:text-cyan-400/90">{PACKAGE}</code>
+              </p>
               <div
                 className={cn(
                   "flex w-full max-w-md flex-col gap-3 sm:max-w-none",
@@ -94,7 +94,12 @@ export default function LandingPage() {
           align="center"
           className="border-t border-gray-200/80 dark:border-gray-800/80"
         >
-          <Grid cols={3} gap="lg" responsive={false} className="!grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3">
+          <Grid
+            cols={3}
+            gap="lg"
+            responsive={false}
+            className="!grid-cols-1 sm:!grid-cols-2 lg:!grid-cols-3"
+          >
             {LANDING_FEATURES.map((feature) => (
               <Card
                 key={feature.key}

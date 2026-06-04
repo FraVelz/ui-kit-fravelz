@@ -64,11 +64,7 @@ export default function SiteFooter() {
   );
 
   return (
-    <SiteFooterShell
-      brand={brand}
-      toolbar={<ThemeSwitcher />}
-      legal={legal}
-    >
+    <SiteFooterShell brand={brand} toolbar={<ThemeSwitcher />} legal={legal}>
       <SiteFooterColumn title={t("footer.documentation")} ariaLabel={t("footer.documentation")}>
         <nav className="flex flex-col gap-1">
           <SiteNavLink to={siteHome} end layout="footer">
