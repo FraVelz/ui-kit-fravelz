@@ -29,6 +29,12 @@ const es = {
     hero:
       "Biblioteca de componentes para sitios de notas y proyectos del portfolio. Diseño oscuro con acentos cyan y púrpura, tipos TypeScript y publicación en npm.",
     ctaExplore: "Explorar documentación",
+    installTitle: "Instalación",
+    installSubtitle: "Elige tu gestor de paquetes. Requiere React 18+ y Tailwind en el proyecto.",
+    peersTitle: "Peer dependencies",
+    importExampleTitle: "Importar",
+    tailwindNote:
+      "Configura Tailwind en tu app para que las clases de los componentes se apliquen correctamente.",
     sectionTitle: "Qué incluye",
     sectionSubtitle: "piezas documentadas con vistas previas interactivas",
     componentsCount: "componentes",
@@ -122,6 +128,11 @@ const en = {
     hero:
       "Component library for notes sites and portfolio projects. Dark theme with cyan and purple accents, TypeScript types, and npm publishing.",
     ctaExplore: "Browse documentation",
+    installTitle: "Installation",
+    installSubtitle: "Pick your package manager. Requires React 18+ and Tailwind in the app.",
+    peersTitle: "Peer dependencies",
+    importExampleTitle: "Import",
+    tailwindNote: "Configure Tailwind in your app so component utility classes apply correctly.",
     sectionTitle: "What's included",
     sectionSubtitle: "documented pieces with interactive previews",
     componentsCount: "components",

@@ -14,6 +14,7 @@ import {
 import { DOCS_HOME } from "../docs/paths";
 import { COMPONENT_DOCS } from "../docs/registry";
 import { useLocale } from "../../i18n/LocaleContext";
+import InstallPanel from "./InstallPanel";
 
 const linkPrimary =
   "inline-flex items-center justify-center gap-2 rounded-full cursor-pointer transition-all duration-300 bg-gradient-to-r from-cyan-600 to-purple-600 text-white font-semibold hover:from-cyan-500 hover:to-purple-500 shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950";
@@ -29,36 +30,40 @@ export default function LandingPage() {
 
   return (
     <>
-      <Container size="md" className="py-16 md:py-24">
-        <div className="mx-auto max-w-6xl text-center">
-          <Badge variant="purple" size="sm" className="mb-6">
-            {t("landing.badge")}
-          </Badge>
-          <Title headingLevel="h1" className="!mb-4 !text-4xl md:!text-5xl">
-            <GradientText variant="cyan-purple">UI Kit Fravelz</GradientText>
-          </Title>
-          <Text size="lg" className="!py-0 mb-8 text-gray-300">
-            {t("landing.hero")}
-          </Text>
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link to={DOCS_HOME} className={cn(linkPrimary, "px-6 py-3 text-lg")}>
-              {t("landing.ctaExplore")}
-              <IconArrowRight />
-            </Link>
-            <a
-              href="https://www.npmjs.com/package/@fravelz/ui-kit-fravelz"
-              target="_blank"
-              rel="noreferrer"
-              className={cn(
-                "inline-flex items-center justify-center rounded-full px-6 py-3 text-lg transition-all",
-                "border border-purple-500/40 text-purple-300",
-                "hover:border-purple-400/60 hover:text-purple-200",
-                "outline-none focus-visible:ring-2 focus-visible:ring-purple-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"
-              )}
-            >
-              npm
-            </a>
+      <Container size="md" className="py-12 md:py-20">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
+          <div className="text-center lg:text-left">
+            <Badge variant="purple" size="sm" className="mb-6">
+              {t("landing.badge")}
+            </Badge>
+            <Title headingLevel="h1" className="!mb-4 !text-4xl md:!text-5xl">
+              <GradientText variant="cyan-purple">UI Kit Fravelz</GradientText>
+            </Title>
+            <Text size="lg" className="!py-0 mb-8 text-gray-300">
+              {t("landing.hero")}
+            </Text>
+            <div className="flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+              <Link to={DOCS_HOME} className={cn(linkPrimary, "px-6 py-3 text-lg")}>
+                {t("landing.ctaExplore")}
+                <IconArrowRight />
+              </Link>
+              <a
+                href="https://www.npmjs.com/package/@fravelz/ui-kit-fravelz"
+                target="_blank"
+                rel="noreferrer"
+                className={cn(
+                  "inline-flex items-center justify-center rounded-full px-6 py-3 text-lg transition-all",
+                  "border border-purple-500/40 text-purple-300",
+                  "hover:border-purple-400/60 hover:text-purple-200",
+                  "outline-none focus-visible:ring-2 focus-visible:ring-purple-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-950"
+                )}
+              >
+                npm
+              </a>
+            </div>
           </div>
+
+          <InstallPanel />
         </div>
       </Container>
 
