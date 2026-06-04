@@ -6,7 +6,7 @@ Publicación vía **OIDC** (Trusted Publisher en npm): workflow `.github/workflo
 
 ## Requisitos previos (comprobar una vez)
 
-- Trusted Publisher en npm: repo **`FraVelz/ui-kit-fravelz`**, workflow **`publish.yml`**, environment **`production`** (mayúsculas exactas en GitHub).
+- Trusted Publisher en npm: repo **`FraVelz/ui-kit-fravelz`**, workflow **`publish.yml`**, environment **`Production`** (igual que en GitHub → Settings → Environments).
 - `git config core.hooksPath` → `.githooks`
 - Rama **`main`** actualizada en remoto.
 - **No** usar `Co-authored-by: Cursor` ni trailers del agente en commits.

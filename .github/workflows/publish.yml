@@ -40,7 +40,8 @@ jobs:
   publish:
     needs: quality
     runs-on: ubuntu-latest
-    environment: production
+    # Debe coincidir exactamente con el environment en GitHub y en npm Trusted Publisher
+    environment: Production
 
     steps:
       - name: Checkout
@@ -55,11 +56,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          registry-url: https://registry.npmjs.org
           cache: pnpm
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # npm >= 11.5.1: endpoint de intercambio OIDC que usa pnpm publish
+      - name: Ensure npm for OIDC token exchange
+        run: npm install -g npm@11.6.2
+
       - name: Publish to npm (OIDC)
         run: pnpm publish --access public --provenance --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ""
