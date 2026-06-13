@@ -12,7 +12,8 @@ Usar cuando el usuario pida **hacer commit** del trabajo actual en este paquete 
 1. `git status` — archivos modificados.
 2. `git diff` — cambios staged y unstaged.
 3. `git log -10 --oneline` — estilo reciente.
-4. Hooks activos: `git config core.hooksPath` debe ser `.githooks`. Si no, una vez por clon: `git config core.hooksPath .githooks`.
+4. **Respetar borrados:** si el diff elimina líneas o archivos, **no restaurarlos** ni "arreglar" el contenido antes del commit salvo petición explícita del usuario. Un borrado suele ser intencional.
+5. Hooks activos: `git config core.hooksPath` debe ser `.githooks`. Si no, una vez por clon: `git config core.hooksPath .githooks`.
 
 **No** incluir: `node_modules/`, `*.tgz`, secretos.
 
