@@ -40,7 +40,7 @@
     "format": "prettier --write \"src/**/*.{ts,tsx}\" \"playground/**/*.{ts,tsx}\" \"*.{json,md}\" \".github/**/*.yml\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx}\" \"playground/**/*.{ts,tsx}\" \"*.{json,md}\" \".github/**/*.yml\"",
     "lint:md": "markdownlint-cli2",
-    "react:doctor": "react-doctor . --full --verbose",
+    "react:doctor": "react-doctor . --verbose",
     "release:version": "node scripts/next-release-version.mjs",
     "validate": "pnpm run lint && pnpm run format:check && pnpm run typecheck && pnpm run lint:md && pnpm run build",
     "test": "echo \"No tests specified\" && exit 0"
@@ -72,7 +72,7 @@
     "prettier": "^3.6.2",
     "prismjs": "^1.30.0",
     "react": "^19.1.0",
-    "react-doctor": "^0.3.0",
+    "react-doctor": "^0.5.7",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.3",
     "tailwindcss": "^4.1.11",
